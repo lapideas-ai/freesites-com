@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeSites.com — Free Websites + Free AI Agents for Small Business</title>
+<meta name="description" content="Build your free AI-powered link-in-bio or website in 60 seconds. Free AI agents respond to every lead instantly. No subscriptions. No monthly fees. Yours forever.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="FreeSites.com — Free Websites + Free AI Agents">
+<meta property="og:description" content="Free AI-powered website in 60 seconds. AI agents included free. No subscriptions. You own everything.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@freesites_com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1a2f4a;--navy2:#1e3a5f;--navy3:#243d6b;
+  --blue:#1a6bbf;--blue2:#2080d0;--blue3:#5ba3e0;--blue-light:#e8f4ff;
+  --orange:#f97316;--orange2:#ea6c0a;
+  --green:#16a34a;--green-light:#f0fdf4;
+  --gold:#c9a84c;--gold-light:#fdf6e3;
+  --white:#fff;--bg:#f0f6fc;
+  --gray:#64748b;--border:#cddaeb;--text:#1a2f4a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.5}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--navy2);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;text-decoration:none}
+.nav-logo img{height:32px;width:auto}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:rgba(255,255,255,.7);font-size:14px;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--orange);color:var(--white)!important;padding:9px 20px;border-radius:8px;font-weight:700!important}
+.nav-cta:hover{background:var(--orange2)!important}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--navy2) 0%,var(--navy3) 50%,#1e4a7a 100%);padding:88px 24px 108px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 20% 110%,rgba(26,107,191,.4),transparent),radial-gradient(ellipse 50% 40% at 80% 0%,rgba(249,115,22,.15),transparent);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(91,163,224,.2);border:1px solid rgba(91,163,224,.35);color:#a8d4f5;font-size:13px;font-weight:600;padding:6px 18px;border-radius:9999px;margin-bottom:28px}
+.hero h1{font-size:clamp(36px,6vw,68px);font-weight:900;line-height:1.03;letter-spacing:-.04em;color:var(--white);margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--blue3)}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.72);line-height:1.7;max-width:540px;margin:0 auto 36px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.btn-orange{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:var(--white);padding:16px 36px;border-radius:10px;font-size:16px;font-weight:700;transition:all .2s;box-shadow:0 4px 20px rgba(249,115,22,.4)}
+.btn-orange:hover{background:var(--orange2);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:var(--white);padding:16px 28px;border-radius:10px;font-size:16px;font-weight:600;border:1px solid rgba(255,255,255,.2)}
+.btn-outline:hover{background:rgba(255,255,255,.18)}
+.hero-proof{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 24px;font-size:13px;font-weight:500;color:rgba(255,255,255,.55)}
+.hero-proof span::before{content:'✓ ';color:#86efac}
+
+/* STATS BAR */
+.stats-bar{background:var(--white);border-bottom:1px solid var(--border);padding:20px 24px}
+.stats-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-num{font-size:28px;font-weight:900;color:var(--navy2);letter-spacing:-.03em;line-height:1}
+.stat-label{font-size:12px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.stat-divider{width:1px;height:40px;background:var(--border)}
+
+/* SECTIONS */
+.section{padding:80px 24px}
+.section--white{background:var(--white)}
+.sec-inner{max-width:1080px;margin:0 auto}
+.sec-eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block}
+.sec-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:var(--navy2);margin-bottom:14px;line-height:1.1}
+.sec-sub{font-size:17px;color:var(--gray);line-height:1.7;max-width:540px;margin-bottom:52px}
+
+/* SMARTREPLY DEMO */
+.sr-demo-section{background:linear-gradient(160deg,var(--navy2),var(--navy3));padding:80px 24px}
+.sr-demo-inner{max-width:600px;margin:0 auto}
+.sr-demo-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:36px 32px}
+.sr-live-badge{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.sr-dot{width:9px;height:9px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.sr-badge-text{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+.sr-demo-title{font-size:clamp(24px,4vw,34px);font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
+.sr-demo-sub{font-size:15px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:24px}
+.sr-suggestions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.sr-suggestion{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.8);cursor:pointer;font-family:'Inter',system-ui,sans-serif;transition:all .15s}
+.sr-suggestion:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3)}
+.sr-field{margin-bottom:10px}
+.sr-field input,.sr-field textarea{width:100%;padding:12px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:8px;font-size:14px;color:var(--white);font-family:'Inter',system-ui,sans-serif;outline:none;transition:border-color .15s;box-sizing:border-box}
+.sr-field input::placeholder,.sr-field textarea::placeholder{color:rgba(255,255,255,.35)}
+.sr-field input:focus,.sr-field textarea:focus{border-color:var(--blue3)}
+.sr-field textarea{resize:vertical;min-height:80px}
+.sr-submit{width:100%;padding:14px;background:var(--orange);color:var(--white);border:none;border-radius:9px;font-family:'Inter',system-ui,sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:4px}
+.sr-submit:hover{background:var(--orange2)}
+.sr-submit:disabled{opacity:.6;cursor:not-allowed}
+.sr-privacy{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:10px}
+.sr-success{display:none}
+.sr-reply-box{background:rgba(22,163,74,.12);border:1px solid rgba(22,163,74,.25);border-radius:12px;padding:20px;margin-bottom:16px}
+.sr-reply-label{font-size:11px;font-weight:700;color:#4ade80;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.sr-reply-text{font-size:14px;color:rgba(255,255,255,.9);line-height:1.7}
+.sr-cta-box{background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);border-radius:12px;padding:20px;text-align:center}
+.sr-cta-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px}
+.sr-cta-sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:14px}
+.sr-cta-btn{display:inline-block;background:var(--orange);color:var(--white);padding:12px 28px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
+.sr-reset{width:100%;margin-top:12px;padding:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-size:13px;color:rgba(255,255,255,.5);cursor:pointer;font-family:'Inter',system-ui,sans-serif}
+
+/* FEATURES GRID */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.feat{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px}
+.feat-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.feat-tag--free{background:var(--green-light);color:var(--green)}
+.feat-tag--paid{background:var(--gold-light);color:#7a5c1e}
+.feat-tag--soon{background:#f1f5f9;color:var(--gray)}
+.feat-icon{font-size:28px;margin-bottom:12px}
+.feat h3{font-size:16px;font-weight:700;color:var(--navy2);margin-bottom:8px}
+.feat p{font-size:14px;color:var(--gray);line-height:1.6}
+
+/* FREE TOOLS */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:all .2s;text-decoration:none;color:var(--text)}
+.tool-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);border-color:var(--blue)}
+.tool-status{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.tool-status--live{background:var(--green-light);color:var(--green)}
+.tool-status--soon{background:#f1f5f9;color:var(--gray)}
+.tool-icon{font-size:28px;margin-bottom:12px}
+.tool-card h3{font-size:16px;font-weight:700;color:var(--navy2);margin-bottom:8px}
+.tool-card p{font-size:14px;color:var(--gray);line-height:1.6}
+
+/* COMPARISON TABLE */
+.compare-wrap{overflow-x:auto;margin-top:48px}
+table{width:100%;border-collapse:collapse;min-width:520px}
+thead tr th{background:var(--navy2);color:var(--white);padding:14px 18px;font-size:13px;font-weight:700;text-align:left}
+thead tr th:first-child{border-radius:12px 0 0 0}
+thead tr th:last-child{border-radius:0 12px 0 0;background:var(--blue)}
+tbody tr td{padding:13px 18px;font-size:14px;border-bottom:1px solid var(--border);background:var(--white)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr td:last-child{background:var(--blue-light);font-weight:600;color:var(--blue)}
+.ck{color:var(--green);font-weight:700}.cx{color:#b0c4d8}
+
+/* PRICING */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:52px}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:18px;padding:30px 26px;position:relative}
+.price-card--featured{border-color:var(--blue);border-width:2px}
+.price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:var(--white);font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap}
+.price-tier{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}
+.price-amount{font-size:44px;font-weight:900;color:var(--navy2);letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.price-amount sub{font-size:16px;font-weight:500;color:var(--gray);vertical-align:middle}
+.price-cadence{font-size:13px;font-weight:600;color:var(--gray);margin-bottom:22px}
+.price-feats{list-style:none;margin-bottom:26px}
+.price-feats li{font-size:14px;color:var(--text);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:9px;line-height:1.4}
+.price-feats li:last-child{border-bottom:none}
+.price-feats li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-btn{display:block;text-align:center;padding:13px;border-radius:9px;font-size:14px;font-weight:700;transition:all .2s;text-decoration:none}
+.price-btn--orange{background:var(--orange);color:var(--white)}
+.price-btn--orange:hover{background:var(--orange2)}
+.price-btn--ghost{background:var(--bg);color:var(--navy2);border:1px solid var(--border)}
+.price-btn--ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+/* EXAMPLES */
+.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.example{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .2s}
+.example:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.ex-top{padding:32px 24px;text-align:center}
+.ex-top--law{background:linear-gradient(160deg,#1a2f4a,#1e3a5f)}
+.ex-top--nonprofit{background:linear-gradient(160deg,#1a3a2a,#1e4a2e)}
+.ex-avatar{width:64px;height:64px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--gold);margin:0 auto 12px;font-family:Georgia,serif}
+.ex-name{font-size:16px;font-weight:700;color:var(--white);margin-bottom:3px}
+.ex-type{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.07em;text-transform:uppercase}
+.ex-body{padding:22px 24px}
+.ex-body p{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:14px}
+.ex-link{font-size:13px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px}
+.ex-note{font-size:11px;color:var(--gray);margin-top:6px;font-style:italic}
+
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:center;max-width:800px;margin:0 auto}
+.founder-img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid var(--blue-light)}
+.founder-quote{font-size:18px;font-style:italic;color:var(--navy2);line-height:1.7;margin-bottom:16px;border-left:3px solid var(--gold);padding-left:20px}
+
+/* FINAL CTA */
+.final-cta{background:var(--blue);padding:80px 24px;text-align:center}
+.final-cta h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--white);letter-spacing:-.03em;margin-bottom:14px;line-height:1.1}
+.final-cta p{font-size:17px;color:rgba(255,255,255,.8);line-height:1.7;max-width:520px;margin:0 auto 32px}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--blue);padding:16px 40px;border-radius:10px;font-size:16px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.btn-white:hover{transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--navy2);padding:40px 24px;text-align:center}
+.footer-logo{font-size:20px;font-weight:900;color:var(--white);letter-spacing:-.03em;margin-bottom:16px}
+.footer-logo em{font-style:normal;color:var(--blue3)}
+.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.footer-links a{color:rgba(255,255,255,.5);font-size:13px}
+.footer-links a:hover{color:var(--white)}
+footer p{color:rgba(255,255,255,.35);font-size:12px}
+
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .nav-links a:not(.nav-cta){display:none}
+  .hero{padding:60px 16px 80px}
+  .section{padding:56px 16px}
+  .stats-inner{gap:20px}
+  .stat-divider{display:none}
+  .founder{grid-template-columns:1fr;text-align:center}
+  .founder-img{margin:0 auto}
+  .sr-demo-box{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://freesites.com" class="nav-logo">
+    <img src="https://d1yei2z3i6k35z.cloudfront.net/1105895/63d193edb92db_Logo1.png" alt="FreeSites" onerror="this.style.display='none'">
+    FreeSites
+  </a>
+  <div class="nav-links">
+    <a href="https://freesites.com/free-tools">Free Tools</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://freesites.net">Agency</a>
+    <a href="https://x.com/freesites_com" target="_blank">@freesites_com</a>
+    <a href="https://freesites.ai/form/" class="nav-cta">Build Free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill">⚡ Free AI Websites · Free AI Agents · No Subscriptions · Ever</div>
+    <h1>Build Your Site.<br><em>Own Everything.</em><br>AI Works for You — Free.</h1>
+    <p class="hero-sub">The only platform that gives you a beautiful AI-powered website and free AI agents that respond to every lead 24/7 — with no subscriptions, no monthly fees, ever.</p>
+    <div class="hero-btns">
+      <a href="https://freesites.ai/form/" class="btn-orange">⚡ Get My Free Site in 60 Seconds</a>
+      <a href="#demo" class="btn-outline">Try SmartReply Live →</a>
+    </div>
+    <div class="hero-proof">
+      <span>No subscriptions — ever</span>
+      <span>You own everything</span>
+      <span>AI agents free</span>
+      <span>Live in 60 seconds</span>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">To Start</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">60s</div><div class="stat-label">To Go Live</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">$39</div><div class="stat-label">One-Time Unlock</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item"><div class="stat-num">$0/mo</div><div class="stat-label">Always</div></div>
+  </div>
+</div>
+
+<!-- SMARTREPLY DEMO -->
+<div class="sr-demo-section" id="demo">
+  <div class="sr-demo-inner">
+    <div style="text-align:center;margin-bottom:32px">
+      <span class="sec-eyebrow" style="color:var(--blue3)">Live Demo</span>
+      <h2 class="sec-title" style="color:var(--white)">Try SmartReply Right Now</h2>
+      <p style="font-size:17px;color:rgba(255,255,255,.65);line-height:1.7;max-width:480px;margin:0 auto">Ask us anything about FreeSites. This is the exact same AI agent that comes free with every site we build.</p>
+    </div>
+    <div class="sr-demo-box">
+      <div class="sr-live-badge">
+        <span class="sr-dot"></span>
+        <span class="sr-badge-text">SmartReply Agent — Active</span>
+      </div>
+      <div class="sr-demo-title">Ask us anything.<br>We reply in 60 seconds.</div>
+      <div class="sr-demo-sub">Your email gets a personal AI reply. This is what your visitors will experience — for free, on your site.</div>
+
+      <div class="sr-suggestions">
+        <button class="sr-suggestion" onclick="srSuggest('How does FreeSites work?')">How does it work?</button>
+        <button class="sr-suggestion" onclick="srSuggest('Is FreeSites really free forever?')">Is it really free?</button>
+        <button class="sr-suggestion" onclick="srSuggest('What is SmartReply?')">What is SmartReply?</button>
+        <button class="sr-suggestion" onclick="srSuggest('How is FreeSites different from Linktree?')">vs Linktree?</button>
+      </div>
+
+      <div id="sr-demo-form">
+        <div class="sr-field"><input type="text" id="sr-name" placeholder="Your name"></div>
+        <div class="sr-field"><input type="email" id="sr-email" placeholder="Your email"></div>
+        <div class="sr-field"><textarea id="sr-message" placeholder="Type your question..."></textarea></div>
+        <button class="sr-submit" id="sr-btn" onclick="srSubmit()">Try SmartReply Free →</button>
+        <p class="sr-privacy">Your email is never shared or sold. Ever.</p>
+      </div>
+
+      <div class="sr-success" id="sr-success">
+        <div class="sr-reply-box">
+          <div class="sr-reply-label">✅ SmartReply responded</div>
+          <div class="sr-reply-text" id="sr-reply"></div>
+        </div>
+        <div class="sr-cta-box">
+          <div class="sr-cta-title">Want SmartReply on YOUR site?</div>
+          <div class="sr-cta-sub">Free forever. Live in 60 seconds. No subscriptions.</div>
+          <a href="https://freesites.ai/form/" class="sr-cta-btn">⚡ Build My Free Site →</a>
+        </div>
+        <button class="sr-reset" onclick="srReset()">Ask another question</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section section--white">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">How It Works</span>
+    <h2 class="sec-title">FreeSites.ai — Your AI Site Generator</h2>
+    <p class="sec-sub">Fill 7 fields. AI writes your copy, designs your layout, and deploys a live site with a SmartReply agent — in 60 seconds.</p>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-tag feat-tag--free">Free</div>
+        <div class="feat-icon">⚡</div>
+        <h3>Live in 60 Seconds</h3>
+        <p>Fill in 7 fields about your business. AI writes your bio, designs your layout, and deploys a live site at yourname.freesites.ai instantly.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--free">Free</div>
+        <div class="feat-icon">🤖</div>
+        <h3>SmartReply AI Agent</h3>
+        <p>Every visitor who messages you gets a personal AI reply in under 60 seconds — in your voice, 24 hours a day, 7 days a week.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--free">Free</div>
+        <div class="feat-icon">⭐</div>
+        <h3>Star Links</h3>
+        <p>Your most important links, beautifully organized. Google-indexed from day one — unlike Linktree, which is never indexed.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--free">Free</div>
+        <div class="feat-icon">📱</div>
+        <h3>Mobile-First Design</h3>
+        <p>Tap-to-call, fast load times, contact form built for phones. 80% of your visitors are on mobile.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--paid">$39 one-time</div>
+        <div class="feat-icon">🌐</div>
+        <h3>Custom Domain</h3>
+        <p>Connect yourbusiness.com, remove FreeSites branding, and unlock all AI agents. One payment. Own it forever.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--paid">$299 one-time</div>
+        <div class="feat-icon">🏗️</div>
+        <h3>Done-For-You Site</h3>
+        <p>We build your complete multi-page website — About, Services, Contact, Testimonials. You own everything forever.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE EXAMPLES -->
+<div class="section">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">Live Examples</span>
+    <h2 class="sec-title">Real sites. Real businesses.</h2>
+    <p class="sec-sub">Every FreeSites page is built specifically for that business — not a generic template.</p>
+    <div class="examples">
+      <div class="example">
+        <div class="ex-top ex-top--law">
+          <div class="ex-avatar">JM</div>
+          <div class="ex-name">John V. Millane III</div>
+          <div class="ex-type">Attorney at Law · Williamsville, NY</div>
+        </div>
+        <div class="ex-body">
+          <p>Criminal defense and family law attorney with 39+ years of experience. AV Preeminent rated. Retired US Marine. Built free in 60 seconds.</p>
+          <a href="https://john-v-millane-iii.freesites.ai" class="ex-link" target="_blank">john-v-millane-iii.freesites.ai →</a>
+          <p class="ex-note">Opens in a new tab</p>
+        </div>
+      </div>
+      <div class="example">
+        <div class="ex-top ex-top--nonprofit">
+          <div class="ex-avatar" style="border-color:var(--blue3);color:var(--blue3)">SNL</div>
+          <div class="ex-name">Seven Noahide Laws</div>
+          <div class="ex-type">Nonprofit · Worldwide</div>
+        </div>
+        <div class="ex-body">
+          <p>Noahide education and community worldwide. SmartReply active 24/7 answering questions about the Seven Laws of Light. Built free in 60 seconds.</p>
+          <a href="https://seven-noahide-laws-bgrc.freesites.ai" class="ex-link" target="_blank">seven-noahide-laws-bgrc.freesites.ai →</a>
+          <p class="ex-note">Opens in a new tab</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FREE TOOLS -->
+<div class="section section--white">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">Free Tools</span>
+    <h2 class="sec-title">Tools That Actually Help. Zero Cost.</h2>
+    <p class="sec-sub">No login. No credit card. New tool every Friday from @freesites_com.</p>
+    <div class="tools-grid">
+      <a href="https://freesites.ai/form/" class="tool-card">
+        <div class="tool-status tool-status--live">Live Now</div>
+        <div class="tool-icon">⚡</div>
+        <h3>AI Site Generator</h3>
+        <p>Fill 7 fields, get a live AI-powered site in 60 seconds. SmartReply AI agent included free.</p>
+      </a>
+      <a href="https://freesites.ai/starlinks/" class="tool-card">
+        <div class="tool-status tool-status--live">Live Now</div>
+        <div class="tool-icon">⭐</div>
+        <h3>FreeSites StarLinks</h3>
+        <p>See our own StarLinks link-in-bio page — with SmartReply active. The exact product you get free.</p>
+      </a>
+      <div class="tool-card" style="cursor:default">
+        <div class="tool-status tool-status--soon">Coming Soon</div>
+        <div class="tool-icon">🤖</div>
+        <h3>Free AI Agent Audit</h3>
+        <p>10 questions. Instant report. Find your top 5 AI opportunities for your business.</p>
+      </div>
+      <div class="tool-card" style="cursor:default">
+        <div class="tool-status tool-status--soon">Coming Soon</div>
+        <div class="tool-icon">🎨</div>
+        <h3>Free Logo Generator</h3>
+        <p>AI-generated SVG logos. Enter your business name, pick a style, download instantly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI AGENTS -->
+<div class="section">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">AI Agents</span>
+    <h2 class="sec-title">AI Working for Your Business 24/7.</h2>
+    <p class="sec-sub">While Linktree gives you a list of links, FreeSites gives you AI agents that respond and grow your business — free.</p>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-tag feat-tag--free">Free on Every Site</div>
+        <div class="feat-icon">⚡</div>
+        <h3>SmartReply</h3>
+        <p>Every visitor who contacts you gets a warm, personal AI reply in under 60 seconds — in your voice. Never miss a lead, even at 2am.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--paid">$39 One-Time</div>
+        <div class="feat-icon">📢</div>
+        <h3>SmartPromoter</h3>
+        <p>Every week, AI writes 3 social posts for Instagram, X, and LinkedIn promoting your most-clicked Star Link.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--paid">$39 One-Time</div>
+        <div class="feat-icon">📅</div>
+        <h3>AppointmentBot</h3>
+        <p>Books appointments directly from your site, sends confirmations, fires reminders. No more back-and-forth scheduling.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-tag feat-tag--soon">Coming Soon</div>
+        <div class="feat-icon">⭐</div>
+        <h3>ReviewAgent</h3>
+        <p>After every job, automatically texts happy customers asking for a Google review. Businesses with 4.8+ stars close 35% more leads.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<div class="section section--white">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">Honest Comparison</span>
+    <h2 class="sec-title">How We Stack Up</h2>
+    <p class="sec-sub">Linktree raised prices 67% in 2025 and still can't give you a Google-indexed page. FreeSites gives you the best of everything — free.</p>
+    <div class="compare-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Linktree</th>
+            <th>lnk.bio</th>
+            <th>WordPress.com</th>
+            <th>FreeSites ⭐</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Free tier</td><td>Basic only</td><td>Good</td><td>Limited</td><td>Full featured</td></tr>
+          <tr><td>One-time payment</td><td class="cx">✗ Never</td><td>$24.99</td><td class="cx">✗ Never</td><td class="ck">✓ $39</td></tr>
+          <tr><td>Google-indexed</td><td class="cx">✗ No</td><td class="cx">✗ No</td><td class="ck">✓ Yes</td><td class="ck">✓ Always</td></tr>
+          <tr><td>Free AI agents</td><td class="cx">✗ None</td><td class="cx">✗ None</td><td class="cx">✗ None</td><td class="ck">✓ SmartReply free</td></tr>
+          <tr><td>Expandable to full site</td><td class="cx">✗ Never</td><td class="cx">✗ Never</td><td class="ck">✓ Yes</td><td class="ck">✓ From $299</td></tr>
+          <tr><td>You own the files</td><td class="cx">✗ Never</td><td class="cx">✗ Never</td><td class="cx">✗ No</td><td class="ck">✓ Always</td></tr>
+          <tr><td>Monthly fees</td><td>$8–$24/mo</td><td>$0–$1/mo</td><td>$4–$45/mo</td><td class="ck">$0 forever</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">Pricing</span>
+    <h2 class="sec-title">Simple. Honest. No Surprises.</h2>
+    <p class="sec-sub">One payment. Yours forever. No subscriptions. No monthly fees. Ever.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="price-tier">Free Forever</div>
+        <div class="price-amount">$0</div>
+        <div class="price-cadence">No credit card. No expiry.</div>
+        <ul class="price-feats">
+          <li>yourname.freesites.ai subdomain</li>
+          <li>AI-built site in 60 seconds</li>
+          <li>SmartReply AI agent</li>
+          <li>Star Links page</li>
+          <li>FreeSites footer branding</li>
+        </ul>
+        <a href="https://freesites.ai/form/" class="price-btn price-btn--orange">Start Free →</a>
+      </div>
+      <div class="price-card price-card--featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-tier">Everything Unlocked</div>
+        <div class="price-amount">$39<sub> one-time</sub></div>
+        <div class="price-cadence">Pay once. Own forever.</div>
+        <ul class="price-feats">
+          <li>Connect your custom domain</li>
+          <li>Remove FreeSites branding</li>
+          <li>All AI agents unlocked</li>
+          <li>Priority SmartReply</li>
+          <li>Everything in Free</li>
+        </ul>
+        <a href="https://freesites.ai/form/" class="price-btn price-btn--orange">Get Everything →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Done-For-You</div>
+        <div class="price-amount">$299<sub> one-time</sub></div>
+        <div class="price-cadence">We build it for you.</div>
+        <ul class="price-feats">
+          <li>Full multi-page website</li>
+          <li>About, Services, Contact pages</li>
+          <li>Custom design review</li>
+          <li>Everything in Unlocked</li>
+          <li>30-day support included</li>
+        </ul>
+        <a href="https://calendly.com/jlapides/15min" target="_blank" class="price-btn price-btn--ghost">Book a Call →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Custom Website</div>
+        <div class="price-amount" style="font-size:28px;padding-top:8px">Let's Talk</div>
+        <div class="price-cadence">Full custom build.</div>
+        <ul class="price-feats">
+          <li>Full multi-page custom site</li>
+          <li>Unique design from scratch</li>
+          <li>All agents configured</li>
+          <li>Ongoing support available</li>
+          <li>Agency option at FreeSites.net</li>
+        </ul>
+        <a href="https://calendly.com/jlapides/15min" target="_blank" class="price-btn price-btn--ghost">Book a Call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div class="section section--white">
+  <div class="sec-inner">
+    <span class="sec-eyebrow">About the Founder</span>
+    <div class="founder">
+      <div>
+        <img src="https://d1yei2z3i6k35z.cloudfront.net/1548760/63d7ecc2933f6_JeffLapidesImage.png" alt="Jeff Lapides" class="founder-img">
+      </div>
+      <div>
+        <h2 class="sec-title">Six Decades of Business. One Simple Belief.</h2>
+        <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:20px">Jeff Lapides began his entrepreneurial journey at age 8. Over six decades he built expertise across digital advertising — including the fourth-largest private Facebook ad network — and online business education. His belief: every small business deserves a professional website, honest advice, and AI tools that work for them — not against their budget.</p>
+        <blockquote class="founder-quote">"We make a living by what we get, we make a life by what we give." — Sir Winston Churchill</blockquote>
+        <a href="https://x.com/freesites_com" target="_blank" class="btn-orange" style="display:inline-flex;padding:12px 24px;font-size:14px">Follow @freesites_com on X →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Start here. Own everything.</h2>
+  <p>Build your free link-in-bio today. Grow into a full professional website tomorrow. No subscriptions. No monthly fees. You own everything from day one.</p>
+  <a href="https://freesites.ai/form/" class="btn-white">⚡ Build My Free Site in 60 Seconds →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Free<em>Sites</em>.com</div>
+  <div class="footer-links">
+    <a href="https://freesites.ai">FreeSites.ai</a>
+    <a href="https://freesites.net">Agency Program</a>
+    <a href="https://freesites.ai/starlinks/">StarLinks</a>
+    <a href="https://x.com/freesites_com" target="_blank">@freesites_com</a>
+    <a href="https://calendly.com/jlapides/15min" target="_blank">Book a Call</a>
+    <a href="https://freesites.com/privacypolicy">Privacy</a>
+    <a href="https://freesites.com/affiliatedisclaimer">Affiliate Disclaimer</a>
+    <a href="mailto:hello@freesites.ai">hello@freesites.ai</a>
+  </div>
+  <p>© 2026 FreeSites.com LLC — Free websites. Free AI agents. No subscriptions. Yours forever.</p>
+</footer>
+
+<script>
+function srSuggest(text) {
+  document.getElementById('sr-message').value = text;
+  document.getElementById('sr-message').focus();
+}
+
+function srReset() {
+  document.getElementById('sr-demo-form').style.display = 'block';
+  document.getElementById('sr-success').style.display = 'none';
+  document.getElementById('sr-message').value = '';
+  var btn = document.getElementById('sr-btn');
+  btn.disabled = false;
+  btn.textContent = 'Try SmartReply Free →';
+}
+
+async function srSubmit() {
+  var name = document.getElementById('sr-name').value.trim();
+  var email = document.getElementById('sr-email').value.trim();
+  var message = document.getElementById('sr-message').value.trim();
+  var btn = document.getElementById('sr-btn');
+
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+  if (!message) { alert('Please type your question or message.'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'SmartReply is thinking...';
+
+  try {
+    var res = await fetch('https://freesites.ai/.netlify/functions/smart-reply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+        businessName: 'FreeSites.com',
+        ownerEmail: 'freesitestv@gmail.com',
+        ownerPhone: '',
+        businessDescription: 'FreeSites builds free AI-powered websites for small businesses in 60 seconds. No subscriptions. No monthly fees. SmartReply AI agent responds to every lead 24/7. Free forever on freesites.ai subdomain. Upgrade for $39 one-time to connect custom domain. $299 one-time for done-for-you multi-page site.'
+      })
+    });
+
+    var data = await res.json();
+    document.getElementById('sr-demo-form').style.display = 'none';
+    document.getElementById('sr-success').style.display = 'block';
+
+    if (data.reply) {
+      document.getElementById('sr-reply').textContent = data.reply;
+    } else {
+      document.getElementById('sr-reply').textContent = 'Thanks for your message! Check your email — our AI agent replied within 60 seconds.';
+    }
+
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Try SmartReply Free →';
+    alert('Something went wrong. Please try again.');
+  }
+}
+</script>
+
+</body>
+</html>
