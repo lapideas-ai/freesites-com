@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartSites by FreeSites — We Build Websites That Build Customers</title>
-    <meta name="description" content="More calls answered. More appointments booked. More revenue. SmartSites gives local businesses a smart website that works 24/7 — starting free.">
+    <title>SmartSites by FreeSites — Never Miss Another Customer</title>
+    <meta name="description" content="Never miss another customer. SmartSites answers your calls, books appointments, follows up automatically, and gets you more reviews — starting free.">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="SmartSites by FreeSites — We Build Websites That Build Customers">
-    <meta property="og:description" content="More calls answered. More appointments booked. More revenue. Starting free.">
+    <meta property="og:title" content="SmartSites by FreeSites — Never Miss Another Customer">
+    <meta property="og:description" content="Websites that answer calls, book appointments, and follow up automatically. Starting free.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@freesites_com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,6 @@
         --navy2: #1e3a5f;
         --navy3: #243d6b;
         --blue: #1a6bbf;
-        --blue2: #2080d0;
         --blue3: #5ba3e0;
         --blue-light: #e8f4ff;
         --orange: #f97316;
@@ -53,25 +52,30 @@
     a {
         text-decoration: none;
         color: inherit
-    }/* NAV */
+    }
+
     nav {
         position: sticky;
         top: 0;
         z-index: 100;
         background: var(--navy2);
-        height: 64px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 40px;
+        padding: 0 32px;
         border-bottom: 1px solid rgba(255, 255, 255, .08)
     }
 
     .nav-logo {
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 900;
         color: #fff;
         letter-spacing: -.02em
+    }
+
+    .nav-logo a {
+        color: #fff
     }
 
     .nav-logo em {
@@ -80,9 +84,9 @@
     }
 
     .nav-logo span {
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 500;
-        color: rgba(255, 255, 255, .45);
+        color: rgba(255, 255, 255, .4);
         margin-left: 6px;
         letter-spacing: .04em
     }
@@ -90,7 +94,7 @@
     .nav-links {
         display: flex;
         align-items: center;
-        gap: 6px
+        gap: 4px
     }
 
     .nav-links a {
@@ -119,9 +123,8 @@
         background: var(--orange2) !important
     }/* HERO */
     .hero {
-        background: linear-gradient(160deg, var(--navy2) 0%, var(--navy3) 50%, #1e4a7a 100%);
-        padding: 88px 24px 108px;
-        text-align: center;
+        background: linear-gradient(180deg, #f0f6fc 0%, #e8f4ff 100%);
+        padding: 52px 24px 0;
         position: relative;
         overflow: hidden
     }
@@ -130,49 +133,41 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 70% 60% at 20% 110%, rgba(26, 107, 191, .4), transparent), radial-gradient(ellipse 50% 40% at 80% 0%, rgba(249, 115, 22, .15), transparent);
-        pointer-events: none
-    }
-
-    .hero::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background: linear-gradient(transparent, var(--bg));
+        background: radial-gradient(ellipse 60% 40% at 80% 0%, rgba(249, 115, 22, .06), transparent);
         pointer-events: none
     }
 
     .hero-inner {
+        max-width: 780px;
+        margin: 0 auto;
+        text-align: center;
         position: relative;
-        z-index: 1;
-        max-width: 760px;
-        margin: 0 auto
+        z-index: 1
     }
 
     .hero-eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(91, 163, 224, .2);
-        border: 1px solid rgba(91, 163, 224, .35);
-        color: #a8d4f5;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 6px 18px;
+        background: rgba(249, 115, 22, .12);
+        border: 1px solid rgba(249, 115, 22, .3);
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 5px 16px;
         border-radius: 9999px;
-        margin-bottom: 28px
+        margin-bottom: 20px;
+        letter-spacing: .04em;
+        text-transform: uppercase
     }
 
     .hero h1 {
-        font-size: clamp(36px, 6vw, 68px);
+        font-size: clamp(34px, 5.5vw, 64px);
         font-weight: 900;
         line-height: 1.03;
         letter-spacing: -.04em;
-        color: #fff;
-        margin-bottom: 22px
+        color: var(--navy2);
+        margin-bottom: 14px
     }
 
     .hero h1 em {
@@ -181,175 +176,104 @@
     }
 
     .hero-sub {
-        font-size: clamp(16px, 2vw, 20px);
-        color: rgba(255, 255, 255, .72);
-        line-height: 1.7;
-        max-width: 580px;
-        margin: 0 auto 36px
+        font-size: clamp(16px, 2vw, 19px);
+        color: var(--gray);
+        line-height: 1.65;
+        max-width: 560px;
+        margin: 0 auto 8px;
+        font-weight: 500
     }
 
-    .hero-btns {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
+    .hero-tagline {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--gray);
         margin-bottom: 32px
     }
 
-    .btn-orange {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--orange);
-        color: #fff;
-        padding: 16px 36px;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 700;
-        transition: all .2s;
-        box-shadow: 0 4px 20px rgba(249, 115, 22, .4)
-    }
-
-    .btn-orange:hover {
-        background: var(--orange2);
-        transform: translateY(-2px)
-    }
-
-    .btn-outline {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 255, 255, .1);
-        color: #fff;
-        padding: 16px 28px;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: 600;
-        border: 1px solid rgba(255, 255, 255, .2)
-    }
-
-    .btn-outline:hover {
-        background: rgba(255, 255, 255, .18)
-    }
-
-    .hero-outcomes {
+    .hero-tagline em {
+        font-style: normal;
+        color: var(--navy2)
+    }/* DEMO SEPARATOR */
+    .demo-sep {
         display: flex;
         align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 6px 28px;
-        font-size: 13px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, .6)
+        gap: 14px;
+        max-width: 580px;
+        margin: 0 auto 16px
     }
 
-    .hero-outcomes span::before {
-        content: "✓ ";
-        color: #86efac
-    }/* SMARTREPLY DEMO */
-    .demo-section {
-        background: linear-gradient(160deg, var(--navy2), var(--navy3));
-        padding: 80px 24px
+    .demo-sep-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border)
     }
 
-    .demo-inner {
-        max-width: 620px;
-        margin: 0 auto
-    }
-
-    .demo-header {
-        text-align: center;
-        margin-bottom: 36px
-    }
-
-    .sec-eyebrow {
-        font-size: 12px;
+    .demo-sep-text {
+        font-size: 11px;
         font-weight: 700;
-        letter-spacing: .12em;
+        color: var(--gray);
+        letter-spacing: .1em;
         text-transform: uppercase;
-        color: var(--blue3);
-        margin-bottom: 10px;
-        display: block
-    }
-
-    .sec-title {
-        font-size: clamp(26px, 3.5vw, 40px);
-        font-weight: 800;
-        letter-spacing: -.03em;
-        color: #fff;
-        margin-bottom: 14px;
-        line-height: 1.1
-    }
-
-    .sec-sub {
-        font-size: 17px;
-        color: rgba(255, 255, 255, .65);
-        line-height: 1.7;
-        max-width: 480px;
-        margin: 0 auto
+        white-space: nowrap
     }/* TIER BADGES */
     .tier-badges {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        margin-bottom: 28px;
+        gap: 6px;
+        margin-bottom: 16px;
         flex-wrap: wrap
     }
 
     .tier-badge {
         display: flex;
         align-items: center;
-        gap: 6px;
-        padding: 8px 14px;
-        border-radius: 10px;
-        font-size: 12px;
+        gap: 5px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 11px;
         font-weight: 700;
-        border: 1px solid;
-        transition: all .2s;
-        cursor: default
+        border: 1px solid
     }
 
-    .tier-badge--on {
+    .tier-on {
         background: rgba(22, 163, 74, .15);
         border-color: rgba(22, 163, 74, .4);
         color: #4ade80
     }
 
-    .tier-badge--off {
+    .tier-off {
         background: rgba(255, 255, 255, .04);
         border-color: rgba(255, 255, 255, .1);
-        color: rgba(255, 255, 255, .3)
+        color: rgba(255, 255, 255, .35)
     }
 
-    .tier-badge--off a {
-        color: rgba(255, 255, 255, .4);
+    .tier-off a {
+        color: rgba(255, 255, 255, .5);
         font-size: 10px;
-        font-weight: 600;
-        margin-left: 4px;
+        margin-left: 3px;
         text-decoration: underline
     }
 
-    .tier-badge--off a:hover {
-        color: rgba(255, 255, 255, .7)
-    }
-
-    .tier-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%
-    }
-
-    .tier-dot--on {
+    .tier-dot-on {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
         background: #22c55e;
-        animation: tbpulse 2s infinite
+        animation: tpulse 2s infinite;
+        flex-shrink: 0
     }
 
-    .tier-dot--off {
-        background: rgba(255, 255, 255, .2)
+    .tier-dot-off {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .2);
+        flex-shrink: 0
     }
 
-    @keyframes tbpulse {
+    @keyframes tpulse {
         0%, 100% {
             opacity: 1;
             transform:scale(1)
@@ -361,17 +285,20 @@
         }
     }/* SR BOX */
     .sr-box {
-        background: rgba(255, 255, 255, .05);
-        border: 1px solid rgba(255, 255, 255, .12);
+        background: var(--navy2);
+        border: none;
         border-radius: 20px;
-        padding: 36px 32px
+        padding: 28px 28px 0;
+        max-width: 580px;
+        margin: 0 auto;
+        box-shadow: 0 12px 48px rgba(26, 47, 74, .25)
     }
 
     .sr-live {
         display: flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 8px
+        margin-bottom: 6px
     }
 
     .sr-dot {
@@ -379,7 +306,7 @@
         height: 8px;
         background: #22c55e;
         border-radius: 50%;
-        animation: tbpulse 2s infinite;
+        animation: tpulse 2s infinite;
         flex-shrink: 0
     }
 
@@ -392,36 +319,36 @@
     }
 
     .sr-title {
-        font-size: clamp(22px, 3vw, 30px);
+        font-size: clamp(20px, 3vw, 28px);
         font-weight: 900;
         color: #fff;
         letter-spacing: -.03em;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         line-height: 1.1
     }
 
     .sr-sub-text {
-        font-size: 14px;
+        font-size: 13px;
         color: rgba(255, 255, 255, .65);
         line-height: 1.6;
-        margin-bottom: 20px
+        margin-bottom: 16px
     }
 
     .sr-suggestions {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 18px
+        gap: 7px;
+        margin-bottom: 16px
     }
 
     .sr-suggestion {
         background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .15);
+        border: 1px solid rgba(255, 255, 255, .14);
         border-radius: 100px;
-        padding: 7px 14px;
-        font-size: 12px;
+        padding: 6px 13px;
+        font-size: 11px;
         font-weight: 600;
-        color: rgba(255, 255, 255, .8);
+        color: rgba(255, 255, 255, .75);
         cursor: pointer;
         font-family: inherit;
         transition: all .15s
@@ -433,14 +360,14 @@
     }
 
     .sr-field {
-        margin-bottom: 10px
+        margin-bottom: 9px
     }
 
     .sr-field input, .sr-field textarea {
         width: 100%;
-        padding: 12px 14px;
+        padding: 11px 14px;
         background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .15);
+        border: 1px solid rgba(255, 255, 255, .14);
         border-radius: 8px;
         font-size: 14px;
         color: #fff;
@@ -460,7 +387,7 @@
 
     .sr-field textarea {
         resize: vertical;
-        min-height: 80px
+        min-height: 75px
     }
 
     .sr-submit {
@@ -474,8 +401,7 @@
         font-weight: 700;
         cursor: pointer;
         font-family: inherit;
-        transition: all .2s;
-        margin-top: 4px
+        transition: all .2s
     }
 
     .sr-submit:hover {
@@ -489,21 +415,22 @@
 
     .sr-privacy {
         font-size: 11px;
-        color: rgba(255, 255, 255, .35);
+        color: rgba(255, 255, 255, .3);
         text-align: center;
-        margin-top: 10px
+        padding: 8px 0 24px
     }
 
     .sr-success {
-        display: none
+        display: none;
+        padding: 20px 0
     }
 
-    .sr-reply-box {
+    .sr-reply-wrap {
         background: rgba(22, 163, 74, .12);
         border: 1px solid rgba(22, 163, 74, .25);
         border-radius: 12px;
         padding: 18px;
-        margin-bottom: 16px
+        margin-bottom: 14px
     }
 
     .sr-reply-label {
@@ -521,25 +448,27 @@
         line-height: 1.7
     }
 
-    .sr-cta-box {
+    .sr-cta-wrap {
         background: rgba(249, 115, 22, .1);
         border: 1px solid rgba(249, 115, 22, .25);
         border-radius: 12px;
         padding: 20px;
-        text-align: center
+        text-align: center;
+        margin-bottom: 14px
     }
 
     .sr-cta-title {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 700;
         color: #fff;
-        margin-bottom: 6px
+        margin-bottom: 5px
     }
 
     .sr-cta-sub {
         font-size: 13px;
         color: rgba(255, 255, 255, .6);
-        margin-bottom: 14px
+        margin-bottom: 14px;
+        line-height: 1.5
     }
 
     .sr-cta-btn {
@@ -554,22 +483,65 @@
 
     .sr-reset {
         width: 100%;
-        margin-top: 12px;
         padding: 10px;
         background: rgba(255, 255, 255, .06);
-        border: 1px solid rgba(255, 255, 255, .12);
+        border: 1px solid rgba(255, 255, 255, .1);
         border-radius: 8px;
         font-size: 13px;
-        color: rgba(255, 255, 255, .5);
+        color: rgba(255, 255, 255, .45);
         cursor: pointer;
-        font-family: inherit
-    }/* OUTCOMES */
-    .section {
-        padding: 80px 24px
+        font-family: inherit;
+        margin-bottom: 20px
     }
 
-    .section--white {
-        background: var(--white)
+    .call-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 0 28px;
+        flex-wrap: wrap;
+        max-width: 580px;
+        margin: 0 auto
+    }
+
+    .call-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        color: var(--navy2);
+        padding: 12px 22px;
+        border-radius: 9px;
+        font-size: 14px;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        transition: all .2s
+    }
+
+    .call-btn:hover {
+        background: var(--bg);
+        border-color: var(--blue)
+    }
+
+    .call-btn-orange {
+        background: var(--orange);
+        border-color: transparent;
+        box-shadow: 0 4px 16px rgba(249, 115, 22, .35)
+    }
+
+    .call-btn-orange:hover {
+        background: var(--orange2)
+    }
+
+    .hero-fade {
+        height: 60px;
+        background: linear-gradient(#e8f4ff, var(--bg));
+        margin-top: -1px
+    }/* VIDEO EXPLAINER */
+    .video-section {
+        background: var(--white);
+        padding: 72px 24px
     }
 
     .sec-inner {
@@ -577,8 +549,530 @@
         margin: 0 auto
     }
 
+    .sec-eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 10px;
+        display: block
+    }
+
+    .sec-title {
+        font-size: clamp(24px, 3.5vw, 38px);
+        font-weight: 800;
+        letter-spacing: -.03em;
+        color: var(--navy2);
+        margin-bottom: 14px;
+        line-height: 1.1
+    }
+
+    .sec-sub {
+        font-size: 16px;
+        color: var(--gray);
+        line-height: 1.7;
+        max-width: 540px;
+        margin-bottom: 40px
+    }
+
+    .explainer-wrap {
+        max-width: 580px;
+        margin: 0 auto
+    }
+
+    .video-screen {
+        background: var(--white);
+        border: 0.5px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        min-height: 340px
+    }
+
+    .vprog-bar {
+        height: 3px;
+        background: var(--border)
+    }
+
+    .vprog-fill {
+        height: 100%;
+        background: var(--blue);
+        width: 0%;
+        transition: width .1s linear
+    }
+
+    .vscene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+        opacity: 0;
+        transition: opacity .5s ease;
+        pointer-events: none;
+        text-align: center
+    }
+
+    .vscene.active {
+        opacity: 1;
+        pointer-events: auto
+    }
+
+    .vscene-step {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--gray);
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        margin-bottom: .5rem
+    }
+
+    .vscene-title {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--navy2);
+        line-height: 1.25;
+        margin-bottom: .5rem;
+        letter-spacing: -.02em
+    }
+
+    .vscene-sub {
+        font-size: 13px;
+        color: var(--gray);
+        line-height: 1.6;
+        max-width: 360px;
+        margin: 0 auto 1.25rem
+    }
+
+    .vform-mock {
+        background: var(--bg);
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        padding: .75rem;
+        width: 100%;
+        max-width: 300px;
+        text-align: left
+    }
+
+    .vform-field {
+        background: var(--white);
+        border: 0.5px solid var(--border);
+        border-radius: 6px;
+        padding: 7px 10px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        color: var(--gray);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        transition: all .3s
+    }
+
+    .vform-field.lit {
+        border-color: var(--blue);
+        color: var(--navy2)
+    }
+
+    .vform-submit {
+        width: 100%;
+        padding: 8px;
+        background: var(--orange);
+        border: none;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+        color: #fff;
+        text-align: center;
+        margin-top: 4px;
+        opacity: .3;
+        transition: opacity .3s;
+        font-family: inherit
+    }
+
+    .vtimer-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .75rem
+    }
+
+    .vtimer-circle {
+        position: relative;
+        width: 88px;
+        height: 88px
+    }
+
+    .vtimer-circle svg {
+        transform: rotate(-90deg)
+    }
+
+    .vtimer-num {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--blue)
+    }
+
+    .vring-track {
+        stroke: var(--border);
+        fill: none
+    }
+
+    .vring-fill {
+        stroke: var(--blue);
+        fill: none;
+        stroke-linecap: round;
+        transition: stroke-dashoffset .15s linear
+    }
+
+    .vbuild-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        max-width: 240px;
+        text-align: left
+    }
+
+    .vbuild-step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--gray);
+        transition: color .3s
+    }
+
+    .vbuild-step.done {
+        color: var(--green);
+        font-weight: 600
+    }
+
+    .vsite-mock {
+        background: var(--bg);
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        max-width: 280px
+    }
+
+    .vsite-bar {
+        background: var(--border);
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px
+    }
+
+    .vsite-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--gray);
+        opacity: .4
+    }
+
+    .vsite-url {
+        font-size: 9px;
+        color: var(--gray);
+        margin-left: 4px;
+        flex: 1;
+        text-align: center
+    }
+
+    .vsite-body {
+        padding: .75rem;
+        text-align: center
+    }
+
+    .vsite-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--blue-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--blue);
+        margin: 0 auto .4rem
+    }
+
+    .vsite-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--navy2);
+        margin-bottom: 2px
+    }
+
+    .vsite-loc {
+        font-size: 10px;
+        color: var(--gray);
+        margin-bottom: .5rem
+    }
+
+    .vsite-cta {
+        display: inline-block;
+        background: var(--orange);
+        border-radius: 5px;
+        padding: 5px 14px;
+        font-size: 11px;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: .5rem
+    }
+
+    .vsite-sr {
+        background: var(--white);
+        border: 0.5px solid var(--border);
+        border-radius: 5px;
+        padding: .4rem .5rem;
+        font-size: 10px;
+        color: var(--gray);
+        text-align: left
+    }
+
+    .vsr-row {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 2px
+    }
+
+    .vsr-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: srpulse 2s infinite
+    }
+
+    @keyframes srpulse {
+        0%, 100% {
+            opacity: 1;
+            transform:scale(1)
+        }
+
+        50% {
+            opacity: .4;
+            transform: scale(1.4)
+        }
+    }
+
+    .vnotif-stream {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        max-width: 300px;
+        text-align: left
+    }
+
+    .vnotif {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: var(--white);
+        border: 0.5px solid var(--border);
+        border-radius: 10px;
+        padding: .6rem .75rem;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: all .4s ease
+    }
+
+    .vnotif.show {
+        opacity: 1;
+        transform: none
+    }
+
+    .vnotif-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 16px
+    }
+
+    .vnotif-text {
+        flex: 1
+    }
+
+    .vnotif-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--navy2);
+        margin-bottom: 1px
+    }
+
+    .vnotif-sub {
+        font-size: 11px;
+        color: var(--gray)
+    }
+
+    .vnotif-badge {
+        font-size: 9px;
+        font-weight: 700;
+        padding: 1px 7px;
+        border-radius: 100px;
+        margin-left: 4px
+    }
+
+    .badge-free {
+        background: var(--green-light);
+        color: var(--green)
+    }
+
+    .badge-pro {
+        background: var(--blue-light);
+        color: var(--blue)
+    }
+
+    .badge-voice {
+        background: #fff3e8;
+        color: var(--orange)
+    }
+
+    .vresults {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+        width: 100%;
+        max-width: 300px
+    }
+
+    .vresult {
+        background: var(--bg);
+        border-radius: 10px;
+        padding: .75rem .5rem;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: all .4s ease
+    }
+
+    .vresult.show {
+        opacity: 1;
+        transform: none
+    }
+
+    .vresult-num {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--navy2);
+        line-height: 1
+    }
+
+    .vresult-label {
+        font-size: 10px;
+        color: var(--gray);
+        margin-top: 3px;
+        line-height: 1.3
+    }
+
+    .vcta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--orange);
+        color: #fff;
+        border: none;
+        border-radius: 9px;
+        padding: 10px 22px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        margin-top: .75rem
+    }
+
+    .vcontrols {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: .75rem 1rem;
+        border-top: 0.5px solid var(--border);
+        background: var(--bg)
+    }
+
+    .vctrl {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 0.5px solid var(--border);
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--navy2);
+        transition: all .15s;
+        flex-shrink: 0
+    }
+
+    .vctrl:hover {
+        background: var(--border)
+    }
+
+    .vtrack {
+        flex: 1;
+        height: 3px;
+        background: var(--border);
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative
+    }
+
+    .vthumb {
+        height: 100%;
+        background: var(--blue);
+        border-radius: 2px;
+        pointer-events: none;
+        width: 0%
+    }
+
+    .vdots {
+        display: flex;
+        gap: 4px;
+        flex-shrink: 0
+    }
+
+    .vdot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border);
+        cursor: pointer;
+        border: none;
+        transition: background .2s
+    }
+
+    .vdot.active {
+        background: var(--blue)
+    }/* SECTIONS */
+    .section {
+        padding: 72px 24px
+    }
+
+    .section--white {
+        background: var(--white)
+    }
+
     .sec-title-dark {
-        font-size: clamp(26px, 3.5vw, 40px);
+        font-size: clamp(24px, 3.5vw, 38px);
         font-weight: 800;
         letter-spacing: -.03em;
         color: var(--navy2);
@@ -587,56 +1081,332 @@
     }
 
     .sec-sub-dark {
-        font-size: 17px;
+        font-size: 16px;
         color: var(--gray);
         line-height: 1.7;
         max-width: 540px;
-        margin-bottom: 48px
-    }
-
-    .outcomes {
+        margin-bottom: 44px
+    }/* JOURNEY */
+    .journey-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 16px
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: start
     }
 
-    .outcome {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 28px 24px;
-        text-align: center
+    .journey {
+        max-width: 480px
     }
 
-    .outcome-icon {
-        font-size: 36px;
-        margin-bottom: 14px
+    .journey-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        position: relative
     }
 
-    .outcome h3 {
-        font-size: 16px;
-        font-weight: 800;
+    .journey-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 19px;
+        top: 44px;
+        width: 2px;
+        height: calc(100% - 8px);
+        background: linear-gradient(var(--orange), rgba(249, 115, 22, .15))
+    }
+
+    .journey-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--orange);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 4px 12px rgba(249, 115, 22, .3)
+    }
+
+    .journey-content {
+        padding: 8px 0 32px;
+        flex: 1
+    }
+
+    .journey-content h4 {
+        font-size: 15px;
+        font-weight: 700;
         color: var(--navy2);
-        margin-bottom: 6px
+        margin-bottom: 3px
     }
 
-    .outcome p {
+    .journey-content p {
         font-size: 13px;
         color: var(--gray);
         line-height: 1.55
+    }
+
+    .journey-result {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--green-light);
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-top: 6px
+    }
+
+    .roi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px
+    }
+
+    .roi-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 22px
+    }
+
+    .roi-icon {
+        font-size: 26px;
+        margin-bottom: 10px
+    }
+
+    .roi-card h3 {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--navy2);
+        margin-bottom: 5px
+    }
+
+    .roi-card p {
+        font-size: 13px;
+        color: var(--gray);
+        line-height: 1.6
+    }
+
+    .roi-highlight {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--orange);
+        margin-top: 7px
+    }/* EXAMPLES */
+    .examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px
+    }
+
+    .example {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all .2s
+    }
+
+    .example:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .08)
+    }
+
+    .ex-top {
+        padding: 22px;
+        text-align: center
+    }
+
+    .ex-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, .3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 800;
+        color: #fff;
+        margin: 0 auto 10px
+    }
+
+    .ex-name {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 2px
+    }
+
+    .ex-type {
+        font-size: 10px;
+        color: rgba(255, 255, 255, .5);
+        letter-spacing: .06em;
+        text-transform: uppercase
+    }
+
+    .ex-body {
+        padding: 16px 18px
+    }
+
+    .ex-body p {
+        font-size: 12px;
+        color: var(--gray);
+        line-height: 1.6;
+        margin-bottom: 10px
+    }
+
+    .ex-link {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--blue)
+    }
+
+    .ex-tier {
+        display: flex;
+        gap: 4px;
+        margin-top: 8px;
+        flex-wrap: wrap
+    }
+
+    .ex-tier span {
+        font-size: 9px;
+        padding: 2px 7px;
+        border-radius: 100px;
+        font-weight: 600
+    }
+
+    .tier-span-on {
+        background: var(--green-light);
+        color: var(--green)
+    }
+
+    .tier-span-off {
+        background: #f1f5f9;
+        color: #94a3b8
+    }/* COMPARE */
+    .compare-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 660px;
+        margin: 0 auto
+    }
+
+    .compare-card {
+        border-radius: 16px;
+        padding: 26px
+    }
+
+    .compare-card--old {
+        background: #f8fafc;
+        border: 1px solid var(--border)
+    }
+
+    .compare-card--new {
+        background: var(--navy2)
+    }
+
+    .compare-title {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        margin-bottom: 14px
+    }
+
+    .compare-title--old {
+        color: var(--gray)
+    }
+
+    .compare-title--new {
+        color: rgba(255, 255, 255, .55)
+    }
+
+    .compare-items {
+        list-style: none
+    }
+
+    .compare-items li {
+        font-size: 13px;
+        padding: 8px 0;
+        border-bottom: 1px solid;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        line-height: 1.4
+    }
+
+    .compare-items--old li {
+        color: var(--gray);
+        border-color: var(--border)
+    }
+
+    .compare-items--old li::before {
+        content: "•";
+        color: #cbd5e1;
+        flex-shrink: 0
+    }
+
+    .compare-items--new li {
+        color: rgba(255, 255, 255, .85);
+        border-color: rgba(255, 255, 255, .08)
+    }
+
+    .compare-items--new li::before {
+        content: "✓";
+        color: #4ade80;
+        font-weight: 700;
+        flex-shrink: 0
+    }
+
+    .compare-items li:last-child {
+        border-bottom: none
+    }
+
+    .free-box {
+        background: var(--blue-light);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 28px;
+        max-width: 660px;
+        margin: 40px auto 0
+    }
+
+    .free-box h3 {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--navy2);
+        margin-bottom: 10px
+    }
+
+    .free-box p {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 1.7;
+        margin-bottom: 8px
+    }
+
+    .free-box p:last-child {
+        margin-bottom: 0
     }/* PRICING */
     .pricing {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-        margin-top: 52px
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 18px;
+        margin-top: 44px
     }
 
     .price-card {
         background: var(--white);
         border: 1px solid var(--border);
         border-radius: 18px;
-        padding: 30px 26px;
+        padding: 26px 22px;
         position: relative
     }
 
@@ -647,14 +1417,14 @@
 
     .price-badge {
         position: absolute;
-        top: -13px;
+        top: -12px;
         left: 50%;
         transform: translateX(-50%);
         background: var(--orange);
         color: #fff;
         font-size: 11px;
         font-weight: 700;
-        padding: 4px 16px;
+        padding: 3px 14px;
         border-radius: 100px;
         white-space: nowrap
     }
@@ -665,11 +1435,38 @@
         color: var(--gray);
         text-transform: uppercase;
         letter-spacing: .08em;
-        margin-bottom: 14px
+        margin-bottom: 10px
+    }
+
+    .price-tier-badges {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 12px;
+        flex-wrap: wrap
+    }
+
+    .ptb {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 6px
+    }
+
+    .ptb--on {
+        background: var(--green-light);
+        color: var(--green)
+    }
+
+    .ptb--off {
+        background: #f1f5f9;
+        color: #94a3b8
     }
 
     .price-amount {
-        font-size: 42px;
+        font-size: 38px;
         font-weight: 900;
         color: var(--navy2);
         letter-spacing: -.03em;
@@ -678,39 +1475,39 @@
     }
 
     .price-amount sub {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
         color: var(--gray);
         vertical-align: middle
     }
 
     .price-reg {
-        font-size: 12px;
+        font-size: 11px;
         color: var(--gray);
         text-decoration: line-through;
         margin-bottom: 4px
     }
 
     .price-cadence {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 600;
         color: var(--green);
-        margin-bottom: 20px
+        margin-bottom: 18px
     }
 
     .price-feats {
         list-style: none;
-        margin-bottom: 24px
+        margin-bottom: 22px
     }
 
     .price-feats li {
         font-size: 13px;
         color: var(--text);
-        padding: 7px 0;
+        padding: 6px 0;
         border-bottom: 1px solid var(--border);
         display: flex;
         align-items: flex-start;
-        gap: 8px;
+        gap: 7px;
         line-height: 1.4
     }
 
@@ -729,7 +1526,7 @@
     .price-btn {
         display: block;
         text-align: center;
-        padding: 13px;
+        padding: 12px;
         border-radius: 9px;
         font-size: 14px;
         font-weight: 700;
@@ -754,211 +1551,147 @@
     .price-btn--ghost:hover {
         border-color: var(--orange);
         color: var(--orange)
-    }/* TIER BADGE LEGEND ON PRICING */
-    .price-tier-badges {
-        display: flex;
-        gap: 6px;
-        margin-bottom: 16px;
-        flex-wrap: wrap
-    }
-
-    .ptb {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 10px;
-        font-weight: 700;
-        padding: 3px 8px;
-        border-radius: 6px
-    }
-
-    .ptb--on {
-        background: var(--green-light);
-        color: var(--green)
-    }
-
-    .ptb--off {
-        background: #f1f5f9;
-        color: #94a3b8
-    }/* EXAMPLES */
-    .examples {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 24px
-    }
-
-    .example {
+    }/* X POST */
+    .xpost-card {
         background: var(--white);
         border: 1px solid var(--border);
-        border-radius: 18px;
-        overflow: hidden;
+        border-radius: 16px;
+        padding: 24px;
+        max-width: 560px;
+        margin: 0 auto;
+        display: block;
+        color: var(--text);
         transition: all .2s
     }
 
-    .example:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, .1)
+    .xpost-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, .07);
+        border-color: var(--blue)
     }
 
-    .ex-top {
-        padding: 28px 24px;
-        text-align: center
+    .xpost-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px
     }
 
-    .ex-top--law {
-        background: linear-gradient(160deg, #1a2f4a, #1e3a5f)
-    }
-
-    .ex-top--nonprofit {
-        background: linear-gradient(160deg, #1a3a2a, #1e4a2e)
-    }
-
-    .ex-avatar {
-        width: 60px;
-        height: 60px;
+    .xpost-avatar {
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
-        border: 3px solid rgba(255, 255, 255, .3);
+        background: var(--navy2);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
-        font-weight: 800;
+        font-size: 16px;
+        font-weight: 900;
         color: #fff;
-        margin: 0 auto 10px
+        flex-shrink: 0
     }
 
-    .ex-name {
-        font-size: 15px;
+    .xpost-name {
+        font-size: 14px;
         font-weight: 700;
-        color: #fff;
-        margin-bottom: 2px
+        color: var(--navy2)
     }
 
-    .ex-type {
-        font-size: 11px;
-        color: rgba(255, 255, 255, .5);
-        letter-spacing: .06em;
-        text-transform: uppercase
-    }
-
-    .ex-body {
-        padding: 20px 24px
-    }
-
-    .ex-body p {
-        font-size: 13px;
-        color: var(--gray);
-        line-height: 1.6;
-        margin-bottom: 12px
-    }
-
-    .ex-link {
+    .xpost-handle {
         font-size: 12px;
+        color: var(--gray)
+    }
+
+    .xpost-body {
+        font-size: 14px;
+        color: var(--text);
+        line-height: 1.7;
+        margin-bottom: 16px
+    }
+
+    .xpost-body strong {
+        font-weight: 700;
+        color: var(--navy2)
+    }
+
+    .xpost-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
         font-weight: 600;
         color: var(--blue)
-    }/* POSTS TEASER */
-    .posts-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px
     }
 
-    .post-card {
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 24px;
-        transition: all .2s;
-        display: block;
-        color: var(--text)
-    }
-
-    .post-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, .08);
-        border-color: var(--orange)
-    }
-
-    .post-cat {
-        display: inline-block;
-        background: #fff3e8;
-        color: var(--orange);
-        font-size: 10px;
-        font-weight: 700;
-        padding: 3px 10px;
-        border-radius: 100px;
-        letter-spacing: .06em;
-        text-transform: uppercase;
+    .xpost-x {
+        display: flex;
+        justify-content: flex-end;
         margin-bottom: 10px
     }
 
-    .post-card h3 {
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--navy2);
-        margin-bottom: 8px;
-        line-height: 1.3
-    }
-
-    .post-card p {
-        font-size: 13px;
+    .coming-soon {
+        background: var(--bg);
+        border: 1px dashed var(--border);
+        border-radius: 14px;
+        padding: 24px;
+        text-align: center;
         color: var(--gray);
-        line-height: 1.6;
-        margin-bottom: 12px
-    }
-
-    .post-read {
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--orange)
+        font-size: 13px
     }/* FOUNDER */
     .founder-grid {
         display: grid;
-        grid-template-columns: 180px 1fr;
-        gap: 48px;
+        grid-template-columns: 160px 1fr;
+        gap: 44px;
         align-items: center;
-        max-width: 800px;
+        max-width: 780px;
         margin: 0 auto
     }
 
-    .founder-avatar {
-        width: 140px;
-        height: 140px;
+    .founder-img {
+        width: 130px;
+        height: 130px;
         border-radius: 50%;
         object-fit: cover;
         border: 4px solid var(--blue-light)
     }
 
     .founder-quote {
-        font-size: 17px;
+        font-size: 16px;
         font-style: italic;
         color: var(--navy2);
         line-height: 1.7;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
         border-left: 3px solid var(--orange);
-        padding-left: 20px
+        padding-left: 18px
     }/* FINAL CTA */
     .final-cta {
         background: var(--navy2);
-        padding: 80px 24px;
+        padding: 72px 24px;
         text-align: center
     }
 
     .final-cta h2 {
-        font-size: clamp(28px, 4vw, 44px);
+        font-size: clamp(26px, 4vw, 42px);
         font-weight: 900;
         color: #fff;
         letter-spacing: -.03em;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
         line-height: 1.1
     }
 
     .final-cta p {
-        font-size: 17px;
-        color: rgba(255, 255, 255, .75);
+        font-size: 16px;
+        color: rgba(255, 255, 255, .7);
         line-height: 1.7;
-        max-width: 520px;
-        margin: 0 auto 32px
+        max-width: 500px;
+        margin: 0 auto 28px
+    }
+
+    .final-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap
     }
 
     .btn-white {
@@ -967,29 +1700,51 @@
         gap: 8px;
         background: #fff;
         color: var(--navy2);
-        padding: 16px 40px;
+        padding: 14px 32px;
         border-radius: 10px;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 700;
         box-shadow: 0 4px 20px rgba(0, 0, 0, .15)
     }
 
     .btn-white:hover {
         transform: translateY(-2px)
-    }/* FOOTER */
+    }
+
+    .btn-orange-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: #fff;
+        padding: 14px 24px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, .3)
+    }
+
+    .btn-orange-outline:hover {
+        background: rgba(255, 255, 255, .1)
+    }
+
     footer {
         background: var(--navy2);
-        border-top: 1px solid rgba(255, 255, 255, .08);
-        padding: 40px 24px;
+        border-top: 1px solid rgba(255, 255, 255, .07);
+        padding: 36px 24px;
         text-align: center
     }
 
     .footer-logo {
-        font-size: 18px;
+        font-size: 17px;
         font-weight: 900;
         color: #fff;
         letter-spacing: -.02em;
-        margin-bottom: 6px
+        margin-bottom: 4px
+    }
+
+    .footer-logo a {
+        color: #fff
     }
 
     .footer-logo em {
@@ -998,24 +1753,24 @@
     }
 
     .footer-tagline {
-        font-size: 13px;
-        color: rgba(255, 255, 255, .4);
-        margin-bottom: 18px
+        font-size: 12px;
+        color: rgba(255, 255, 255, .35);
+        margin-bottom: 16px
     }
 
     .footer-social {
         display: flex;
         justify-content: center;
-        gap: 12px;
-        margin-bottom: 18px
+        gap: 10px;
+        margin-bottom: 16px
     }
 
     .footer-social a {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, .08);
-        border: 1px solid rgba(255, 255, 255, .12);
+        background: rgba(255, 255, 255, .07);
+        border: 1px solid rgba(255, 255, 255, .1);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1023,20 +1778,20 @@
     }
 
     .footer-social a:hover {
-        background: rgba(255, 255, 255, .16)
+        background: rgba(255, 255, 255, .15)
     }
 
     .footer-links {
         display: flex;
-        gap: 16px;
+        gap: 14px;
         justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 14px
+        margin-bottom: 12px
     }
 
     .footer-links a {
-        color: rgba(255, 255, 255, .45);
-        font-size: 13px
+        color: rgba(255, 255, 255, .4);
+        font-size: 12px
     }
 
     .footer-links a:hover {
@@ -1044,13 +1799,13 @@
     }
 
     footer p {
-        color: rgba(255, 255, 255, .3);
-        font-size: 12px
+        color: rgba(255, 255, 255, .25);
+        font-size: 11px
     }
 
     @media (max-width: 640px) {
         nav {
-            padding: 0 16px
+            padding: 0 14px
         }
 
         .nav-links a:not(.nav-cta) {
@@ -1058,15 +1813,23 @@
         }
 
         .hero {
-            padding: 60px 16px 80px
-        }
-
-        .section {
-            padding: 56px 16px
+            padding: 40px 14px 0
         }
 
         .sr-box {
-            padding: 24px 18px
+            padding: 20px 16px 0
+        }
+
+        .section {
+            padding: 52px 14px
+        }
+
+        .journey-grid {
+            grid-template-columns: 1fr
+        }
+
+        .compare-grid {
+            grid-template-columns: 1fr
         }
 
         .founder-grid {
@@ -1074,169 +1837,509 @@
             text-align: center
         }
 
-        .founder-avatar {
+        .founder-img {
             margin: 0 auto
+        }
+
+        .final-btns {
+            flex-direction: column;
+            align-items: center
         }
     }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
     <nav>
         <div class="nav-logo">
-            Smart
-            <em>Sites</em>
+            <a href="https://freesites.com">
+                Smart
+                <em>Sites</em>
+            </a>
             <span>by FreeSites</span>
         </div>
         <div class="nav-links">
             <a href="#how-it-works">How It Works</a>
             <a href="#pricing">Pricing</a>
             <a href="/posts/">Smart Insights</a>
-            <a href="https://calendly.com/jlapides/15min" target="_blank">Book a Call</a>
-            <a href="https://freesites.ai/form/" class="nav-cta">Get Started Free →</a>
+            <a href="https://freesites.ai/form/" class="nav-cta">Get Started Free &rarr;</a>
         </div>
     </nav>
 
     <!-- HERO -->
     <div class="hero">
         <div class="hero-inner">
-            <div class="hero-eyebrow">📞 More Calls · 📅 More Bookings · ⭐ More Reviews · 💰 More Revenue</div>
+            <div class="hero-eyebrow">&#128222; More Calls &nbsp;&middot;&nbsp; &#128197; More Bookings &nbsp;&middot;&nbsp; &#11088; More Reviews &nbsp;&middot;&nbsp; &#128176; More Revenue</div>
             <h1>
-                We Build Websites
+                Never Miss
                 <br>
-                That Build 
-                <em>Customers.</em>
+                <em>Another Customer.</em>
             </h1>
-            <p class="hero-sub">SmartSites gives local service businesses a website that answers the phone, books appointments, and follows up on leads — 24 hours a day, 7 days a week. Starting free.</p>
-            <div class="hero-btns">
-                <a href="#demo" class="btn-orange">Try It Live — Free →</a>
-                <a href="#how-it-works" class="btn-outline">See How It Works</a>
-            </div>
-            <div class="hero-outcomes">
-                <span>More calls answered</span>
-                <span>More appointments booked</span>
-                <span>More reviews</span>
-                <span>Less time on the phone</span>
-            </div>
-        </div>
-    </div>
+            <p class="hero-sub">Websites that answer calls, book appointments, and follow up automatically.</p>
+            <p class="hero-tagline">
+                <em>FreeSites builds SmartSites that build customers.</em>
+                 Starting free.
+            </p>
 
-    <!-- SMARTREPLY DEMO -->
-    <div class="demo-section" id="demo">
-        <div class="demo-inner">
-            <div class="demo-header">
-                <span class="sec-eyebrow">Live Demo</span>
-                <h2 class="sec-title">Ask Us Anything — We Reply in 60 Seconds</h2>
-                <p class="sec-sub">This is SmartSites working right now. Ask a question about your business, your website, or how it all works. You get a real reply by email — instantly.</p>
-            </div>
-
-            <!-- TIER BADGES -->
-            <div class="tier-badges">
-                <div class="tier-badge tier-badge--on">
-                    <span class="tier-dot tier-dot--on"></span>
-
-                            ✉️ Email Reply
-                          
-                </div>
-                <div class="tier-badge tier-badge--off">
-                    <span class="tier-dot tier-dot--off"></span>
-
-                            💬 SMS Alert
-                            
-                    <a href="#pricing">Upgrade</a>
-                </div>
-                <div class="tier-badge tier-badge--off">
-                    <span class="tier-dot tier-dot--off"></span>
-
-                            📞 Voice Receptionist
-                            
-                    <a href="#pricing">Upgrade</a>
-                </div>
+            <div class="demo-sep">
+                <div class="demo-sep-line"></div>
+                <span class="demo-sep-text">Try it live right now</span>
+                <div class="demo-sep-line"></div>
             </div>
 
             <div class="sr-box">
                 <div class="sr-live">
                     <div class="sr-dot"></div>
-                    <div class="sr-live-text">SmartReply — Active Now</div>
+                    <div class="sr-live-text">SmartReply &mdash; Active Now</div>
+                </div>
+                <div class="tier-badges" style="justify-content:flex-start;margin-bottom:14px">
+                    <div class="tier-badge tier-on">
+                        <span class="tier-dot-on"></span>
+                        &#9993;&#65039; Email Reply
+                    </div>
+                    <div class="tier-badge tier-on">
+                        <span class="tier-dot-on"></span>
+                        &#128172; SMS Alert
+                    </div>
+                    <div class="tier-badge tier-on">
+                        <span class="tier-dot-on"></span>
+                        &#128222; 
+                        <a href="tel:7163175111" style="color:#4ade80;font-weight:700;text-decoration:none">Call (716) 317-5111</a>
+                    </div>
                 </div>
                 <div class="sr-title">
-                    Send us a message.
+                    Ask us anything.
                     <br>
                     We reply in 60 seconds.
                 </div>
-                <div class="sr-sub-text">Ask us anything about getting more customers. This is the exact system your business gets — free.</div>
+                <div class="sr-sub-text">This is SmartSites working for your business right now. Ask a question &mdash; get a real reply by email instantly. Or call our smart receptionist at (716) 317-5111.</div>
                 <div class="sr-suggestions">
                     <button class="sr-suggestion" onclick="srSuggest('How does SmartSites get me more customers?')">How do I get more customers?</button>
-                    <button class="sr-suggestion" onclick="srSuggest('What is a Smart AI receptionist?')">What is a Smart Receptionist?</button>
-                    <button class="sr-suggestion" onclick="srSuggest('How is this different from a regular website?')">Different from a regular site?</button>
-                    <button class="sr-suggestion" onclick="srSuggest('Is this really free?')">Is this really free?</button>
+                    <button class="sr-suggestion" onclick="srSuggest('How does the smart receptionist work?')">How does the receptionist work?</button>
+                    <button class="sr-suggestion" onclick="srSuggest('Why is the website free?')">Why is it free?</button>
+                    <button class="sr-suggestion" onclick="srSuggest('How fast can my SmartSite be live?')">How fast can I go live?</button>
                 </div>
                 <div id="sr-form">
                     <div class="sr-field">
                         <input type="text" id="sr-name" placeholder="Your name">
                     </div>
                     <div class="sr-field">
-                        <input type="email" id="sr-email" placeholder="Your email — reply sent here">
+                        <input type="email" id="sr-email" placeholder="Your email &mdash; reply sent here">
                     </div>
                     <div class="sr-field">
                         <textarea id="sr-message" placeholder="What would you like to know?"></textarea>
                     </div>
-                    <button class="sr-submit" id="sr-btn">Send — Get Your Reply →</button>
+                    <button class="sr-submit" id="sr-btn">Send &mdash; Get Your Reply in 60 Seconds &rarr;</button>
                     <p class="sr-privacy">Your info is never shared or sold. Ever.</p>
                 </div>
                 <div class="sr-success" id="sr-success">
-                    <div class="sr-reply-box">
-                        <div class="sr-reply-label">✅ SmartSites replied</div>
+                    <div class="sr-reply-wrap">
+                        <div class="sr-reply-label">&#9989; SmartSites replied</div>
                         <div class="sr-reply-text" id="sr-reply"></div>
                     </div>
-                    <div class="sr-cta-box">
+                    <div class="sr-cta-wrap">
                         <div class="sr-cta-title">Want this working for YOUR business?</div>
-                        <div class="sr-cta-sub">Free to start. Live in 60 seconds. No subscriptions on the website — ever.</div>
-                        <a href="https://freesites.ai/form/" class="sr-cta-btn">⚡ Build My Free SmartSite →</a>
+                        <div class="sr-cta-sub">Your SmartSite is free. No subscriptions on the website. Upgrade only when you want SMS or voice.</div>
+                        <a href="https://freesites.ai/form/" class="sr-cta-btn">&#9889; Build My Free SmartSite in 60 Seconds &rarr;</a>
                     </div>
                     <button class="sr-reset" onclick="srReset()">Ask another question</button>
+                </div>
+            </div>
+
+            <div class="call-cta">
+                <a href="tel:7163175111" class="call-btn call-btn-orange">&#128222; Call Our Smart Receptionist Live</a>
+                <a href="https://freesites.ai/form/" class="call-btn">&#9889; Build My Free SmartSite &rarr;</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-fade"></div>
+
+    <!-- VIDEO EXPLAINER -->
+    <div class="video-section" id="how-it-works">
+        <div class="sec-inner">
+            <div style="text-align:center;max-width:580px;margin:0 auto 32px">
+                <span class="sec-eyebrow" style="display:block;text-align:center">See How It Works</span>
+                <h2 class="sec-title" style="text-align:center">
+                    From 7 Fields to Live Site
+                    <br>
+                    in About 60 Seconds.
+                </h2>
+                <p class="sec-sub" style="margin:0 auto 20px;text-align:center">Most agencies take weeks. We need about one minute.</p>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                    <span style="font-size:13px;font-weight:600;color:var(--orange)">Press play to see the whole process</span>
+                    <span style="font-size:22px;color:var(--orange);animation:bounceDown 1.5s ease-in-out infinite">&#8595;</span>
+                </div>
+            </div>
+            <style>
+            @keyframes bounceDown {
+                0%, 100% {
+                    transform:translateY(0)
+                }
+
+                50% {
+                    transform: translateY(6px)
+                }
+            }
+            </style>
+            <div class="explainer-wrap">
+                <div class="video-screen">
+                    <div class="vprog-bar">
+                        <div class="vprog-fill" id="vprog"></div>
+                    </div>
+
+                    <div class="vscene active" id="vs0">
+                        <div class="vscene-step">SmartSites by FreeSites</div>
+                        <div class="vscene-title">Never Miss Another Customer.</div>
+                        <div class="vscene-sub">Websites that answer calls, book appointments, and follow up. Starting free.</div>
+                        <div style="display:flex;flex-direction:column;gap:6px;align-items:center">
+                            <div style="font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px">&#10003; More calls answered</div>
+                            <div style="font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px">&#10003; More appointments booked</div>
+                            <div style="font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px">&#10003; More revenue</div>
+                            <div style="font-size:13px;font-weight:600;color:var(--green);display:flex;align-items:center;gap:6px">&#10003; Free to start</div>
+                        </div>
+                    </div>
+
+                    <div class="vscene" id="vs1">
+                        <div class="vscene-step">Step 1</div>
+                        <div class="vscene-title">Fill in 7 fields</div>
+                        <div class="vscene-sub">Business name, what you do, city, phone, email, and your #1 goal.</div>
+                        <div class="vform-mock">
+                            <div class="vform-field" id="vf1">&#127970; Business name...</div>
+                            <div class="vform-field" id="vf2">&#128295; What you do...</div>
+                            <div class="vform-field" id="vf3">&#128205; Your city...</div>
+                            <div class="vform-field" id="vf4">&#128222; Your phone...</div>
+                            <div class="vform-field" id="vf5">&#9993; Your email...</div>
+                            <div class="vform-field" id="vf6">&#127919; Your #1 goal...</div>
+                            <div class="vform-submit" id="vfsubmit">Build My Free SmartSite &rarr;</div>
+                        </div>
+                    </div>
+
+                    <div class="vscene" id="vs2">
+                        <div class="vscene-step">Step 2</div>
+                        <div class="vscene-title">Building your SmartSite...</div>
+                        <div class="vscene-sub">Most agencies need weeks. We need about 60 seconds.</div>
+                        <div class="vtimer-wrap">
+                            <div class="vtimer-circle">
+                                <svg width="88" height="88" viewBox="0 0 88 88">
+                                    <circle class="vring-track" cx="44" cy="44" r="36" stroke-width="5"/>
+                                    <circle class="vring-fill" id="vring" cx="44" cy="44" r="36" stroke-width="5" stroke-dasharray="226" stroke-dashoffset="226"/>
+                                </svg>
+                                <div class="vtimer-num" id="vtnum">60</div>
+                            </div>
+                            <div class="vbuild-steps">
+                                <div class="vbuild-step" id="vbs1">&#9675; Writing your copy</div>
+                                <div class="vbuild-step" id="vbs2">&#9675; Designing your layout</div>
+                                <div class="vbuild-step" id="vbs3">&#9675; Setting up SmartReply</div>
+                                <div class="vbuild-step" id="vbs4">&#9675; Deploying live</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vscene" id="vs3">
+                        <div class="vscene-step">Step 3</div>
+                        <div class="vscene-title">Your SmartSite is live</div>
+                        <div class="vscene-sub">Google-indexed from minute one. SmartReply answering every message 24/7.</div>
+                        <div class="vsite-mock">
+                            <div class="vsite-bar">
+                                <div class="vsite-dot"></div>
+                                <div class="vsite-dot"></div>
+                                <div class="vsite-dot"></div>
+                                <div class="vsite-url">pappas-plumbing.freesites.com</div>
+                            </div>
+                            <div class="vsite-body">
+                                <div class="vsite-avatar">PP</div>
+                                <div class="vsite-name">Pappas Plumbing</div>
+                                <div class="vsite-loc">Clarence, NY &middot; Licensed &amp; Insured</div>
+                                <div class="vsite-cta">&#128222; Call Now &mdash; 24/7</div>
+                                <div class="vsite-sr">
+                                    <div class="vsr-row">
+                                        <div class="vsr-dot"></div>
+                                        <span style="font-size:9px;font-weight:700;color:var(--green)">SmartReply &mdash; Active 24/7</span>
+                                    </div>
+                                    <div>Send a message &mdash; reply in 60 seconds</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vscene" id="vs4">
+                        <div class="vscene-step">Step 4</div>
+                        <div class="vscene-title">Never miss a customer &mdash; ever</div>
+                        <div class="vscene-sub">Every contact triggers an instant response. Upgrade when you want more.</div>
+                        <div class="vnotif-stream">
+                            <div class="vnotif" id="vn1">
+                                <div class="vnotif-icon" style="background:var(--blue-light)">&#9993;&#65039;</div>
+                                <div class="vnotif-text">
+                                    <div class="vnotif-title">
+                                        Email reply sent to visitor 
+                                        <span class="vnotif-badge badge-free">Free</span>
+                                    </div>
+                                    <div class="vnotif-sub">AI replied in 47 seconds &mdash; in your voice</div>
+                                </div>
+                            </div>
+                            <div class="vnotif" id="vn2">
+                                <div class="vnotif-icon" style="background:var(--green-light)">&#128172;</div>
+                                <div class="vnotif-text">
+                                    <div class="vnotif-title">
+                                        SMS alert sent to owner 
+                                        <span class="vnotif-badge badge-pro">$29/mo</span>
+                                    </div>
+                                    <div class="vnotif-sub">Mike T. messaged about a burst pipe</div>
+                                </div>
+                            </div>
+                            <div class="vnotif" id="vn3">
+                                <div class="vnotif-icon" style="background:#fff3e8">&#128222;</div>
+                                <div class="vnotif-text">
+                                    <div class="vnotif-title">
+                                        Call answered &mdash; appointment booked 
+                                        <span class="vnotif-badge badge-voice">$299/mo</span>
+                                    </div>
+                                    <div class="vnotif-sub">Smart receptionist booked Linda K. for Thursday 9am</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vscene" id="vs5">
+                        <div class="vscene-step">The result</div>
+                        <div class="vscene-title">More cash. Less time on the phone.</div>
+                        <div class="vscene-sub">FreeSites builds SmartSites that build customers &mdash; starting free, no subscriptions on the website, ever.</div>
+                        <div class="vresults">
+                            <div class="vresult" id="vr1">
+                                <div class="vresult-num">$0</div>
+                                <div class="vresult-label">Website forever</div>
+                            </div>
+                            <div class="vresult" id="vr2">
+                                <div class="vresult-num">60s</div>
+                                <div class="vresult-label">To go live</div>
+                            </div>
+                            <div class="vresult" id="vr3">
+                                <div class="vresult-num">24/7</div>
+                                <div class="vresult-label">Always on</div>
+                            </div>
+                        </div>
+                        <a href="https://freesites.ai/form/" class="vcta-btn">Build My Free SmartSite &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="vcontrols">
+                    <button class="vctrl" id="vplaybtn" onclick="vtogglePlay()" title="Play/Pause">&#9646;&#9646;</button>
+                    <button class="vctrl" onclick="vrestart()" title="Restart">&#8635;</button>
+                    <div class="vtrack" id="vtrack" onclick="vscrub(event)">
+                        <div class="vthumb" id="vthumb"></div>
+                    </div>
+                    <div class="vdots" id="vdots"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- OUTCOMES -->
-    <div class="section" id="how-it-works">
+    <!-- JOURNEY + ROI -->
+    <div class="section">
         <div class="sec-inner">
-            <span class="sec-eyebrow" style="color:var(--orange)">What You Get</span>
-            <h2 class="sec-title-dark">
-                More Cash in Your Pocket.
+            <div class="journey-grid">
+                <div>
+                    <span class="sec-eyebrow" style="color:var(--orange)">The Customer Journey</span>
+                    <h2 class="sec-title-dark">From Google Search to Booked Job &mdash; Automatically.</h2>
+                    <p class="sec-sub-dark" style="margin-bottom:32px">Every step of your customer acquisition happens without you lifting a finger.</p>
+                    <div class="journey">
+                        <div class="journey-step">
+                            <div class="journey-icon">&#128269;</div>
+                            <div class="journey-content">
+                                <h4>Customer finds you on Google</h4>
+                                <p>Your SmartSite ranks on Google Maps and search from day one.</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">&#128241;</div>
+                            <div class="journey-content">
+                                <h4>They visit your SmartSite</h4>
+                                <p>Professional, fast, built for your business. Live in 60 seconds.</p>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">&#128222;</div>
+                            <div class="journey-content">
+                                <h4>They call or send a message</h4>
+                                <p>Smart receptionist answers 24/7. SmartReply replies in 60 seconds.</p>
+                                <div class="journey-result">&#10003; Never miss a lead</div>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">&#128197;</div>
+                            <div class="journey-content">
+                                <h4>Appointment booked automatically</h4>
+                                <p>Booked directly into your calendar. No back and forth.</p>
+                                <div class="journey-result">&#10003; No back and forth</div>
+                            </div>
+                        </div>
+                        <div class="journey-step">
+                            <div class="journey-icon">&#128172;</div>
+                            <div class="journey-content">
+                                <h4>You get an instant SMS</h4>
+                                <p>The moment anyone contacts you, your phone gets a text.</p>
+                                <div class="journey-result">&#10003; Always in the loop</div>
+                            </div>
+                        </div>
+                        <div class="journey-step" style="margin-bottom:0">
+                            <div class="journey-icon">&#11088;</div>
+                            <div class="journey-content" style="padding-bottom:0">
+                                <h4>Google review requested automatically</h4>
+                                <p>After the job, your SmartSite follows up and asks for a review.</p>
+                                <div class="journey-result">&#10003; More stars. More calls.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="sec-eyebrow" style="color:var(--orange)">Why It Pays for Itself</span>
+                    <h2 class="sec-title-dark">One Missed Call Can Cost More Than a Year of SmartSites.</h2>
+                    <div class="roi-grid" style="margin-top:24px">
+                        <div class="roi-card">
+                            <div class="roi-icon">&#128703;</div>
+                            <h3>Emergency Plumbing</h3>
+                            <p>One burst pipe call at 2am. First plumber who answers gets the job.</p>
+                            <div class="roi-highlight">1 missed call = $800&ndash;$3,000 lost</div>
+                        </div>
+                        <div class="roi-card">
+                            <div class="roi-icon">&#10052;&#65039;</div>
+                            <h3>HVAC Emergency</h3>
+                            <p>No heat in January. First HVAC company that answers wins the job and the service contract.</p>
+                            <div class="roi-highlight">1 missed call = $500&ndash;$5,000 lost</div>
+                        </div>
+                        <div class="roi-card">
+                            <div class="roi-icon">&#127968;</div>
+                            <h3>Roofing Storm Damage</h3>
+                            <p>After a storm, homeowners call every roofer. First to answer wins.</p>
+                            <div class="roi-highlight">1 missed call = $3,000&ndash;$15,000 lost</div>
+                        </div>
+                        <div class="roi-card">
+                            <div class="roi-icon">&#9889;</div>
+                            <h3>Electrical Emergency</h3>
+                            <p>Sparking outlet, tripped breaker. They need someone NOW. Be that someone.</p>
+                            <div class="roi-highlight">1 missed call = $300&ndash;$2,000 lost</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE EXAMPLES -->
+    <div class="section section--white">
+        <div class="sec-inner">
+            <span class="sec-eyebrow" style="color:var(--orange)">Live SmartSites</span>
+            <h2 class="sec-title-dark">Real Businesses. Real SmartSites.</h2>
+            <p class="sec-sub-dark">Every SmartSite is built for that specific business in about 60 seconds.</p>
+            <div class="examples">
+                <div class="example">
+                    <div class="ex-top" style="background:linear-gradient(160deg,#1a3a2a,#1e4a2e)">
+                        <div class="ex-avatar" style="border-color:rgba(22,163,74,.4)">TC</div>
+                        <div class="ex-name">Tropical Heating &amp; Cooling</div>
+                        <div class="ex-type">HVAC &middot; Niagara Falls, NY</div>
+                    </div>
+                    <div class="ex-body">
+                        <p>Family-owned HVAC serving Buffalo &amp; Niagara Falls since 2013. 24/7 emergency service.</p>
+                        <a href="https://freesites.ai/tropical-heating-cooling/" class="ex-link" target="_blank">View SmartSite &rarr;</a>
+                        <div class="ex-tier">
+                            <span class="tier-span-on">&#9993; Email</span>
+                            <span class="tier-span-off">&#128172; SMS</span>
+                            <span class="tier-span-off">&#128222; Voice</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example">
+                    <div class="ex-top" style="background:linear-gradient(160deg,#1a2f4a,#243d6b)">
+                        <div class="ex-avatar" style="border-color:rgba(245,158,11,.4)">IE</div>
+                        <div class="ex-name">Integrity Electric</div>
+                        <div class="ex-type">Electrician &middot; Buffalo, NY</div>
+                    </div>
+                    <div class="ex-body">
+                        <p>Master electrician Greg Klubek &mdash; 20+ years, 5-star BBB rated. No job too small.</p>
+                        <a href="https://freesites.ai/integrity-electric/" class="ex-link" target="_blank">View SmartSite &rarr;</a>
+                        <div class="ex-tier">
+                            <span class="tier-span-on">&#9993; Email</span>
+                            <span class="tier-span-off">&#128172; SMS</span>
+                            <span class="tier-span-off">&#128222; Voice</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example">
+                    <div class="ex-top" style="background:linear-gradient(160deg,#1e1e2e,#2d1b1b)">
+                        <div class="ex-avatar" style="border-color:rgba(220,38,38,.4)">DR</div>
+                        <div class="ex-name">Dalex Roofing</div>
+                        <div class="ex-type">Roofing &middot; Amherst, NY</div>
+                    </div>
+                    <div class="ex-body">
+                        <p>GAF Master Elite certified. 4.8 Google stars. Free estimates across Erie &amp; Niagara counties.</p>
+                        <a href="https://freesites.ai/dalex-roofing/" class="ex-link" target="_blank">View SmartSite &rarr;</a>
+                        <div class="ex-tier">
+                            <span class="tier-span-on">&#9993; Email</span>
+                            <span class="tier-span-off">&#128172; SMS</span>
+                            <span class="tier-span-off">&#128222; Voice</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example">
+                    <div class="ex-top" style="background:linear-gradient(160deg,#1a2f4a,#1e3a5f)">
+                        <div class="ex-avatar" style="border-color:rgba(201,168,76,.4)">JM</div>
+                        <div class="ex-name">John V. Millane III</div>
+                        <div class="ex-type">Attorney &middot; Williamsville, NY</div>
+                    </div>
+                    <div class="ex-body">
+                        <p>Criminal defense &amp; family law. 39+ years. AV Preeminent rated. Retired US Marine.</p>
+                        <a href="https://john-v-millane-iii.freesites.ai" class="ex-link" target="_blank">View SmartSite &rarr;</a>
+                        <div class="ex-tier">
+                            <span class="tier-span-on">&#9993; Email</span>
+                            <span class="tier-span-off">&#128172; SMS</span>
+                            <span class="tier-span-off">&#128222; Voice</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPARE -->
+    <div class="section">
+        <div class="sec-inner">
+            <span class="sec-eyebrow" style="color:var(--orange)">The Difference</span>
+            <h2 class="sec-title-dark" style="text-align:center">
+                A Regular Website Waits.
                 <br>
-                Less Time on the Phone.
+                A SmartSite Works.
             </h2>
-            <p class="sec-sub-dark">SmartSites is not a website company. We are a customer acquisition platform for local service businesses.</p>
-            <div class="outcomes">
-                <div class="outcome">
-                    <div class="outcome-icon">📞</div>
-                    <h3>More Calls Answered</h3>
-                    <p>Every call answered 24/7 by a smart receptionist that sounds like you — even at 2am when a pipe bursts.</p>
+            <p class="sec-sub-dark" style="margin:0 auto 36px;text-align:center;max-width:560px">Wix, GoDaddy, and traditional agencies give you a site that sits there. SmartSites gives you one that actively gets you customers.</p>
+            <div class="compare-grid">
+                <div class="compare-card compare-card--old">
+                    <div class="compare-title compare-title--old">Traditional Website</div>
+                    <ul class="compare-items compare-items--old">
+                        <li>Looks decent</li>
+                        <li>Waits for customers to call</li>
+                        <li>Misses calls after hours</li>
+                        <li>No lead follow-up</li>
+                        <li>No review requests</li>
+                        <li>$50&ndash;200/month ongoing</li>
+                        <li>Weeks to build</li>
+                    </ul>
                 </div>
-                <div class="outcome">
-                    <div class="outcome-icon">📅</div>
-                    <h3>More Appointments Booked</h3>
-                    <p>Callers and web visitors book directly into your calendar. No back and forth. No missed opportunities.</p>
+                <div class="compare-card compare-card--new">
+                    <div class="compare-title compare-title--new">SmartSite</div>
+                    <ul class="compare-items compare-items--new">
+                        <li>Looks great &mdash; built for your business</li>
+                        <li>Answers every call 24/7</li>
+                        <li>Replies to messages in 60 seconds</li>
+                        <li>Books appointments automatically</li>
+                        <li>Requests reviews after every job</li>
+                        <li>Free forever &mdash; upgrade only if you want</li>
+                        <li>Live in about 60 seconds</li>
+                    </ul>
                 </div>
-                <div class="outcome">
-                    <div class="outcome-icon">⭐</div>
-                    <h3>More Reviews</h3>
-                    <p>After every job, your SmartSite follows up and asks happy customers for a Google review automatically.</p>
-                </div>
-                <div class="outcome">
-                    <div class="outcome-icon">💰</div>
-                    <h3>More Revenue</h3>
-                    <p>The first plumber who answers gets the job. SmartSites makes sure that plumber is always you.</p>
-                </div>
-                <div class="outcome">
-                    <div class="outcome-icon">🕐</div>
-                    <h3>Less Time on the Phone</h3>
-                    <p>Stop spending your day answering the same questions. Your SmartSite handles it while you focus on the work.</p>
-                </div>
+            </div>
+            <div class="free-box">
+                <h3>Why is the website free?</h3>
+                <p>Your SmartSite is free because every local business deserves a professional web presence &mdash; no excuses, no barriers. The website costs us almost nothing to build and host.</p>
+                <p>We make money when you upgrade to SMS alerts ($29/month) or a smart AI receptionist ($299/month) &mdash; because those have real ongoing costs and deliver real ongoing value. You upgrade only when it makes sense for your business. No pressure. Ever.</p>
             </div>
         </div>
     </div>
@@ -1245,181 +2348,136 @@
     <div class="section section--white" id="pricing">
         <div class="sec-inner">
             <span class="sec-eyebrow" style="color:var(--orange)">Pricing</span>
-            <h2 class="sec-title-dark">Simple. Smart. No Surprises.</h2>
-            <p class="sec-sub-dark">Every SmartSite starts free. Upgrade your communication level when you are ready. Cancel anytime.</p>
+            <h2 class="sec-title-dark">Start Free. Upgrade When You Are Ready.</h2>
+            <p class="sec-sub-dark">Every SmartSite is free. Add SMS or voice when you want more power. Cancel anytime.</p>
             <div class="pricing">
-
                 <div class="price-card">
                     <div class="price-tier">SmartSite Free</div>
                     <div class="price-tier-badges">
-                        <div class="ptb ptb--on">✉️ Email</div>
-                        <div class="ptb ptb--off">💬 SMS</div>
-                        <div class="ptb ptb--off">📞 Voice</div>
+                        <div class="ptb ptb--on">&#9993; Email</div>
+                        <div class="ptb ptb--off">&#128172; SMS</div>
+                        <div class="ptb ptb--off">&#128222; Voice</div>
                     </div>
                     <div class="price-amount">$0</div>
-                    <div class="price-cadence">Free forever · No credit card</div>
+                    <div class="price-cadence">Free forever &middot; No credit card</div>
                     <ul class="price-feats">
                         <li>Smart website live in 60 seconds</li>
-                        <li>SmartReply — email reply to every lead</li>
+                        <li>SmartReply &mdash; email reply to every lead</li>
+                        <li>Google-indexed from day one</li>
                         <li>Star Links page</li>
                         <li>Mobile-first design</li>
-                        <li>Google-indexed from day one</li>
                     </ul>
-                    <a href="https://freesites.ai/form/" class="price-btn price-btn--orange">Start Free →</a>
+                    <a href="https://freesites.ai/form/" class="price-btn price-btn--orange">Build My Free SmartSite &rarr;</a>
                 </div>
-
                 <div class="price-card">
                     <div class="price-tier">SmartReply Pro</div>
                     <div class="price-tier-badges">
-                        <div class="ptb ptb--on">✉️ Email</div>
-                        <div class="ptb ptb--on">💬 SMS</div>
-                        <div class="ptb ptb--off">📞 Voice</div>
+                        <div class="ptb ptb--on">&#9993; Email</div>
+                        <div class="ptb ptb--on">&#128172; SMS</div>
+                        <div class="ptb ptb--off">&#128222; Voice</div>
                     </div>
                     <div class="price-amount">
                         $29
                         <sub>/mo</sub>
                     </div>
                     <div class="price-reg">Regular $59/month</div>
-                    <div class="price-cadence">Launch price · Cancel anytime</div>
+                    <div class="price-cadence">Launch price &middot; Cancel anytime</div>
                     <ul class="price-feats">
                         <li>Everything in Free</li>
-                        <li>SMS alert to your phone instantly</li>
+                        <li>Instant SMS to your phone</li>
+                        <li>Know the moment anyone contacts you</li>
                         <li>Never miss a lead again</li>
-                        <li>Know the moment someone contacts you</li>
                     </ul>
-                    <a href="https://calendly.com/jlapides/15min" target="_blank" class="price-btn price-btn--ghost">Book a Call →</a>
+                    <a href="https://freesites.ai/form/" class="price-btn price-btn--ghost">Get Started &rarr;</a>
                 </div>
-
                 <div class="price-card price-card--featured">
                     <div class="price-badge">Most Powerful</div>
-                    <div class="price-tier">SmartVoice</div>
+                    <div class="price-tier">Smart AI Receptionist</div>
                     <div class="price-tier-badges">
-                        <div class="ptb ptb--on">✉️ Email</div>
-                        <div class="ptb ptb--on">💬 SMS</div>
-                        <div class="ptb ptb--on">📞 Voice</div>
+                        <div class="ptb ptb--on">&#9993; Email</div>
+                        <div class="ptb ptb--on">&#128172; SMS</div>
+                        <div class="ptb ptb--on">&#128222; Voice</div>
                     </div>
                     <div class="price-amount">
                         $299
                         <sub>/mo</sub>
                     </div>
                     <div class="price-reg">Regular $599/month</div>
-                    <div class="price-cadence">Launch price · Cancel anytime</div>
+                    <div class="price-cadence">Launch price &middot; Cancel anytime</div>
                     <ul class="price-feats">
                         <li>Everything in Pro</li>
-                        <li>AI voice receptionist answers every call 24/7</li>
+                        <li>Smart receptionist answers every call 24/7</li>
                         <li>Books appointments automatically</li>
                         <li>Handles emergencies at 2am</li>
-                        <li>Sounds like you — not a robot</li>
+                        <li>Sounds like you &mdash; not a robot</li>
                         <li>Replaces a $500/month answering service</li>
                     </ul>
-                    <a href="https://calendly.com/jlapides/15min" target="_blank" class="price-btn price-btn--orange">Book a Call →</a>
+                    <a href="https://freesites.ai/form/" class="price-btn price-btn--orange">Get Started &rarr;</a>
                 </div>
-
-                <div class="price-card">
-                    <div class="price-tier">SmartSite Pro</div>
-                    <div class="price-tier-badges">
-                        <div class="ptb ptb--on">✉️ Email</div>
-                        <div class="ptb ptb--on">💬 SMS</div>
-                        <div class="ptb ptb--off">📞 Voice</div>
-                    </div>
-                    <div class="price-amount">
-                        $24
-                        <sub>.99/mo</sub>
-                    </div>
-                    <div class="price-reg">Regular $49.99/month</div>
-                    <div class="price-cadence">Launch price · Cancel anytime</div>
-                    <ul class="price-feats">
-                        <li>Full multi-page website</li>
-                        <li>Home, Services, About, Reviews, Contact</li>
-                        <li>Maintained and hosted monthly</li>
-                        <li>SmartReply Pro included</li>
-                        <li>Competitive with Ueni — no setup fee</li>
-                    </ul>
-                    <a href="https://calendly.com/jlapides/15min" target="_blank" class="price-btn price-btn--ghost">Book a Call →</a>
-                </div>
-
             </div>
         </div>
     </div>
 
-    <!-- LIVE EXAMPLES -->
+    <!-- SMART INSIGHTS -->
     <div class="section">
         <div class="sec-inner">
-            <span class="sec-eyebrow" style="color:var(--orange)">Live Examples</span>
-            <h2 class="sec-title-dark">Real SmartSites. Real Businesses.</h2>
-            <p class="sec-sub-dark">Every SmartSite is built specifically for that business — not a generic template.</p>
-            <div class="examples">
-                <div class="example">
-                    <div class="ex-top ex-top--law">
-                        <div class="ex-avatar">JM</div>
-                        <div class="ex-name">John V. Millane III</div>
-                        <div class="ex-type">Attorney · Williamsville, NY</div>
-                    </div>
-                    <div class="ex-body">
-                        <p>Criminal defense and family law attorney with 39+ years of experience. AV Preeminent rated. SmartReply active 24/7.</p>
-                        <a href="https://john-v-millane-iii.freesites.ai" class="ex-link" target="_blank">View SmartSite →</a>
-                    </div>
-                </div>
-                <div class="example">
-                    <div class="ex-top ex-top--nonprofit">
-                        <div class="ex-avatar" style="border-color:rgba(91,163,224,.5)">SNL</div>
-                        <div class="ex-name">Seven Noahide Laws</div>
-                        <div class="ex-type">Nonprofit · Worldwide</div>
-                    </div>
-                    <div class="ex-body">
-                        <p>Noahide education and community worldwide. SmartReply answers every question about the Seven Laws of Light instantly.</p>
-                        <a href="https://seven-noahide-laws-bgrc.freesites.ai" class="ex-link" target="_blank">View SmartSite →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SMART INSIGHTS / BLOG TEASER -->
-    <div class="section section--white">
-        <div class="sec-inner">
             <span class="sec-eyebrow" style="color:var(--orange)">Smart Insights</span>
-            <h2 class="sec-title-dark">From Jeff — What Is Working Right Now</h2>
-            <p class="sec-sub-dark">Real stories, real strategies, and honest advice for local service businesses.</p>
-            <div class="posts-grid">
-                <a href="/posts/" class="post-card">
-                    <div class="post-cat">Smart Tips</div>
-                    <h3>Why Local Businesses Lose Jobs at 2am — And How to Stop It</h3>
-                    <p>The first plumber who answers gets the job. Here is what we built to make sure that business is always yours.</p>
-                    <span class="post-read">Read More →</span>
+            <h2 class="sec-title-dark">From Jeff &mdash; What Is Working Right Now</h2>
+            <p class="sec-sub-dark">Real stories and honest advice for local service businesses.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+                <a href="https://x.com/FreeSites_com/status/2070253104986243124" target="_blank" class="xpost-card">
+                    <div class="xpost-x">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--navy2)">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </div>
+                    <div class="xpost-header">
+                        <div class="xpost-avatar">J</div>
+                        <div>
+                            <div class="xpost-name">Jeff Lapides</div>
+                            <div class="xpost-handle">@FreeSites_com</div>
+                        </div>
+                    </div>
+                    <div class="xpost-body">
+                        <p>After 30+ years building websites, I think I finally realized&hellip;</p>
+                        <p style="margin-top:10px">
+                            <strong>People don&rsquo;t actually want websites. They want customers.</strong>
+                        </p>
+                        <p style="margin-top:10px">A plumber wants the phone to ring. A roofer wants more estimates. A dentist wants appointments. The website is just one piece of that puzzle.</p>
+                        <p style="margin-top:10px">
+                            So we&rsquo;re changing the way we think about FreeSites. Instead of building websites&hellip; 
+                            <strong>We&rsquo;re building websites that build customers.</strong>
+                        </p>
+                        <p style="margin-top:10px">A SmartSite doesn&rsquo;t just sit there. It answers calls, captures leads, sends SMS replies, emails prospects in 60 seconds, books appointments, and requests Google reviews&hellip;</p>
+                    </div>
+                    <span class="xpost-link">Read the full post on X &rarr;</span>
                 </a>
-                <a href="/posts/" class="post-card">
-                    <div class="post-cat">Strategy</div>
-                    <h3>Google Maps + Smart Outreach: How We Find the Right Businesses to Help</h3>
-                    <p>Not every local business needs us. Here is exactly how we find the ones that do — and how we show up holding the answer.</p>
-                    <span class="post-read">Read More →</span>
-                </a>
-                <a href="/posts/" class="post-card">
-                    <div class="post-cat">From Jeff</div>
-                    <h3>Why We Stopped Calling This an AI Website Builder</h3>
-                    <p>Our 60-year-old plumber does not want more AI. He wants more jobs. Here is how we changed everything to give him that.</p>
-                    <span class="post-read">Read More →</span>
-                </a>
-            </div>
-            <div style="text-align:center;margin-top:32px">
-                <a href="/posts/" class="btn-orange" style="display:inline-flex;padding:13px 28px;font-size:15px">Read All Posts →</a>
+                <div class="coming-soon" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px">
+                    <div style="font-size:28px;margin-bottom:10px">&#9997;&#65039;</div>
+                    <div style="font-weight:700;color:var(--navy2);margin-bottom:6px">More posts coming soon</div>
+                    <div>
+                        Follow 
+                        <a href="https://x.com/freesites_com" target="_blank" style="color:var(--orange);font-weight:600">@freesites_com</a>
+                         on X for weekly Smart Insights
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- FOUNDER -->
-    <div class="section">
+    <div class="section section--white">
         <div class="sec-inner">
             <span class="sec-eyebrow" style="color:var(--orange)">About the Founder</span>
             <div class="founder-grid">
                 <div>
-                    <img src="https://d1yei2z3i6k35z.cloudfront.net/1548760/63d7ecc2933f6_JeffLapidesImage.png" alt="Jeff Lapides" class="founder-avatar">
+                    <img src="https://d1yei2z3i6k35z.cloudfront.net/1548760/63d7ecc2933f6_JeffLapidesImage.png" alt="Jeff Lapides" class="founder-img">
                 </div>
                 <div>
-                    <h2 class="sec-title-dark" style="margin-bottom:14px">Six Decades of Business. One Simple Goal.</h2>
-                    <p style="font-size:15px;color:var(--gray);line-height:1.75;margin-bottom:18px">Jeff Lapides started his first business at age 8. Over six decades he built expertise across digital advertising, online education, and local business growth. His belief has never changed: every small business deserves a professional web presence, honest advice, and tools that actually grow their revenue.</p>
-                    <blockquote class="founder-quote">"We make a living by what we get. We make a life by what we give." — Winston Churchill</blockquote>
-                    <a href="https://x.com/freesites_com" target="_blank" class="btn-orange" style="display:inline-flex;padding:12px 24px;font-size:14px;margin-top:4px">Follow @freesites_com →</a>
+                    <h2 class="sec-title-dark" style="margin-bottom:12px">Six Decades of Business. One Simple Goal.</h2>
+                    <p style="font-size:15px;color:var(--gray);line-height:1.75;margin-bottom:16px">Jeff Lapides started his first business at age 8. Over six decades he built expertise across digital advertising and local business growth &mdash; including the fourth-largest private Facebook ad network. His belief has never changed: every small business deserves a professional web presence, honest advice, and tools that actually grow their revenue.</p>
+                    <blockquote class="founder-quote">&ldquo;We make a living by what we get. We make a life by what we give.&rdquo; &mdash; Winston Churchill</blockquote>
+                    <a href="https://x.com/freesites_com" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;padding:11px 22px;border-radius:9px;font-size:14px;font-weight:700;margin-top:4px">Follow @freesites_com &rarr;</a>
                 </div>
             </div>
         </div>
@@ -1427,42 +2485,42 @@
 
     <!-- FINAL CTA -->
     <div class="final-cta">
-        <h2>
-            Your phone should ring more.
-            <br>
-            Let us make that happen.
-        </h2>
-        <p>SmartSites builds websites that answer calls, book appointments, and collect reviews — while you focus on the work. Starting free. No contracts.</p>
-        <a href="https://freesites.ai/form/" class="btn-white">⚡ Build My Free SmartSite →</a>
+        <h2>Let&rsquo;s Make Your Phone Ring More.</h2>
+        <p>Build your free SmartSite in about 60 seconds &mdash; or call our smart receptionist right now and experience it yourself.</p>
+        <div class="final-btns">
+            <a href="https://freesites.ai/form/" class="btn-white">&#9889; Build My Free SmartSite</a>
+            <a href="tel:7163175111" class="btn-orange-outline">&#128222; Call the Smart Receptionist</a>
+        </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-logo">
-            Smart
-            <em>Sites</em>
-             by FreeSites
+            <a href="https://freesites.com">
+                Smart
+                <em>Sites</em>
+                 by FreeSites
+            </a>
         </div>
         <div class="footer-tagline">We build websites that build customers.</div>
         <div class="footer-social">
             <a href="https://x.com/freesites_com" target="_blank" title="X" style="color:#fff">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
             </a>
             <a href="https://facebook.com/freesitesdotcom" target="_blank" title="Facebook" style="color:#1877F2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
             </a>
             <a href="https://linkedin.com/in/freesites/" target="_blank" title="LinkedIn" style="color:#0A66C2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
                     <circle cx="4" cy="4" r="2"/>
                 </svg>
             </a>
             <a href="https://instagram.com/freesites/" target="_blank" title="Instagram" style="color:#E1306C">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"/>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" stroke-width="2"/>
@@ -1473,15 +2531,204 @@
             <a href="https://freesites.ai/form/">Build Free</a>
             <a href="#pricing">Pricing</a>
             <a href="/posts/">Smart Insights</a>
-            <a href="https://calendly.com/jlapides/15min" target="_blank">Book a Call</a>
             <a href="https://freesites.com/privacypolicy">Privacy</a>
             <a href="https://freesites.com/affiliatedisclaimer">Affiliate Disclaimer</a>
-            <a href="mailto:hello@freesites.ai">hello@freesites.ai</a>
+            <a href="mailto:admin@freesites.com">admin@freesites.com</a>
         </div>
-        <p>© 2026 FreeSites.com LLC · SmartSites by FreeSites · We build websites that build customers.</p>
+        <p>&copy; 2026 FreeSites.com LLC &middot; SmartSites by FreeSites &middot; We build websites that build customers.</p>
     </footer>
 
     <script>
+    var VSCENES = [{
+        id: "vs0",
+        dur: 3500
+    }, {
+        id: "vs1",
+        dur: 5000
+    }, {
+        id: "vs2",
+        dur: 6000
+    }, {
+        id: "vs3",
+        dur: 4000
+    }, {
+        id: "vs4",
+        dur: 5000
+    }, {
+        id: "vs5",
+        dur: 5000
+    }];
+    var VTOTAL = VSCENES.reduce(function(a, s) {
+        return a + s.dur
+    }, 0);
+    var vcur = 0,
+        vplaying = true,
+        vstartTime = null,
+        velapsed = 0,
+        vraf = null;
+    var vdots = document.getElementById("vdots");
+    VSCENES.forEach(function(_, i) {
+        var d = document.createElement("button");
+        d.className = "vdot" + (i === 0 ? " active" : "");
+        d.setAttribute("aria-label", "Scene " + (i + 1));
+        d.onclick = function() {
+            vjumpTo(i);
+        };
+        vdots.appendChild(d);
+    });
+    function vshowScene(idx) {
+        VSCENES.forEach(function(s, i) {
+            document.getElementById(s.id).classList.toggle("active", i === idx);
+        });
+        document.querySelectorAll(".vdot").forEach(function(d, i) {
+            d.classList.toggle("active", i === idx);
+        });
+        vcur = idx;
+        vtrigger(idx);
+    }
+    function vtrigger(idx) {
+        if (idx === 1) {
+            var fields = ["vf1", "vf2", "vf3", "vf4", "vf5", "vf6"];
+            var texts = ["&#127970; Pappas Plumbing", "&#128295; Emergency plumber 24/7", "&#128205; Clarence, NY", "&#128222; (716) 309-5124", "&#9993; shawn@pappas-plumbing.com", "&#127919; Goal: answer every call"];
+            fields.forEach(function(id, i) {
+                var el = document.getElementById(id);
+                el.classList.remove("lit");
+                setTimeout(function() {
+                    el.classList.add("lit");
+                    el.innerHTML = texts[i];
+                }, (i + 1) * 420);
+            });
+            setTimeout(function() {
+                var s = document.getElementById("vfsubmit");
+                if (s)
+                    s.style.opacity = "1";
+            }, fields.length * 420 + 200);
+        }
+        if (idx === 2) {
+            var ring = document.getElementById("vring");
+            var tnum = document.getElementById("vtnum");
+            var steps = ["vbs1", "vbs2", "vbs3", "vbs4"];
+            var circ = 226;
+            ring.style.strokeDashoffset = circ;
+            tnum.textContent = "60";
+            steps.forEach(function(id) {
+                var el = document.getElementById(id);
+                el.classList.remove("done");
+                el.textContent = "&#9675; " + el.textContent.replace(/^[^ ]+ /, "");
+            });
+            var dur = 5500;
+            var s2 = performance.now();
+            function animR(ts) {
+                var f = Math.min((ts - s2) / dur, 1);
+                ring.style.strokeDashoffset = circ * (1 - f);
+                tnum.textContent = f >= 1 ? "✓" : Math.round(60 * (1 - f));
+                if (f < 1)
+                    requestAnimationFrame(animR);
+            }
+            requestAnimationFrame(animR);
+            steps.forEach(function(id, i) {
+                setTimeout(function() {
+                    var el = document.getElementById(id);
+                    el.classList.add("done");
+                    var txt = el.textContent.replace(/^[^ ]+ /, "");
+                    el.textContent = "✓ " + txt;
+                }, (i + 1) * (dur / 5));
+            });
+        }
+        if (idx === 4) {
+            ["vn1", "vn2", "vn3"].forEach(function(id, i) {
+                var el = document.getElementById(id);
+                el.classList.remove("show");
+                setTimeout(function() {
+                    el.classList.add("show");
+                }, i * 900 + 300);
+            });
+        }
+        if (idx === 5) {
+            ["vr1", "vr2", "vr3"].forEach(function(id, i) {
+                var el = document.getElementById(id);
+                el.classList.remove("show");
+                setTimeout(function() {
+                    el.classList.add("show");
+                }, i * 250 + 200);
+            });
+        }
+    }
+    function vgetScene(t) {
+        var acc = 0;
+        for (var i = 0; i < VSCENES.length; i++) {
+            acc += VSCENES[i].dur;
+            if (t < acc)
+                return i;
+        }
+        return VSCENES.length - 1;
+    }
+    function vtick(ts) {
+        if (!vplaying)
+            return;
+        if (!vstartTime)
+            vstartTime = ts;
+        velapsed = Math.min(ts - vstartTime, VTOTAL);
+        var p = velapsed / VTOTAL;
+        document.getElementById("vprog").style.width = (p * 100) + "%";
+        document.getElementById("vthumb").style.width = (p * 100) + "%";
+        var idx = vgetScene(velapsed);
+        if (idx !== vcur)
+            vshowScene(idx);
+        if (velapsed >= VTOTAL) {
+            vplaying = false;
+            document.getElementById("vplaybtn").innerHTML = "&#9654;";
+            return;
+        }
+        vraf = requestAnimationFrame(vtick);
+    }
+    function vtogglePlay() {
+        vplaying = !vplaying;
+        document.getElementById("vplaybtn").innerHTML = vplaying ? "&#9646;&#9646;" : "&#9654;";
+        if (vplaying) {
+            if (velapsed >= VTOTAL) {
+                vrestart();
+                return;
+            }
+            vstartTime = performance.now() - velapsed;
+            vraf = requestAnimationFrame(vtick);
+        } else {
+            cancelAnimationFrame(vraf);
+        }
+    }
+    function vrestart() {
+        cancelAnimationFrame(vraf);
+        velapsed = 0;
+        vstartTime = null;
+        vplaying = true;
+        document.getElementById("vplaybtn").innerHTML = "&#9646;&#9646;";
+        vshowScene(0);
+        vraf = requestAnimationFrame(vtick);
+    }
+    function vjumpTo(idx) {
+        cancelAnimationFrame(vraf);
+        var t = 0;
+        for (var i = 0; i < idx; i++)
+            t += VSCENES[i].dur;
+        velapsed = t;
+        vstartTime = performance.now() - velapsed;
+        vshowScene(idx);
+        if (vplaying)
+            vraf = requestAnimationFrame(vtick);
+    }
+    function vscrub(e) {
+        var rect = document.getElementById("vtrack").getBoundingClientRect();
+        var f = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        velapsed = f * VTOTAL;
+        vstartTime = performance.now() - velapsed;
+        var idx = vgetScene(velapsed);
+        vshowScene(idx);
+        document.getElementById("vprog").style.width = (f * 100) + "%";
+        document.getElementById("vthumb").style.width = (f * 100) + "%";
+    }
+    vshowScene(0);
+    vraf = requestAnimationFrame(vtick);
+
     function srSuggest(text) {
         document.getElementById("sr-message").value = text;
         document.getElementById("sr-message").focus();
@@ -1492,9 +2739,9 @@
         document.getElementById("sr-message").value = "";
         var btn = document.getElementById("sr-btn");
         btn.disabled = false;
-        btn.textContent = "Send — Get Your Reply →";
+        btn.textContent = "Send — Get Your Reply in 60 Seconds →";
     }
-    async function srSubmit() {
+    document.getElementById("sr-btn").addEventListener("click", async function() {
         var name = document.getElementById("sr-name").value.trim();
         var email = document.getElementById("sr-email").value.trim();
         var message = document.getElementById("sr-message").value.trim();
@@ -1508,7 +2755,7 @@
             return;
         }
         if (!message) {
-            alert("Please enter your question or message.");
+            alert("Please enter your question.");
             return;
         }
         btn.disabled = true;
@@ -1524,9 +2771,9 @@
                     email: email,
                     message: message,
                     businessName: "SmartSites by FreeSites",
-                    ownerEmail: "freesitestv@gmail.com",
+                    ownerEmail: "admin@freesites.com",
                     ownerPhone: "",
-                    businessDescription: "SmartSites by FreeSites is a smart customer acquisition platform for local service businesses — starting with plumbers, HVAC, and contractors. We build websites that answer the phone, book appointments, collect reviews, and generate more revenue. Starting free. SmartReply answers every message in 60 seconds. SmartVoice is an AI voice receptionist at $299/month launch price. The website is free forever with no subscriptions. We are based in Buffalo NY. Founder is Jeff Lapides with 6 decades of business experience."
+                    businessDescription: "SmartSites by FreeSites is a smart customer acquisition platform for local service businesses based in Buffalo NY. Founder is Jeff Lapides with 6 decades of business experience. We build websites that answer the phone 24/7, book appointments automatically, reply to every message in 60 seconds, and get more Google reviews. The website is free forever. SmartReply Pro is $29 per month for SMS alerts. Smart AI Receptionist is $299 per month for a voice receptionist that answers every call 24/7. Most businesses go live in about 60 seconds. We never say AI to customers we say smart receptionist. The website is free because we make money on the SMS and voice upgrades."
                 })
             });
             var data = await res.json();
@@ -1534,17 +2781,15 @@
             document.getElementById("sr-success").style.display = "block";
             if (data.reply) {
                 document.getElementById("sr-reply").textContent = data.reply;
-            }
-            else {
+            } else {
                 document.getElementById("sr-reply").textContent = "Thanks for reaching out! Check your email — we replied within 60 seconds.";
             }
         } catch (e) {
             btn.disabled = false;
-            btn.textContent = "Send — Get Your Reply →";
+            btn.textContent = "Send — Get Your Reply in 60 Seconds →";
             alert("Something went wrong. Please try again.");
         }
-    }
-    document.getElementById("sr-btn").addEventListener("click", srSubmit);
+    });
     </script>
 </body>
 </html>
