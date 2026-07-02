@@ -1313,6 +1313,79 @@
             padding: 64px 20px
         }
     }
+
+    .nav-smartop {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--navy);
+        color: #fff !important;
+        font-weight: 700 !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        font-size: 13px;
+        border: 1.5px solid rgba(91, 163, 224, .4);
+        cursor: pointer
+    }
+
+    .nav-smartop:hover {
+        background: var(--navy2) !important;
+        transform: none
+    }
+
+    .nav-live-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        animation: livePulse 2s infinite;
+        flex-shrink: 0
+    }
+
+    @keyframes livePulse {
+        0%, 100% {
+            opacity: 1;
+            transform:scale(1)
+        }
+
+        50% {
+            opacity: .4;
+            transform: scale(1.5)
+        }
+    }
+
+    .try-smartop-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: #fff;
+        color: var(--navy);
+        border: none;
+        padding: 22px 48px;
+        border-radius: 16px;
+        font-size: 24px;
+        font-weight: 900;
+        cursor: pointer;
+        font-family: inherit;
+        letter-spacing: -.02em;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, .25);
+        transition: all .2s;
+        margin-bottom: 16px
+    }
+
+    .try-smartop-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, .35)
+    }
+
+    .try-smartop-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #22c55e;
+        animation: livePulse 2s infinite;
+        flex-shrink: 0
+    }
     </style>
 </head>
 <body>
@@ -1336,7 +1409,10 @@
             <a href="#pricing">Pricing</a>
             <a href="#learn">Learn</a>
             <a href="#editorial">Resources</a>
-            <a href="tel:7163175111" class="nav-phone">📞 (716) 317-5111</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('fs-voice-panel').classList.toggle('open')" class="nav-smartop">
+                <span class="nav-live-dot"></span>
+                Try SmartOperator Live
+            </a>
             <a href="https://freesites.com/form/" class="nav-cta">Build Free →</a>
         </div>
     </nav>
@@ -1360,7 +1436,7 @@
                     <a href="https://freesites.com/form/" class="btn-primary">⚡ Build My Free SmartSite</a>
                     <a href="tel:7163175111" class="btn-voice">
                         <div>
-                            <div style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:2px">☎ Call Our Smart Receptionist</div>
+                            <div style="font-size:12px;font-weight:600;color:var(--gray);margin-bottom:2px">☎ Call Our Smart Operator</div>
                             <div class="btn-voice-num">(716) 317-5111</div>
                             <div class="btn-voice-sub">Experience how AI answers, qualifies leads &amp; books appointments</div>
                         </div>
@@ -1597,7 +1673,7 @@
                 <!-- RECEPTIONIST -->
                 <div class="price-card">
                     <div class="price-tag price-tag--voice">Never Miss a Customer</div>
-                    <div class="price-name">Smart Receptionist</div>
+                    <div class="price-name">Smart Operator</div>
                     <div class="price-perfect">For businesses that never want to miss another customer</div>
                     <div class="price-amount">
                         $79
@@ -1622,7 +1698,7 @@
                         <li>Business knowledge base</li>
                     </ul>
                     <div class="price-benefit">Your digital receptionist answers every call — even while you're working.</div>
-                    <a href="https://freesites.com/form/" class="price-btn price-btn--outline">Start Smart Receptionist</a>
+                    <a href="https://freesites.com/form/" class="price-btn price-btn--outline">Start Smart Operator</a>
                 </div>
 
                 <!-- CONCIERGE -->
@@ -1701,7 +1777,7 @@
                     </div>
                     <div class="why-stat">
                         <div class="why-stat-num">24/7</div>
-                        <div class="why-stat-label">Your smart receptionist answers every call, even at 2am</div>
+                        <div class="why-stat-label">Your smart operator answers every call, even at 2am</div>
                     </div>
                     <div class="why-stat">
                         <div class="why-stat-num">$0</div>
@@ -1832,15 +1908,17 @@
         <div class="voice-section-inner">
             <div class="voice-pulse">
                 <span class="voice-dot"></span>
-                Live Now — Smart Receptionist Active
+                Live Now — SmartOperator Active
             </div>
-            <h2 class="voice-title">Call Our Smart Receptionist</h2>
-            <p class="voice-sub">Call today and experience what your customers could hear tomorrow. No scripts. No wait times. Real answers in real time.</p>
-            <div class="voice-number">
-                <a href="tel:7163175111">(716) 317-5111</a>
-            </div>
-            <div class="voice-hint">Tap to call · Available 24 hours a day · 7 days a week</div>
-            <a href="tel:7163175111" class="voice-cta">📞 Call Now — It's Free</a>
+            <h2 class="voice-title">Experience Your Smart Operator</h2>
+            <p class="voice-sub">Click below and talk to our Smart Operator right now — in your browser. No phone. No download. This is exactly what your customers will experience.</p>
+            <button onclick="document.getElementById('fs-voice-panel').classList.add('open')" class="try-smartop-hero">
+                <span class="try-smartop-dot"></span>
+
+                      Try SmartOperator Live
+                    
+            </button>
+            <div class="voice-hint">No phone needed · Works in your browser</div>
         </div>
     </div>
 
@@ -1901,7 +1979,7 @@
                     <h4>Product</h4>
                     <a href="https://freesites.com/form/">Build Free SmartSite</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="tel:7163175111">Smart Receptionist</a>
+                    <a href="tel:7163175111">Smart Operator</a>
                     <a href="#why">Why FreeSites?</a>
                 </div>
                 <div class="footer-col">
