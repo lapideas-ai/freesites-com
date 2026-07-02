@@ -144,7 +144,7 @@
 
     try {
       // Get ephemeral token from our Netlify proxy
-      var tokenRes = await fetch('/.netlify/functions/voice-token');
+      var tokenRes=await fetch('https://freesites.ai/.netlify/functions/voice-token');
       if (!tokenRes.ok) throw new Error('Could not get voice token');
       var { token } = await tokenRes.json();
 
