@@ -1324,13 +1324,11 @@
         padding: 8px 16px !important;
         border-radius: 8px !important;
         font-size: 13px;
-        border: 1.5px solid rgba(91, 163, 224, .4);
-        cursor: pointer
+        border: 1.5px solid rgba(91, 163, 224, .4)
     }
 
     .nav-smartop:hover {
-        background: var(--navy2) !important;
-        transform: none
+        background: var(--navy2) !important
     }
 
     .nav-live-dot {
@@ -1360,17 +1358,15 @@
         gap: 14px;
         background: #fff;
         color: var(--navy);
-        border: none;
+        text-decoration: none;
         padding: 22px 48px;
         border-radius: 16px;
         font-size: 24px;
         font-weight: 900;
-        cursor: pointer;
-        font-family: inherit;
         letter-spacing: -.02em;
         box-shadow: 0 8px 32px rgba(0, 0, 0, .25);
         transition: all .2s;
-        margin-bottom: 16px
+        margin-bottom: 12px
     }
 
     .try-smartop-hero:hover {
@@ -1385,6 +1381,13 @@
         background: #22c55e;
         animation: livePulse 2s infinite;
         flex-shrink: 0
+    }
+
+    .try-smartop-num {
+        font-size: 15px;
+        color: rgba(255, 255, 255, .5);
+        margin-bottom: 24px;
+        letter-spacing: .02em
     }
     </style>
 </head>
@@ -1409,7 +1412,7 @@
             <a href="#pricing">Pricing</a>
             <a href="#learn">Learn</a>
             <a href="#editorial">Resources</a>
-            <a href="javascript:void(0)" onclick="document.getElementById('fs-voice-panel').classList.toggle('open')" class="nav-smartop">
+            <a href="tel:7163175111" class="nav-smartop">
                 <span class="nav-live-dot"></span>
                 Try SmartOperator Live
             </a>
@@ -1911,14 +1914,15 @@
                 Live Now — SmartOperator Active
             </div>
             <h2 class="voice-title">Experience Your Smart Operator</h2>
-            <p class="voice-sub">Click below and talk to our Smart Operator right now — in your browser. No phone. No download. This is exactly what your customers will experience.</p>
-            <button onclick="document.getElementById('fs-voice-panel').classList.add('open')" class="try-smartop-hero">
+            <p class="voice-sub">Call our Smart Operator right now and experience exactly what your customers will hear. No scripts. No wait times. Real answers in real time.</p>
+            <a href="tel:7163175111" class="try-smartop-hero">
                 <span class="try-smartop-dot"></span>
 
                       Try SmartOperator Live
                     
-            </button>
-            <div class="voice-hint">No phone needed · Works in your browser</div>
+            </a>
+            <div class="try-smartop-num">(716) 317-5111</div>
+            <div class="voice-hint">Tap to call · Available 24 hours a day · 7 days a week</div>
         </div>
     </div>
 
@@ -2055,6 +2059,5 @@
         document.getElementById('nlEmail').value = '';
     }
     </script>
-    <script src="/voice-widget.js"></script>
 </body>
 </html>
