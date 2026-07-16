@@ -2080,13 +2080,7 @@
         });
         window.location.href = 'https://freesites.com/form/?' + params.toString();
     }
-     // Pre-fill fields from URL parameters
-(function() {
-  var params = new URLSearchParams(window.location.search);
-  if (params.get('name')) document.getElementById('ownerName').value = params.get('name');
-  if (params.get('email')) document.getElementById('notifEmail').value = params.get('email');
-  if (params.get('phone')) document.getElementById('phone').value = params.get('phone');
-})();   
+
     </script>
 </body>
 </html>
