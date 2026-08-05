@@ -1,0 +1,99 @@
+/* Fast Response — HVAC canonical style.
+   Deliberately single-theme: a dark, high-contrast "dispatch board" ground
+   with light content bands, not an OS dark-mode responsive palette. Urgency
+   is the point of this style; it doesn't dim for a light-mode preference.
+
+   This file owns color tokens and type-scale wiring only. Every section is a
+   shared component from src/components/smartsite/shared — nothing here
+   defines layout or markup, only the `--ss-*` contract those components read. */
+
+.fr-smartsite {
+  /* Raw palette */
+  --fr-ink: #14181f;
+  --fr-ink-soft: #1d232c;
+  --fr-signal: #e6421e;
+  --fr-signal-dark: #c23417;
+  --fr-coolant: #37c4e0;
+  --fr-paper: #f4f6f8;
+  --fr-paper-dim: #e8ecef;
+  --fr-success: #3c9a5f;
+  --fr-line: rgba(236, 239, 243, 0.14);
+  --fr-line-dark: rgba(20, 24, 31, 0.12);
+  --fr-text-on-dark: #eceff3;
+  --fr-text-on-dark-dim: rgba(236, 239, 243, 0.68);
+  --fr-text-on-light: #14181f;
+  --fr-text-on-light-dim: rgba(20, 24, 31, 0.62);
+
+  /* Common style contract — every shared section reads only these names,
+     never --fr-* directly, so Trusted Local / Premium Professional can plug
+     into the same components by defining this same set differently. */
+  --ss-ink: var(--fr-ink);
+  --ss-ink-soft: var(--fr-ink-soft);
+  --ss-accent: var(--fr-signal);
+  --ss-accent-dark: var(--fr-signal-dark);
+  --ss-accent2: var(--fr-coolant);
+  --ss-accent-soft: rgba(230, 66, 30, 0.16);
+  --ss-accent-on-dark: #ff8a68;
+  --ss-paper: var(--fr-paper);
+  --ss-paper-dim: var(--fr-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--fr-success);
+  --ss-success-soft: rgba(60, 154, 95, 0.12);
+  --ss-line: var(--fr-line);
+  --ss-line-dark: var(--fr-line-dark);
+  --ss-line-strong: rgba(236, 239, 243, 0.3);
+  --ss-text-on-dark: var(--fr-text-on-dark);
+  --ss-text-on-dark-dim: var(--fr-text-on-dark-dim);
+  --ss-text-on-light: var(--fr-text-on-light);
+  --ss-text-on-light-dim: var(--fr-text-on-light-dim);
+  --ss-font-display: var(--fr-font-display), sans-serif;
+  --ss-font-body: var(--fr-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--fr-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.fr-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.fr-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.fr-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fr-smartsite ::selection {
+  background: var(--ss-accent);
+  color: var(--ss-text-on-dark);
+}
+
+.fr-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.fr-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fr-smartsite .ss-pulse {
+    animation: ss-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes ss-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}

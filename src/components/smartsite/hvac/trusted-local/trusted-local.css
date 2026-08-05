@@ -1,0 +1,91 @@
+/* Trusted Local — HVAC canonical style.
+   Warm, established, community-rooted — forest green + warm gold rather than
+   urgent orange-red. This file owns color tokens and type-scale wiring only;
+   every section is a shared component from src/components/smartsite/shared. */
+
+.tl-smartsite {
+  --tl-ink: #1b332a;
+  --tl-ink-soft: #244134;
+  --tl-gold: #c99a3b;
+  --tl-gold-dark: #a87c26;
+  --tl-clay: #b5714a;
+  --tl-paper: #f2ede1;
+  --tl-paper-dim: #e9e1d0;
+  --tl-success: #2f7d5c;
+  --tl-line: rgba(242, 237, 225, 0.16);
+  --tl-line-dark: rgba(27, 51, 42, 0.14);
+  --tl-text-on-dark: #f5f1e6;
+  --tl-text-on-dark-dim: rgba(245, 241, 230, 0.7);
+  --tl-text-on-light: #22301f;
+  --tl-text-on-light-dim: rgba(34, 48, 31, 0.64);
+
+  --ss-ink: var(--tl-ink);
+  --ss-ink-soft: var(--tl-ink-soft);
+  --ss-accent: var(--tl-gold);
+  --ss-accent-dark: var(--tl-gold-dark);
+  --ss-accent2: var(--tl-clay);
+  --ss-accent-soft: rgba(201, 154, 59, 0.18);
+  --ss-accent-on-dark: #e4c682;
+  --ss-paper: var(--tl-paper);
+  --ss-paper-dim: var(--tl-paper-dim);
+  --ss-surface: #fbf9f3;
+  --ss-success: var(--tl-success);
+  --ss-success-soft: rgba(47, 125, 92, 0.14);
+  --ss-line: var(--tl-line);
+  --ss-line-dark: var(--tl-line-dark);
+  --ss-line-strong: rgba(245, 241, 230, 0.32);
+  --ss-text-on-dark: var(--tl-text-on-dark);
+  --ss-text-on-dark-dim: var(--tl-text-on-dark-dim);
+  --ss-text-on-light: var(--tl-text-on-light);
+  --ss-text-on-light-dim: var(--tl-text-on-light-dim);
+  --ss-font-display: var(--tl-font-display), serif;
+  --ss-font-body: var(--tl-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--tl-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.tl-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.tl-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tl-smartsite ::selection {
+  background: var(--tl-gold);
+  color: var(--tl-ink);
+}
+
+.tl-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.tl-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tl-smartsite .ss-pulse {
+    animation: tl-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes tl-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}

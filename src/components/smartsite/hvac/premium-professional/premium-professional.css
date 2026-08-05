@@ -1,0 +1,92 @@
+/* Premium Professional — HVAC canonical style.
+   Refined and restrained — dark warm charcoal + muted brass, not neon-on-black.
+   This file owns color tokens and type-scale wiring only; every section is a
+   shared component from src/components/smartsite/shared. */
+
+.pp-smartsite {
+  --pp-ink: #1a1816;
+  --pp-ink-soft: #262320;
+  --pp-brass: #a9814f;
+  --pp-brass-dark: #8a6a3f;
+  --pp-pewter: #8a8f94;
+  --pp-paper: #faf8f4;
+  --pp-paper-dim: #f1ede4;
+  --pp-success: #3d6b63;
+  --pp-line: rgba(250, 248, 244, 0.14);
+  --pp-line-dark: rgba(26, 24, 22, 0.1);
+  --pp-text-on-dark: #f6f3ec;
+  --pp-text-on-dark-dim: rgba(246, 243, 236, 0.66);
+  --pp-text-on-light: #1f1c19;
+  --pp-text-on-light-dim: rgba(31, 28, 25, 0.6);
+
+  --ss-ink: var(--pp-ink);
+  --ss-ink-soft: var(--pp-ink-soft);
+  --ss-accent: var(--pp-brass);
+  --ss-accent-dark: var(--pp-brass-dark);
+  --ss-accent2: var(--pp-pewter);
+  --ss-accent-soft: rgba(169, 129, 79, 0.16);
+  --ss-accent-on-dark: #d3ac78;
+  --ss-paper: var(--pp-paper);
+  --ss-paper-dim: var(--pp-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--pp-success);
+  --ss-success-soft: rgba(61, 107, 99, 0.12);
+  --ss-line: var(--pp-line);
+  --ss-line-dark: var(--pp-line-dark);
+  --ss-line-strong: rgba(246, 243, 236, 0.28);
+  --ss-text-on-dark: var(--pp-text-on-dark);
+  --ss-text-on-dark-dim: var(--pp-text-on-dark-dim);
+  --ss-text-on-light: var(--pp-text-on-light);
+  --ss-text-on-light-dim: var(--pp-text-on-light-dim);
+  --ss-font-display: var(--pp-font-display), serif;
+  --ss-font-body: var(--pp-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--pp-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.pp-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.pp-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+}
+
+.pp-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pp-smartsite ::selection {
+  background: var(--pp-brass);
+  color: var(--pp-ink);
+}
+
+.pp-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.pp-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pp-smartsite .ss-pulse {
+    animation: pp-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes pp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
