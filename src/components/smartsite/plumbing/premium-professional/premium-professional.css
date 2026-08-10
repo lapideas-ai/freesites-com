@@ -1,0 +1,97 @@
+/* Premium Professional — Plumbing canonical style.
+   Refined and restrained — deep navy + brushed nickel, not HVAC's charcoal +
+   brass, keeping the trades visually distinct even in the same "refined"
+   register. This file owns color tokens and type-scale wiring only; every
+   section is a shared component from src/components/smartsite/shared.
+
+   Namespaced with a ppp- prefix and .ppp-smartsite class so this can never
+   collide with HVAC's pp- prefix and .pp-smartsite class if both ever
+   render on the same page. */
+
+.ppp-smartsite {
+  --ppp-ink: #14202b;
+  --ppp-ink-soft: #1c2c3a;
+  --ppp-nickel: #8b96a0;
+  --ppp-nickel-dark: #6d7882;
+  --ppp-teal: #3f7d82;
+  --ppp-paper: #f7f8f9;
+  --ppp-paper-dim: #edeff1;
+  --ppp-success: #3d6b63;
+  --ppp-line: rgba(247, 248, 249, 0.14);
+  --ppp-line-dark: rgba(20, 32, 43, 0.1);
+  --ppp-text-on-dark: #f2f4f5;
+  --ppp-text-on-dark-dim: rgba(242, 244, 245, 0.66);
+  --ppp-text-on-light: #17232e;
+  --ppp-text-on-light-dim: rgba(23, 35, 46, 0.6);
+
+  --ss-ink: var(--ppp-ink);
+  --ss-ink-soft: var(--ppp-ink-soft);
+  --ss-accent: var(--ppp-nickel);
+  --ss-accent-dark: var(--ppp-nickel-dark);
+  --ss-accent2: var(--ppp-teal);
+  --ss-accent-soft: rgba(139, 150, 160, 0.18);
+  --ss-accent-on-dark: #b7c0c8;
+  --ss-paper: var(--ppp-paper);
+  --ss-paper-dim: var(--ppp-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--ppp-success);
+  --ss-success-soft: rgba(61, 107, 99, 0.12);
+  --ss-line: var(--ppp-line);
+  --ss-line-dark: var(--ppp-line-dark);
+  --ss-line-strong: rgba(242, 244, 245, 0.28);
+  --ss-text-on-dark: var(--ppp-text-on-dark);
+  --ss-text-on-dark-dim: var(--ppp-text-on-dark-dim);
+  --ss-text-on-light: var(--ppp-text-on-light);
+  --ss-text-on-light-dim: var(--ppp-text-on-light-dim);
+  --ss-font-display: var(--ppp-font-display), serif;
+  --ss-font-body: var(--ppp-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--ppp-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ppp-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.ppp-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+}
+
+.ppp-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ppp-smartsite ::selection {
+  background: var(--ppp-nickel);
+  color: var(--ppp-ink);
+}
+
+.ppp-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ppp-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ppp-smartsite .ss-pulse {
+    animation: ppp-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes ppp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

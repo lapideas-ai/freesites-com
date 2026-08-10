@@ -85,6 +85,69 @@ export const trades: Trade[] = [
     services: ["Hardwood install", "Refinishing", "Tile & vinyl", "Free estimates"],
   },
   {
+    slug: "concrete",
+    name: "Concrete",
+    icon: "🧱",
+    description: "Driveways, patios, and foundations",
+    services: ["Driveways", "Patios & walkways", "Foundations", "Free estimates"],
+  },
+  {
+    slug: "garage-doors",
+    name: "Garage Doors",
+    icon: "🚪",
+    description: "Install, repair, and replacement",
+    services: ["Spring repair", "Opener install", "Full replacement", "Same-day service"],
+  },
+  {
+    slug: "windows",
+    name: "Windows",
+    icon: "🪟",
+    description: "Replacement and installation",
+    services: ["Window replacement", "New installs", "Energy-efficient upgrades", "Free estimates"],
+  },
+  {
+    slug: "tree-service",
+    name: "Tree Service",
+    icon: "🌳",
+    description: "Removal, trimming, and stump grinding",
+    services: ["Tree removal", "Trimming & pruning", "Stump grinding", "Emergency service"],
+  },
+  {
+    slug: "pool-service",
+    name: "Pool Service",
+    icon: "🏊",
+    description: "Cleaning, repair, and maintenance",
+    services: ["Weekly cleaning", "Equipment repair", "Opening & closing", "Chemical balancing"],
+  },
+  {
+    slug: "junk-removal",
+    name: "Junk Removal",
+    icon: "🚚",
+    description: "Hauling and cleanouts",
+    services: ["Same-day hauling", "Estate cleanouts", "Construction debris", "Free estimates"],
+  },
+  {
+    slug: "pressure-washing",
+    name: "Pressure Washing",
+    icon: "💦",
+    description: "Exterior cleaning services",
+    services: ["Driveways & sidewalks", "House washing", "Deck & fence", "Free estimates"],
+  },
+  {
+    slug: "solar",
+    name: "Solar",
+    icon: "☀️",
+    description: "Installation and consultation",
+    services: ["System install", "Consultations", "Maintenance", "Financing available"],
+  },
+  {
+    slug: "fencing",
+    name: "Fencing",
+    icon: "🚧",
+    description: "Install and repair",
+    services: ["New installs", "Repairs", "Gate service", "Free estimates"],
+  },
+  {
     slug: "other",
     name: "Other",
     icon: "✨",
@@ -96,3 +159,10 @@ export const trades: Trade[] = [
 export function getTradeBySlug(slug: string): Trade | undefined {
   return trades.find((trade) => trade.slug === slug);
 }
+
+// HVAC, Plumbing, and Electrical all have real canonical styles built —
+// single source of truth shared by /build/trade, the homepage nav/cards,
+// and /trades/[slug], so live trades route straight into the wizard and
+// everything else gets the "help us build this next" confirmation instead
+// of a 404 or a dead end.
+export const LIVE_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical"]);

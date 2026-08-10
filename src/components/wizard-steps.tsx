@@ -3,15 +3,31 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// "trade" is deliberately not in this list — it's a pre-numbered fallback
+// entry (same as /build/upgrade is a post-numbered follow-on), not part of
+// the counted claim sequence. The sequence starts at "start" (lead capture)
+// and ends at "review" (the reveal) — Upgrade is handled as a special case
+// below, never rendered as "step 7."
 const steps = [
-  { slug: "trade", label: "Trade" },
+  { slug: "start", label: "You" },
   { slug: "style", label: "Style" },
+  { slug: "services", label: "Services" },
+  { slug: "availability", label: "Area" },
   { slug: "personalize", label: "Personalize" },
-  { slug: "review", label: "Review" },
+  { slug: "review", label: "Reveal" },
 ];
 
 export function WizardSteps() {
   const pathname = usePathname();
+
+  if (pathname?.includes("/build/upgrade")) {
+    return (
+      <span className="flex items-center gap-1.5 rounded-full bg-foreground/10 px-3 py-1 text-sm font-medium">
+        <span aria-hidden="true">✓</span> Your FREE SmartSite is live
+      </span>
+    );
+  }
+
   const activeIndex = steps.findIndex((step) =>
     pathname.includes(`/build/${step.slug}`)
   );

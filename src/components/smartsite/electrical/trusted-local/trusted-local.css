@@ -1,0 +1,97 @@
+/* Trusted Local - Electrical canonical style.
+   Warm, established, community-rooted - warm brass/amber + deep denim blue,
+   evoking brass fittings and warm lamplight, distinct from HVAC's forest
+   green + gold and Plumbing's slate blue + copper. This file owns color
+   tokens and type-scale wiring only; every section is a shared component
+   from src/components/smartsite/shared.
+
+   Namespaced with an etl- prefix and .etl-smartsite class so this can never
+   collide with HVAC's or Plumbing's Trusted Local styles if more than one
+   ever renders on the same page. */
+
+.etl-smartsite {
+  --etl-ink: #2a2410;
+  --etl-ink-soft: #363018;
+  --etl-amber: #c8963c;
+  --etl-amber-dark: #a67826;
+  --etl-denim: #35597a;
+  --etl-paper: #f5f0e3;
+  --etl-paper-dim: #ece4d1;
+  --etl-success: #3d7d5c;
+  --etl-line: rgba(245, 240, 227, 0.16);
+  --etl-line-dark: rgba(42, 36, 16, 0.14);
+  --etl-text-on-dark: #f7f2e4;
+  --etl-text-on-dark-dim: rgba(247, 242, 228, 0.7);
+  --etl-text-on-light: #2a2410;
+  --etl-text-on-light-dim: rgba(42, 36, 16, 0.64);
+
+  --ss-ink: var(--etl-ink);
+  --ss-ink-soft: var(--etl-ink-soft);
+  --ss-accent: var(--etl-amber);
+  --ss-accent-dark: var(--etl-amber-dark);
+  --ss-accent2: var(--etl-denim);
+  --ss-accent-soft: rgba(200, 150, 60, 0.18);
+  --ss-accent-on-dark: #e0b876;
+  --ss-paper: var(--etl-paper);
+  --ss-paper-dim: var(--etl-paper-dim);
+  --ss-surface: #faf7ef;
+  --ss-success: var(--etl-success);
+  --ss-success-soft: rgba(61, 125, 92, 0.14);
+  --ss-line: var(--etl-line);
+  --ss-line-dark: var(--etl-line-dark);
+  --ss-line-strong: rgba(247, 242, 228, 0.32);
+  --ss-text-on-dark: var(--etl-text-on-dark);
+  --ss-text-on-dark-dim: var(--etl-text-on-dark-dim);
+  --ss-text-on-light: var(--etl-text-on-light);
+  --ss-text-on-light-dim: var(--etl-text-on-light-dim);
+  --ss-font-display: var(--etl-font-display), serif;
+  --ss-font-body: var(--etl-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--etl-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.etl-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.etl-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.etl-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.etl-smartsite ::selection {
+  background: var(--etl-amber);
+  color: var(--etl-ink);
+}
+
+.etl-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.etl-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .etl-smartsite .ss-pulse {
+    animation: etl-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes etl-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}

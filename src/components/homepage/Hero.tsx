@@ -1,0 +1,155 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { ScaledPreview } from "@/components/scaled-preview";
+import { useActiveTrade } from "@/lib/homepage-active-trade-context";
+import { getTradeRegistry } from "@/lib/smartsite/registry";
+import type { StyleVariant } from "@/lib/smartsite/types";
+
+const STYLE_NAMES: Record<StyleVariant, string> = {
+  "fast-response": "Fast Response",
+  "trusted-local": "Trusted Local",
+  "premium-professional": "Premium Professional",
+};
+
+// Persistent control, not part of the fading content block below it — its
+// active-pill highlight updates instantly on every rotation tick, but the
+// row itself never re-mounts/re-fades, since a control flickering every 6s
+// would read as broken rather than alive.
+function TradeSelector() {
+  const { activeSlug, liveTradesInOrder, selectTrade } = useActiveTrade();
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Showing examples for</span>
+      <div className="flex gap-1">
+        {liveTradesInOrder.map((trade) => (
+          <button
+            key={trade.slug}
+            onClick={() => selectTrade(trade.slug)}
+            className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
+              activeSlug === trade.slug
+                ? "bg-[#1a2f4a] text-white"
+                : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-[#1a2f4a]"
+            }`}
+          >
+            {trade.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function Hero() {
+  const router = useRouter();
+  const { activeSlug, activeTrade, claimCtaLabel } = useActiveTrade();
+  const registry = getTradeRegistry(activeSlug);
+  if (!registry) return null;
+  const HeroPreviewComponent = registry.components["fast-response"];
+  const onClaim = () => router.push(`/build?trade=${activeSlug}`);
+
+  return (
+    <section className="mx-auto grid max-w-6xl gap-6 px-6 py-7 md:grid-cols-2 md:items-center md:py-9">
+      <div className="min-w-0">
+        <TradeSelector />
+
+        {/* Keyed by activeSlug so React remounts this block on every trade
+            change, retriggering the CSS fade-in — headline, CTAs, and
+            thumbnails all change together as one unit. */}
+        <div key={activeSlug} className="fs-fade-in">
+          <h1 className="mt-3 text-[26px] font-black leading-[1.15] tracking-tight text-[#1a2f4a] sm:text-[30px]">
+            Every {activeTrade.name} SmartSite Includes <span className="text-[#f97316]">SmartReply™</span>
+          </h1>
+          <p className="mt-1.5 text-[15px] font-semibold leading-snug text-[#1a2f4a]">
+            The website that answers every customer for you.
+          </p>
+          <p className="mt-2.5 max-w-sm text-[13px] leading-relaxed text-slate-600">
+            SmartReply is the technology behind it — instant email, text, and voice replies that turn more
+            visitors into booked customers, day or night.
+          </p>
+
+          <div className="mt-4 flex flex-wrap items-center gap-1.5">
+            {["FREE Forever", "No Credit Card", "SmartReply Included"].map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-[10px] font-semibold text-slate-500"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f97316]" />
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-2.5">
+            <button
+              onClick={onClaim}
+              className="inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-5 py-3 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
+            >
+              {claimCtaLabel()}
+            </button>
+            <a
+              href="#examples"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-3 text-[13px] font-bold text-[#1a2f4a] transition-colors hover:border-slate-300"
+            >
+              See {activeTrade.name} Examples
+            </a>
+          </div>
+          <p className="mt-2 text-[11px] text-slate-400">
+            Preview a professional SmartSite built for your trade in about 60 seconds.
+          </p>
+
+          <div className="mt-5">
+            <div className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Real SmartSites, built in 60 seconds</div>
+            <div className="mt-1.5 flex gap-2">
+              {(Object.keys(registry.components) as StyleVariant[]).map((styleId) => {
+                const StyleComponent = registry.components[styleId];
+                return (
+                  <div
+                    key={styleId}
+                    role="button"
+                    tabIndex={0}
+                    onClick={onClaim}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onClaim();
+                      }
+                    }}
+                    className="group flex-1 cursor-pointer overflow-hidden rounded-md border border-slate-200 bg-white text-left transition-colors hover:border-orange-300"
+                    aria-label={STYLE_NAMES[styleId]}
+                  >
+                    <div className="pointer-events-none h-11 overflow-hidden bg-slate-50">
+                      <ScaledPreview height={44} canonicalWidth={1440}>
+                        <StyleComponent business={registry.sample} tier="starter" />
+                      </ScaledPreview>
+                    </div>
+                    <div className="truncate px-1.5 py-1 text-[9px] font-semibold text-slate-500 group-hover:text-[#1a2f4a]">
+                      {STYLE_NAMES[styleId]}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div key={`${activeSlug}-preview`} className="fs-fade-in relative min-w-0">
+        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-900/10">
+          <div className="flex items-center gap-1 border-b border-slate-100 bg-slate-50 px-2.5 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+          </div>
+          <ScaledPreview height={270} canonicalWidth={1440}>
+            <HeroPreviewComponent business={registry.sample} tier="starter" />
+          </ScaledPreview>
+        </div>
+        <div className="absolute -bottom-2.5 -left-2.5 flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-[#1a2f4a] shadow-md">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" />
+          Live in 60 seconds
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -19,6 +19,15 @@ export type WizardState = {
   city: string;
   tagline: string;
   tier: TierId;
+  // Claim funnel — additive fields, all optional-feeling even though typed
+  // required, so `update()` patches stay simple shallow merges.
+  leadFirstName: string;
+  leadEmail: string;
+  secondaryTradeSlugs: string[];
+  stateZip: string;
+  approach: "fresh" | "keep" | null;
+  keepItems: string[];
+  existingWebsiteUrl: string;
 };
 
 const emptyState: WizardState = {
@@ -30,6 +39,13 @@ const emptyState: WizardState = {
   city: "",
   tagline: "",
   tier: "starter",
+  leadFirstName: "",
+  leadEmail: "",
+  secondaryTradeSlugs: [],
+  stateZip: "",
+  approach: null,
+  keepItems: [],
+  existingWebsiteUrl: "",
 };
 
 const STORAGE_KEY = "freesites:wizard";

@@ -12,6 +12,8 @@ export type Tier = {
   cadence: string;
   /** Extra billing detail shown next to price, e.g. "Billed annually". Only Pro has one today. */
   billingNote?: string;
+  /** The non-annual alternative price, e.g. "$79" for Pro's month-to-month option. Only Pro has one today. */
+  monthToMonthPrice?: string;
   /** Always shown — the credit-card expectation is a key differentiator between Starter and everything above it. */
   creditCardNote: string;
   tagline: string;
@@ -31,7 +33,8 @@ export const tiers: Record<TierId, Tier> = {
       "SmartReply Email",
       "Contact form & click-to-call",
       "Mobile-first design",
-      "Hosted on yourbusiness.freesites.com",
+      "FreeSites subdomain (yourbusiness.freesites.com)",
+      "Footer attribution: Made with ❤️ in the USA by FreeSites",
     ],
   },
   pro: {
@@ -40,15 +43,15 @@ export const tiers: Record<TierId, Tier> = {
     price: "$49",
     cadence: "/mo",
     billingNote: "Billed annually",
+    monthToMonthPrice: "$79",
     creditCardNote: "Credit card required",
     tagline: "Your first paid communication platform — always-on, everywhere",
     features: [
       "Everything in Starter",
+      "SmartReply Email, SMS, Voice, and Booking",
       "FreeSites branding removed",
       "Optional custom domain",
-      "SmartReply Email",
-      "SmartReply SMS",
-      "SmartReply Voice",
+      "Same SmartSite, branding, and business identity",
     ],
   },
   growth: {
@@ -60,10 +63,11 @@ export const tiers: Record<TierId, Tier> = {
     tagline: "A fully custom site built to win more work",
     features: [
       "Everything in Pro",
-      "Fully customized contractor website",
-      "Expanded content and local SEO",
-      "Advanced contractor features",
-      "Deeper FreeSites integrations",
+      "Complete custom SmartSite",
+      "Expanded contractor content and features",
+      "Deeper service and service-area content",
+      "Gallery, FAQ, financing, trust, and scheduling",
+      "FreeSites-managed integrations",
     ],
   },
 };

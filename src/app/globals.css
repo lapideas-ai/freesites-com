@@ -24,3 +24,40 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Homepage hero's rotating-trade cross-fade. CSS-only, matching every other
+   motion effect in this codebase (see the SmartSite style stylesheets'
+   ss-pulse animations) — no JS matchMedia hook, reduced-motion is handled
+   entirely here. */
+@media (prefers-reduced-motion: no-preference) {
+  .fs-fade-in {
+    animation: fs-fade-in 0.4s ease;
+  }
+}
+
+@keyframes fs-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* "Scroll to explore" cue on the /build/review reveal — a small vertical
+   nudge, not a full bounce, so it reads as a hint rather than a distraction. */
+@media (prefers-reduced-motion: no-preference) {
+  .fs-scroll-cue {
+    animation: fs-scroll-cue 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes fs-scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}

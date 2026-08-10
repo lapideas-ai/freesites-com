@@ -1,0 +1,98 @@
+/* Premium Professional - Electrical canonical style.
+   Refined and restrained - deep graphite + warm gold with an indigo
+   secondary accent, evoking premium lighting design, distinct from HVAC's
+   charcoal + brass and Plumbing's navy + nickel. This file owns color
+   tokens and type-scale wiring only; every section is a shared component
+   from src/components/smartsite/shared.
+
+   Namespaced with an epp- prefix and .epp-smartsite class so this can never
+   collide with HVAC's or Plumbing's Premium Professional styles if more
+   than one ever renders on the same page. */
+
+.epp-smartsite {
+  --epp-ink: #17171c;
+  --epp-ink-soft: #202027;
+  --epp-gold: #b9975a;
+  --epp-gold-dark: #97783f;
+  --epp-indigo: #4a4e8f;
+  --epp-paper: #f8f7f9;
+  --epp-paper-dim: #eeecf0;
+  --epp-success: #3d6b63;
+  --epp-line: rgba(248, 247, 249, 0.14);
+  --epp-line-dark: rgba(23, 23, 28, 0.1);
+  --epp-text-on-dark: #f4f3f6;
+  --epp-text-on-dark-dim: rgba(244, 243, 246, 0.66);
+  --epp-text-on-light: #1a1a20;
+  --epp-text-on-light-dim: rgba(26, 26, 32, 0.6);
+
+  --ss-ink: var(--epp-ink);
+  --ss-ink-soft: var(--epp-ink-soft);
+  --ss-accent: var(--epp-gold);
+  --ss-accent-dark: var(--epp-gold-dark);
+  --ss-accent2: var(--epp-indigo);
+  --ss-accent-soft: rgba(185, 151, 90, 0.16);
+  --ss-accent-on-dark: #d7bd8a;
+  --ss-paper: var(--epp-paper);
+  --ss-paper-dim: var(--epp-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--epp-success);
+  --ss-success-soft: rgba(61, 107, 99, 0.12);
+  --ss-line: var(--epp-line);
+  --ss-line-dark: var(--epp-line-dark);
+  --ss-line-strong: rgba(244, 243, 246, 0.28);
+  --ss-text-on-dark: var(--epp-text-on-dark);
+  --ss-text-on-dark-dim: var(--epp-text-on-dark-dim);
+  --ss-text-on-light: var(--epp-text-on-light);
+  --ss-text-on-light-dim: var(--epp-text-on-light-dim);
+  --ss-font-display: var(--epp-font-display), serif;
+  --ss-font-body: var(--epp-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--epp-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.epp-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.epp-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.epp-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.epp-smartsite ::selection {
+  background: var(--epp-gold);
+  color: var(--epp-ink);
+}
+
+.epp-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.epp-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .epp-smartsite .ss-pulse {
+    animation: epp-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes epp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}

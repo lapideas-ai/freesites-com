@@ -3,32 +3,32 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
-import { buildBusinessDataFromWizard } from "@/lib/smartsite/hvac/build-business-data";
-import { FastResponseSmartSite } from "@/components/smartsite/hvac/fast-response/FastResponseSmartSite";
-import { TrustedLocalSmartSite } from "@/components/smartsite/hvac/trusted-local/TrustedLocalSmartSite";
-import { PremiumProfessionalSmartSite } from "@/components/smartsite/hvac/premium-professional/PremiumProfessionalSmartSite";
-import type { StyleVariant } from "@/lib/smartsite/types";
+import { getTradeRegistry } from "@/lib/smartsite/registry";
 
-const STYLE_COMPONENTS: Record<StyleVariant, typeof FastResponseSmartSite> = {
-  "fast-response": FastResponseSmartSite,
-  "trusted-local": TrustedLocalSmartSite,
-  "premium-professional": PremiumProfessionalSmartSite,
-};
+const KEEP_ITEMS = ["Logo", "Colors", "Photos", "Tagline"];
 
 export default function PersonalizePage() {
   const router = useRouter();
   const { state, update } = useWizard();
+  const registry = state.tradeSlug ? getTradeRegistry(state.tradeSlug) : undefined;
 
   useEffect(() => {
-    if (!state.tradeSlug || !state.styleVariant) {
+    if (!state.tradeSlug || !state.styleVariant || !registry) {
       router.replace("/build/trade");
     }
-  }, [state.tradeSlug, state.styleVariant, router]);
+  }, [state.tradeSlug, state.styleVariant, registry, router]);
 
-  if (!state.tradeSlug || !state.styleVariant) return null;
+  if (!state.tradeSlug || !state.styleVariant || !registry) return null;
 
-  const Component = STYLE_COMPONENTS[state.styleVariant];
-  const business = buildBusinessDataFromWizard(state);
+  const Component = registry.components[state.styleVariant];
+  const business = registry.buildBusinessDataFromWizard(state);
+
+  function toggleKeepItem(item: string) {
+    const has = state.keepItems.includes(item);
+    update({
+      keepItems: has ? state.keepItems.filter((i) => i !== item) : [...state.keepItems, item],
+    });
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -37,7 +37,7 @@ export default function PersonalizePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Make it yours</h1>
+      <h1 className="text-2xl font-semibold">Now let&apos;s make it yours.</h1>
       <p className="mt-1 text-foreground/60">
         This shows up on your new site — watch the preview update live.
       </p>
@@ -48,6 +48,76 @@ export default function PersonalizePage() {
         </div>
       </div>
 
+      <div className="mt-6">
+        <p className="text-sm font-medium">Would you rather start fresh, or keep what already works?</p>
+        <p className="mt-1 text-xs text-foreground/40">
+          We never pull colors, copy, or photos from an existing site or page automatically — a fresh look is the
+          default for a reason.
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-3">
+          <button
+            type="button"
+            onClick={() => update({ approach: "fresh" })}
+            className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
+              state.approach === "fresh" || !state.approach
+                ? "border-[#f97316] bg-[#fff7ed]"
+                : "border-foreground/15 hover:border-foreground/30"
+            }`}
+          >
+            <span className="block font-semibold">Start Fresh</span>
+            <span className="text-xs text-foreground/50">Give me a completely new look and message.</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => update({ approach: "keep" })}
+            className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
+              state.approach === "keep" ? "border-[#f97316] bg-[#fff7ed]" : "border-foreground/15 hover:border-foreground/30"
+            }`}
+          >
+            <span className="block font-semibold">Keep What Works</span>
+            <span className="text-xs text-foreground/50">I have things I like that I want carried over.</span>
+          </button>
+        </div>
+
+        {state.approach === "keep" && (
+          <div className="mt-4 rounded-xl border border-foreground/10 p-4">
+            <p className="text-sm font-medium">What would you like us to carry over?</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {KEEP_ITEMS.map((item) => {
+                const selected = state.keepItems.includes(item);
+                return (
+                  <button
+                    key={item}
+                    type="button"
+                    onClick={() => toggleKeepItem(item)}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                      selected ? "border-foreground bg-foreground text-background" : "border-foreground/15 text-foreground/60"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
+            <label className="mt-4 flex flex-col gap-1.5">
+              <span className="text-sm font-medium">
+                Existing website <span className="text-foreground/40">optional</span>
+              </span>
+              <input
+                type="url"
+                value={state.existingWebsiteUrl}
+                onChange={(e) => update({ existingWebsiteUrl: e.target.value })}
+                placeholder="https://yourcurrentsite.com"
+                className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
+              />
+              <span className="text-xs text-foreground/40">
+                Reference material only — we won&apos;t copy it, just use it to understand what to carry over.
+              </span>
+            </label>
+          </div>
+        )}
+      </div>
+
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
         <label className="flex flex-col gap-1.5">
           <span className="text-sm font-medium">Business name</span>
@@ -56,7 +126,7 @@ export default function PersonalizePage() {
             type="text"
             value={state.businessName}
             onChange={(e) => update({ businessName: e.target.value })}
-            placeholder="Ironclad Air & Heat"
+            placeholder={registry.sample.companyName}
             className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
           />
         </label>
@@ -69,56 +139,27 @@ export default function PersonalizePage() {
             type="text"
             value={state.tagline}
             onChange={(e) => update({ tagline: e.target.value })}
-            placeholder="Fast, reliable comfort — day or night."
+            placeholder={registry.sample.tagline}
             className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
           />
         </label>
 
-        <div className="grid grid-cols-2 gap-3">
-          <label className="flex flex-col gap-1.5">
-            <span className="text-sm font-medium">City</span>
-            <input
-              required
-              type="text"
-              value={state.city}
-              onChange={(e) => update({ city: e.target.value })}
-              placeholder="Austin, TX"
-              className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
-            />
-          </label>
-
-          <label className="flex flex-col gap-1.5">
-            <span className="text-sm font-medium">Phone</span>
-            <input
-              required
-              type="tel"
-              value={state.phone}
-              onChange={(e) => update({ phone: e.target.value })}
-              placeholder="(555) 123-4567"
-              className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
-            />
-          </label>
-        </div>
-
         <label className="flex flex-col gap-1.5">
-          <span className="text-sm font-medium">Email</span>
+          <span className="text-sm font-medium">Primary phone</span>
           <input
             required
-            type="email"
-            value={state.email}
-            onChange={(e) => update({ email: e.target.value })}
-            placeholder="you@example.com"
+            type="tel"
+            value={state.phone}
+            onChange={(e) => update({ phone: e.target.value })}
+            placeholder="(555) 123-4567"
             className="rounded-lg border border-foreground/15 px-3 py-2.5 outline-none focus:border-foreground/40"
           />
-          <span className="text-xs text-foreground/40">
-            Shown on your site for customers to reach you.
-          </span>
         </label>
 
         <div className="mt-2 flex items-center justify-between">
           <button
             type="button"
-            onClick={() => router.push("/build/style")}
+            onClick={() => router.push("/build/availability")}
             className="text-sm text-foreground/50 hover:text-foreground"
           >
             ← Back

@@ -1,0 +1,105 @@
+/* Fast Response — Plumbing canonical style.
+   Deliberately single-theme: a dark, high-contrast "dispatch board" ground
+   with light content bands — urgency is the point, not an OS dark-mode
+   responsive palette. A vivid water-blue signal color instead of HVAC's
+   red-orange keeps the two trades visually distinct at a glance.
+
+   This file owns color tokens and type-scale wiring only. Every section is a
+   shared component from src/components/smartsite/shared — nothing here
+   defines layout or markup, only the `--ss-*` contract those components read.
+
+   Namespaced with a pfr- prefix and .pfr-smartsite class (not HVAC's fr-
+   prefix and .fr-smartsite class) so this trade's Fast Response style can
+   never collide with HVAC's if both ever render on the same page (e.g. a
+   future homepage showing multiple trades side by side). */
+
+.pfr-smartsite {
+  /* Raw palette */
+  --pfr-ink: #0f1620;
+  --pfr-ink-soft: #182233;
+  --pfr-signal: #1d6fe0;
+  --pfr-signal-dark: #1657b3;
+  --pfr-coolant: #37e0c4;
+  --pfr-paper: #f4f7fa;
+  --pfr-paper-dim: #e7edf3;
+  --pfr-success: #3c9a5f;
+  --pfr-line: rgba(236, 242, 248, 0.14);
+  --pfr-line-dark: rgba(15, 22, 32, 0.12);
+  --pfr-text-on-dark: #eaf0f7;
+  --pfr-text-on-dark-dim: rgba(234, 240, 247, 0.68);
+  --pfr-text-on-light: #0f1620;
+  --pfr-text-on-light-dim: rgba(15, 22, 32, 0.62);
+
+  /* Common style contract — every shared section reads only these names,
+     never --pfr-* directly, so other Plumbing styles can plug into the
+     same components by defining this same set differently. */
+  --ss-ink: var(--pfr-ink);
+  --ss-ink-soft: var(--pfr-ink-soft);
+  --ss-accent: var(--pfr-signal);
+  --ss-accent-dark: var(--pfr-signal-dark);
+  --ss-accent2: var(--pfr-coolant);
+  --ss-accent-soft: rgba(29, 111, 224, 0.16);
+  --ss-accent-on-dark: #6ea8ff;
+  --ss-paper: var(--pfr-paper);
+  --ss-paper-dim: var(--pfr-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--pfr-success);
+  --ss-success-soft: rgba(60, 154, 95, 0.12);
+  --ss-line: var(--pfr-line);
+  --ss-line-dark: var(--pfr-line-dark);
+  --ss-line-strong: rgba(236, 242, 248, 0.3);
+  --ss-text-on-dark: var(--pfr-text-on-dark);
+  --ss-text-on-dark-dim: var(--pfr-text-on-dark-dim);
+  --ss-text-on-light: var(--pfr-text-on-light);
+  --ss-text-on-light-dim: var(--pfr-text-on-light-dim);
+  --ss-font-display: var(--pfr-font-display), sans-serif;
+  --ss-font-body: var(--pfr-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--pfr-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.pfr-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+.pfr-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pfr-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pfr-smartsite ::selection {
+  background: var(--ss-accent);
+  color: var(--ss-text-on-dark);
+}
+
+.pfr-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.pfr-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pfr-smartsite .ss-pulse {
+    animation: pfr-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes pfr-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}

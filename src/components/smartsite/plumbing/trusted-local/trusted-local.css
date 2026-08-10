@@ -1,0 +1,97 @@
+/* Trusted Local — Plumbing canonical style.
+   Warm, established, community-rooted — slate blue + copper rather than
+   HVAC Trusted Local's forest green + gold, keeping the trades visually
+   distinct even in the same "warm neighborly" register. This file owns
+   color tokens and type-scale wiring only; every section is a shared
+   component from src/components/smartsite/shared.
+
+   Namespaced with a ptl- prefix and .ptl-smartsite class so this can never
+   collide with HVAC's tl- prefix and .tl-smartsite class if both ever
+   render on the same page. */
+
+.ptl-smartsite {
+  --ptl-ink: #1c2b33;
+  --ptl-ink-soft: #24363f;
+  --ptl-copper: #b8703f;
+  --ptl-copper-dark: #96582e;
+  --ptl-slate: #5c7a86;
+  --ptl-paper: #eef2f1;
+  --ptl-paper-dim: #e3e9e7;
+  --ptl-success: #2f7d6a;
+  --ptl-line: rgba(238, 242, 241, 0.16);
+  --ptl-line-dark: rgba(28, 43, 51, 0.14);
+  --ptl-text-on-dark: #eef3f2;
+  --ptl-text-on-dark-dim: rgba(238, 243, 242, 0.7);
+  --ptl-text-on-light: #1c2b33;
+  --ptl-text-on-light-dim: rgba(28, 43, 51, 0.64);
+
+  --ss-ink: var(--ptl-ink);
+  --ss-ink-soft: var(--ptl-ink-soft);
+  --ss-accent: var(--ptl-copper);
+  --ss-accent-dark: var(--ptl-copper-dark);
+  --ss-accent2: var(--ptl-slate);
+  --ss-accent-soft: rgba(184, 112, 63, 0.18);
+  --ss-accent-on-dark: #d9a878;
+  --ss-paper: var(--ptl-paper);
+  --ss-paper-dim: var(--ptl-paper-dim);
+  --ss-surface: #f9fbfa;
+  --ss-success: var(--ptl-success);
+  --ss-success-soft: rgba(47, 125, 106, 0.14);
+  --ss-line: var(--ptl-line);
+  --ss-line-dark: var(--ptl-line-dark);
+  --ss-line-strong: rgba(238, 243, 242, 0.32);
+  --ss-text-on-dark: var(--ptl-text-on-dark);
+  --ss-text-on-dark-dim: var(--ptl-text-on-dark-dim);
+  --ss-text-on-light: var(--ptl-text-on-light);
+  --ss-text-on-light-dim: var(--ptl-text-on-light-dim);
+  --ss-font-display: var(--ptl-font-display), serif;
+  --ss-font-body: var(--ptl-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--ptl-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ptl-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.ptl-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.ptl-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ptl-smartsite ::selection {
+  background: var(--ptl-copper);
+  color: var(--ptl-ink);
+}
+
+.ptl-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ptl-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ptl-smartsite .ss-pulse {
+    animation: ptl-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes ptl-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
