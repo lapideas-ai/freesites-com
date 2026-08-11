@@ -18,6 +18,19 @@ export type Tier = {
   creditCardNote: string;
   tagline: string;
   features: string[];
+  /**
+   * Direct GHL checkout link (pay.freesites.com) — present only for tiers
+   * with a real, immediate purchase path (Pro's annual plan, Growth).
+   * Starter has none; it keeps routing into the existing FREE SmartSite
+   * creation funnel instead of a checkout.
+   */
+  checkoutHref?: string;
+  /** Pro's separate month-to-month checkout, linked from the monthToMonthPrice line. */
+  monthToMonthCheckoutHref?: string;
+  /** Short trial/billing disclosure shown under the price, e.g. "14-day free trial · $0 due today" or "No free trial". */
+  trialNote?: string;
+  /** Small savings badge shown next to the price, e.g. "SAVE $360/YEAR". Only Pro has one today. */
+  savingsBadge?: string;
 };
 
 export const tiers: Record<TierId, Tier> = {
@@ -42,10 +55,10 @@ export const tiers: Record<TierId, Tier> = {
     name: "SmartSite Pro",
     price: "$49",
     cadence: "/mo",
-    billingNote: "Billed annually",
+    billingNote: "Billed $588 annually",
     monthToMonthPrice: "$79",
     creditCardNote: "Credit card required",
-    tagline: "Your first paid communication platform — always-on, everywhere",
+    tagline: "AI-powered customer response — turn more inquiries into booked jobs, 24/7.",
     features: [
       "Everything in Starter",
       "SmartReply Email, SMS, Voice, and Booking",
@@ -53,6 +66,10 @@ export const tiers: Record<TierId, Tier> = {
       "Optional custom domain",
       "Same SmartSite, branding, and business identity",
     ],
+    trialNote: "14-day free trial · $0 due today",
+    savingsBadge: "SAVE $360/YEAR",
+    checkoutHref: "https://pay.freesites.com/payment-link/6a5fc2e0a655fa0b802a56e8",
+    monthToMonthCheckoutHref: "https://pay.freesites.com/payment-link/6a7b949bc8cc9a2ce72677c9",
   },
   growth: {
     id: "growth",
@@ -69,6 +86,8 @@ export const tiers: Record<TierId, Tier> = {
       "Gallery, FAQ, financing, trust, and scheduling",
       "FreeSites-managed integrations",
     ],
+    trialNote: "No free trial",
+    checkoutHref: "https://pay.freesites.com/payment-link/6a7b9223c8cc9a2ce72677c4",
   },
 };
 

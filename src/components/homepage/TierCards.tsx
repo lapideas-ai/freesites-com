@@ -39,7 +39,10 @@ export function TierCards({
   claimLabel,
 }: {
   mode: "homepage" | "upgrade";
-  onSelect: (tierId: TierId) => void;
+  /** Only invoked for tiers without a checkoutHref (Starter) — Pro/Growth
+   * navigate directly via a real anchor instead. Optional because
+   * upgrade mode never needs it: Starter is always disabled there. */
+  onSelect?: (tierId: TierId) => void;
   currentTier?: TierId;
   claimLabel?: string;
 }) {
@@ -60,15 +63,26 @@ export function TierCards({
               {tier.id === "starter" ? "Free Forever" : tier.id === "pro" ? "Most Popular" : "White-Label"}
             </div>
             <div className="mt-2.5 text-[15px] font-black text-[#1a2f4a]">{tier.name}</div>
-            <div className="mt-2 flex items-baseline gap-1">
+            <div className="mt-2 flex items-baseline gap-1.5">
               <span className="text-[28px] font-black tracking-tight text-[#1a2f4a]">{tier.price}</span>
               {tier.price !== "Free" && <span className="text-[11px] font-medium text-slate-500">{tier.cadence}</span>}
+              {tier.savingsBadge && (
+                <span className="rounded-full bg-green-100 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide text-green-700">
+                  {tier.savingsBadge}
+                </span>
+              )}
             </div>
             <div className="mt-0.5 text-[10px] font-semibold text-slate-400">{tier.billingNote || tier.creditCardNote}</div>
+            {tier.trialNote && (
+              <div className="mt-0.5 text-[10px] font-semibold text-[#16a34a]">{tier.trialNote}</div>
+            )}
             {tier.monthToMonthPrice && (
-              <div className="mt-1 text-[11px] font-medium text-slate-500">
-                or <span className="font-bold text-[#1a2f4a]">{tier.monthToMonthPrice}</span> month-to-month
-              </div>
+              <a
+                href={tier.monthToMonthCheckoutHref}
+                className="mt-1 block text-[11px] font-medium text-slate-500 transition-colors hover:text-[#1a2f4a] hover:underline"
+              >
+                or <span className="font-bold text-[#1a2f4a]">{tier.monthToMonthPrice}/mo</span> month-to-month
+              </a>
             )}
 
             <div className="mt-3 flex gap-1 border-t border-slate-100 pt-3">
@@ -96,19 +110,24 @@ export function TierCards({
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => onSelect(tier.id)}
-              disabled={isCurrent}
-              className={`mt-4 w-full rounded-md py-2.5 text-[12px] font-bold transition-all ${
-                isCurrent ? "cursor-default bg-slate-100 text-slate-400" : `hover:-translate-y-0.5 ${style.button}`
-              }`}
-            >
-              {isCurrent
-                ? "You're already on this"
-                : tier.id === "starter"
-                  ? (claimLabel ?? `Claim ${tier.name}`)
-                  : `Start ${tier.name}`}
-            </button>
+            {tier.checkoutHref ? (
+              <a
+                href={tier.checkoutHref}
+                className={`mt-4 block w-full rounded-md py-2.5 text-center text-[12px] font-bold transition-all hover:-translate-y-0.5 ${style.button}`}
+              >
+                {tier.id === "pro" ? "Start Free for 14 Days" : "Get SmartSite Growth"}
+              </a>
+            ) : (
+              <button
+                onClick={() => onSelect?.(tier.id)}
+                disabled={isCurrent}
+                className={`mt-4 w-full rounded-md py-2.5 text-[12px] font-bold transition-all ${
+                  isCurrent ? "cursor-default bg-slate-100 text-slate-400" : `hover:-translate-y-0.5 ${style.button}`
+                }`}
+              >
+                {isCurrent ? "You're already on this" : (claimLabel ?? `Claim ${tier.name}`)}
+              </button>
+            )}
           </div>
         );
       })}
