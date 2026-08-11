@@ -7,7 +7,22 @@ export type ServicesContent = {
   icons: IconComponent[];
 };
 
-export function Services({ business, content }: { business: BusinessData; content: ServicesContent }) {
+// `cardStyle` is additive: existing trades pass nothing and keep today's
+// sharp-cornered cards unchanged. "rounded" exists for warmer, more
+// approachable styles (Landscaping).
+export function Services({
+  business,
+  content,
+  cardStyle = "sharp",
+}: {
+  business: BusinessData;
+  content: ServicesContent;
+  cardStyle?: "sharp" | "rounded";
+}) {
+  const isRounded = cardStyle === "rounded";
+  const cardRadius = isRounded ? "rounded-[1.75rem]" : "rounded-xl";
+  const iconRadius = isRounded ? "rounded-full" : "rounded-lg";
+
   return (
     <section id="services" className="px-4 py-14 sm:px-8 sm:py-20" style={{ background: "var(--ss-paper)" }}>
       <div className="mx-auto max-w-5xl">
@@ -24,11 +39,11 @@ export function Services({ business, content }: { business: BusinessData; conten
             return (
               <div
                 key={service.name}
-                className="flex flex-col gap-3 rounded-xl p-5"
+                className={`flex flex-col gap-3 ${cardRadius} p-5`}
                 style={{ background: "var(--ss-surface, #fff)", border: "1px solid var(--ss-line-dark)" }}
               >
                 <span
-                  className="flex h-11 w-11 items-center justify-center rounded-lg"
+                  className={`flex h-11 w-11 items-center justify-center ${iconRadius}`}
                   style={{ background: "var(--ss-paper-dim)", color: "var(--ss-accent-dark, var(--ss-accent))" }}
                 >
                   <Icon className="h-5 w-5" />

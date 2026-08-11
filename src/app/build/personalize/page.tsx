@@ -21,6 +21,8 @@ export default function PersonalizePage() {
   if (!state.tradeSlug || !state.styleVariant || !registry) return null;
 
   const Component = registry.components[state.styleVariant];
+  // Unreachable in practice — see registry.ts's TradeRegistryEntry comment.
+  if (!Component) return null;
   const business = registry.buildBusinessDataFromWizard(state);
 
   function toggleKeepItem(item: string) {

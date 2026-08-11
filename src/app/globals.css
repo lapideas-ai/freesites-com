@@ -61,3 +61,37 @@ body {
     transform: translateY(4px);
   }
 }
+
+/* Homepage showcase rotation cross-fade — both the outgoing and incoming
+   example are mounted simultaneously and blend over ~650ms, rather than
+   the old key-remount approach (instant unmount + fade-in only), which
+   read as a flash/cut instead of a deliberate transition. Reduced-motion
+   visitors get an instant cut (no animation class applied), same fallback
+   behavior as every other motion effect in this codebase. */
+@media (prefers-reduced-motion: no-preference) {
+  .fs-cross-fade-out {
+    animation: fs-cross-fade-out 650ms ease forwards;
+  }
+
+  .fs-cross-fade-in {
+    animation: fs-cross-fade-in 650ms ease forwards;
+  }
+}
+
+@keyframes fs-cross-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fs-cross-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

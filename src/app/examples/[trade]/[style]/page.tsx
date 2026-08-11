@@ -23,17 +23,26 @@ const STYLE_NAMES: Record<StyleVariant, string> = {
 // starter tier, just a Desktop/Mobile toggle so people can genuinely
 // explore the site. Generalized from the original /examples/hvac/[style]
 // (which hardcoded HVAC's three components) so a newly-live trade needs no
-// changes here — only a LIVE_TRADE_SLUGS entry and a registry entry.
+// changes here — only a registry entry.
+//
+// Gated on the registry existing, NOT on LIVE_TRADE_SLUGS: showcase-only
+// trades (Painting, Landscaping, Remodeling) are meant to be explorable
+// here even though they aren't wizard-selectable yet — that's the whole
+// point of the homepage showcase linking here. The claim CTA below
+// branches live vs. not-live so it never dead-ends a visitor.
 export default function PublicExamplePage() {
   const params = useParams<{ trade: string; style: string }>();
   const router = useRouter();
   const [device, setDevice] = useState<"desktop" | "tablet" | "mobile">("desktop");
 
   const trade = getTradeBySlug(params.trade);
-  const registry = LIVE_TRADE_SLUGS.has(params.trade) ? getTradeRegistry(params.trade) : undefined;
+  const registry = getTradeRegistry(params.trade);
   if (!trade || !registry || !isStyleVariant(params.style)) notFound();
 
   const Component = registry.components[params.style];
+  if (!Component) notFound();
+
+  const isLive = LIVE_TRADE_SLUGS.has(params.trade);
 
   return (
     <div>
@@ -42,7 +51,8 @@ export default function PublicExamplePage() {
           ← Back to FreeSites
         </Link>
         <span className="text-[13px] font-bold text-slate-500">
-          {trade.name} · {STYLE_NAMES[params.style]} <span className="text-slate-300">·</span> Live SmartSite Example
+          {trade.name} · {STYLE_NAMES[params.style]} <span className="text-slate-300">·</span>{" "}
+          {isLive ? "Live SmartSite Example" : "Showcase Example"}
         </span>
         <div className="flex items-center gap-2">
           <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-0.5">
@@ -59,10 +69,10 @@ export default function PublicExamplePage() {
             ))}
           </div>
           <button
-            onClick={() => router.push("/build")}
+            onClick={() => router.push(isLive ? `/build?trade=${params.trade}` : `/trades/${params.trade}`)}
             className="rounded-lg bg-[#f97316] px-3.5 py-2 text-[12px] font-bold text-white transition-colors hover:bg-[#ea6c0a]"
           >
-            Claim My FREE SmartSite
+            {isLive ? "Claim My FREE SmartSite" : "Help Us Build This →"}
           </button>
         </div>
       </div>

@@ -25,8 +25,8 @@ function FounderPhoto() {
 
 export function FounderStory() {
   const router = useRouter();
-  const { activeSlug, claimCtaLabel } = useActiveTrade();
-  const onClaim = () => router.push(`/build?trade=${activeSlug}`);
+  const { claimCtaLabel, claimCtaHref } = useActiveTrade();
+  const onClaim = () => router.push(claimCtaHref());
   return (
     <section id="founder" className="bg-[#fafafa] py-10">
       <div className="mx-auto max-w-2xl px-6">

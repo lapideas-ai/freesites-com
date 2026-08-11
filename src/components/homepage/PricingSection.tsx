@@ -18,8 +18,8 @@ const COMPARISON_ROWS = [
 
 export function PricingSection() {
   const router = useRouter();
-  const { activeSlug, claimCtaLabel } = useActiveTrade();
-  const onClaim = () => router.push(`/build?trade=${activeSlug}`);
+  const { claimCtaLabel, claimCtaHref } = useActiveTrade();
+  const onClaim = () => router.push(claimCtaHref());
   return (
     <section id="pricing" className="bg-[#f8fafc] py-10">
       <div className="mx-auto max-w-5xl px-6">

@@ -6,6 +6,7 @@ import { Header } from "@/components/homepage/Header";
 import { Hero } from "@/components/homepage/Hero";
 import { CredibilityRow } from "@/components/homepage/CredibilityRow";
 import { BenefitCards } from "@/components/homepage/BenefitCards";
+import { ShowcaseIntro } from "@/components/homepage/ShowcaseIntro";
 import { LiveExamples } from "@/components/homepage/LiveExamples";
 import { TradeSection } from "@/components/homepage/TradeSection";
 import { PricingSection } from "@/components/homepage/PricingSection";
@@ -32,6 +33,7 @@ export default function HomePage() {
           <CredibilityRow />
           <PricingSection />
           <FounderStory />
+          <ShowcaseIntro />
           <LiveExamples />
           <TradeSection />
           <BenefitCards />

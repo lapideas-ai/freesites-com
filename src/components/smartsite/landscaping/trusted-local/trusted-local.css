@@ -1,0 +1,100 @@
+/* Trusted Local — Landscaping canonical style.
+   Light, natural, and earthy — soft sand paper with leaf-green and warm
+   wood-tone accents. Deliberately not another dark contractor site, and
+   distinct from Plumbing Trusted Local's slate-blue/copper entirely. This
+   file owns color tokens and type-scale wiring only; every section is a
+   shared component from src/components/smartsite/shared. Namespaced with
+   an lstl- prefix and .lstl-smartsite class so this can never collide with
+   another style. */
+
+.lstl-smartsite {
+  --lstl-ink: #23301f;
+  --lstl-ink-soft: #2e3d27;
+  --lstl-green: #5c8a52;
+  --lstl-green-dark: #46703d;
+  --lstl-wood: #b08256;
+  --lstl-paper: #f7f5ee;
+  --lstl-paper-dim: #eee9db;
+  --lstl-success: #4d7c58;
+  --lstl-line: rgba(244, 241, 230, 0.16);
+  --lstl-line-dark: rgba(35, 48, 31, 0.1);
+  --lstl-text-on-dark: #f4f1e6;
+  --lstl-text-on-dark-dim: rgba(244, 241, 230, 0.7);
+  --lstl-text-on-light: #23301f;
+  --lstl-text-on-light-dim: rgba(35, 48, 31, 0.62);
+
+  --ss-ink: var(--lstl-ink);
+  --ss-ink-soft: var(--lstl-ink-soft);
+  --ss-accent: var(--lstl-green);
+  --ss-accent-dark: var(--lstl-green-dark);
+  --ss-accent2: var(--lstl-wood);
+  --ss-accent-soft: rgba(92, 138, 82, 0.16);
+  --ss-accent-on-dark: #9fc493;
+  --ss-paper: var(--lstl-paper);
+  --ss-paper-dim: var(--lstl-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--lstl-success);
+  --ss-success-soft: rgba(77, 124, 88, 0.14);
+  --ss-line: var(--lstl-line);
+  --ss-line-dark: var(--lstl-line-dark);
+  --ss-line-strong: rgba(244, 241, 230, 0.32);
+  --ss-text-on-dark: var(--lstl-text-on-dark);
+  --ss-text-on-dark-dim: var(--lstl-text-on-dark-dim);
+  --ss-text-on-light: var(--lstl-text-on-light);
+  --ss-text-on-light-dim: var(--lstl-text-on-light-dim);
+  --ss-font-display: var(--lstl-font-display), serif;
+  --ss-font-body: var(--lstl-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--lstl-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.lstl-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.lstl-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.lstl-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lstl-smartsite ::selection {
+  background: var(--lstl-green);
+  color: var(--lstl-ink);
+}
+
+.lstl-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.lstl-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lstl-smartsite .ss-pulse {
+    animation: lstl-pulse 2.2s ease-in-out infinite;
+  }
+}
+
+@keyframes lstl-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}

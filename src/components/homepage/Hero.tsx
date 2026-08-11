@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { ScaledPreview } from "@/components/scaled-preview";
-import { useActiveTrade } from "@/lib/homepage-active-trade-context";
+import { useActiveTrade, type ShowcaseExample } from "@/lib/homepage-active-trade-context";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
+import { getTradeBySlug } from "@/lib/trades";
 import type { StyleVariant } from "@/lib/smartsite/types";
 
 const STYLE_NAMES: Record<StyleVariant, string> = {
@@ -17,15 +18,15 @@ const STYLE_NAMES: Record<StyleVariant, string> = {
 // row itself never re-mounts/re-fades, since a control flickering every 6s
 // would read as broken rather than alive.
 function TradeSelector() {
-  const { activeSlug, liveTradesInOrder, selectTrade } = useActiveTrade();
+  const { activeSlug, showcaseTradesInOrder, selectExample } = useActiveTrade();
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Showing examples for</span>
-      <div className="flex gap-1">
-        {liveTradesInOrder.map((trade) => (
+      <div className="flex flex-wrap gap-1">
+        {showcaseTradesInOrder.map((trade) => (
           <button
             key={trade.slug}
-            onClick={() => selectTrade(trade.slug)}
+            onClick={() => selectExample(trade.slug)}
             className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
               activeSlug === trade.slug
                 ? "bg-[#1a2f4a] text-white"
@@ -40,13 +41,46 @@ function TradeSelector() {
   );
 }
 
+// One layer of the preview cross-fade — the outgoing example renders
+// absolutely stacked on top of the incoming one (which stays in normal
+// flow, defining the wrapper's height) so both are visible and blending
+// during the transition, instead of the old instant-unmount-then-fade-in
+// approach that read as a flash/cut.
+function PreviewPanel({ example, phase }: { example: ShowcaseExample; phase: "in" | "out" | "static" }) {
+  const registry = getTradeRegistry(example.tradeSlug);
+  const trade = getTradeBySlug(example.tradeSlug);
+  if (!registry || !trade) return null;
+  const Component = registry.components[example.styleVariant];
+  if (!Component) return null;
+
+  const animationClass = phase === "in" ? "fs-cross-fade-in" : phase === "out" ? "fs-cross-fade-out" : "";
+  const positionClass = phase === "out" ? "absolute inset-0" : "relative";
+
+  return (
+    <div className={`${positionClass} ${animationClass}`}>
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-900/10">
+        <div className="flex items-center gap-1 border-b border-slate-100 bg-slate-50 px-2.5 py-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+          <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+          <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+        </div>
+        <ScaledPreview height={270} canonicalWidth={1440}>
+          <Component business={registry.sample} tier="starter" />
+        </ScaledPreview>
+      </div>
+      <div className="absolute left-2.5 top-2.5 rounded-md bg-black/55 px-2 py-1 text-[9px] font-bold uppercase tracking-wide text-white">
+        {trade.name} · {STYLE_NAMES[example.styleVariant]}
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   const router = useRouter();
-  const { activeSlug, activeTrade, claimCtaLabel } = useActiveTrade();
+  const { activeSlug, activeTrade, activeExample, previousExample, claimCtaLabel, claimCtaHref } = useActiveTrade();
   const registry = getTradeRegistry(activeSlug);
   if (!registry) return null;
-  const HeroPreviewComponent = registry.components["fast-response"];
-  const onClaim = () => router.push(`/build?trade=${activeSlug}`);
+  const onClaim = () => router.push(claimCtaHref());
 
   return (
     <section className="mx-auto grid max-w-6xl gap-6 px-6 py-7 md:grid-cols-2 md:items-center md:py-9">
@@ -103,6 +137,7 @@ export function Hero() {
             <div className="mt-1.5 flex gap-2">
               {(Object.keys(registry.components) as StyleVariant[]).map((styleId) => {
                 const StyleComponent = registry.components[styleId];
+                if (!StyleComponent) return null;
                 return (
                   <div
                     key={styleId}
@@ -134,18 +169,10 @@ export function Hero() {
         </div>
       </div>
 
-      <div key={`${activeSlug}-preview`} className="fs-fade-in relative min-w-0">
-        <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-900/10">
-          <div className="flex items-center gap-1 border-b border-slate-100 bg-slate-50 px-2.5 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
-          </div>
-          <ScaledPreview height={270} canonicalWidth={1440}>
-            <HeroPreviewComponent business={registry.sample} tier="starter" />
-          </ScaledPreview>
-        </div>
-        <div className="absolute -bottom-2.5 -left-2.5 flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-[#1a2f4a] shadow-md">
+      <div className="relative min-w-0">
+        {previousExample && <PreviewPanel example={previousExample} phase="out" />}
+        <PreviewPanel example={activeExample} phase={previousExample ? "in" : "static"} />
+        <div className="absolute -bottom-2.5 -left-2.5 z-10 flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-[#1a2f4a] shadow-md">
           <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" />
           Live in 60 seconds
         </div>

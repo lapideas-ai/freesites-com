@@ -1,0 +1,103 @@
+/* Premium Professional — Remodeling canonical style.
+   Warm ivory/stone/taupe, deliberately NOT the black/navy treatment already
+   dominating HVAC/Plumbing/Electrical — premium communicated through
+   restraint and material-inspired neutrals, not darkness. Zero dark
+   backgrounds anywhere on the page (see PremiumProfessionalSmartSite.tsx)
+   except Footer, which stays a warm near-black closing band, never literal
+   black or navy. This file owns color tokens and type-scale wiring only;
+   every section is a shared component from src/components/smartsite/shared,
+   namespaced with an rmpp- prefix and .rmpp-smartsite class so it can never
+   collide with another style. */
+
+.rmpp-smartsite {
+  --rmpp-ink: #3a332c;
+  --rmpp-ink-soft: #463e35;
+  --rmpp-taupe: #8a6a4e;
+  --rmpp-taupe-dark: #6d5138;
+  --rmpp-stone: #a9a190;
+  --rmpp-paper: #f7f3ec;
+  --rmpp-paper-dim: #ede6d9;
+  --rmpp-success: #5c7a5f;
+  --rmpp-line: rgba(247, 241, 230, 0.14);
+  --rmpp-line-dark: rgba(44, 39, 33, 0.1);
+  --rmpp-text-on-dark: #f7f1e6;
+  --rmpp-text-on-dark-dim: rgba(247, 241, 230, 0.68);
+  --rmpp-text-on-light: #2c2721;
+  --rmpp-text-on-light-dim: rgba(44, 39, 33, 0.62);
+
+  --ss-ink: var(--rmpp-ink);
+  --ss-ink-soft: var(--rmpp-ink-soft);
+  --ss-accent: var(--rmpp-taupe);
+  --ss-accent-dark: var(--rmpp-taupe-dark);
+  --ss-accent2: var(--rmpp-stone);
+  --ss-accent-soft: rgba(138, 106, 78, 0.16);
+  --ss-accent-on-dark: #c3a37e;
+  --ss-paper: var(--rmpp-paper);
+  --ss-paper-dim: var(--rmpp-paper-dim);
+  --ss-surface: #fffdfa;
+  --ss-success: var(--rmpp-success);
+  --ss-success-soft: rgba(92, 122, 95, 0.12);
+  --ss-line: var(--rmpp-line);
+  --ss-line-dark: var(--rmpp-line-dark);
+  --ss-line-strong: rgba(247, 241, 230, 0.28);
+  --ss-text-on-dark: var(--rmpp-text-on-dark);
+  --ss-text-on-dark-dim: var(--rmpp-text-on-dark-dim);
+  --ss-text-on-light: var(--rmpp-text-on-light);
+  --ss-text-on-light-dim: var(--rmpp-text-on-light-dim);
+  --ss-font-display: var(--rmpp-font-display), serif;
+  --ss-font-body: var(--rmpp-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--rmpp-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.rmpp-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.rmpp-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+}
+
+.rmpp-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rmpp-smartsite ::selection {
+  background: var(--rmpp-taupe);
+  color: var(--rmpp-text-on-dark);
+}
+
+.rmpp-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.rmpp-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rmpp-smartsite .ss-pulse {
+    animation: rmpp-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes rmpp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

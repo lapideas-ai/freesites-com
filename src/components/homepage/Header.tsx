@@ -59,7 +59,7 @@ function TradesMenu() {
 
 export function Header() {
   const router = useRouter();
-  const { activeSlug, claimCtaLabel } = useActiveTrade();
+  const { claimCtaLabel, claimCtaHref } = useActiveTrade();
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
@@ -87,7 +87,7 @@ export function Header() {
           </a>
         </nav>
         <button
-          onClick={() => router.push(`/build?trade=${activeSlug}`)}
+          onClick={() => router.push(claimCtaHref())}
           className="rounded-md bg-[#f97316] px-3.5 py-2 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
         >
           {claimCtaLabel()}

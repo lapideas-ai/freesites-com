@@ -149,6 +149,8 @@ function ReviewPageInner() {
   if (!trade) return null;
 
   const Component = registry.components[state.styleVariant];
+  // Unreachable in practice — see registry.ts's TradeRegistryEntry comment.
+  if (!Component) return null;
   const business = registry.buildBusinessDataFromWizard(state);
   const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
 

@@ -35,6 +35,8 @@ function FullSiteInner() {
   }
 
   const Component = registry.components[state.styleVariant];
+  // Unreachable in practice — see registry.ts's TradeRegistryEntry comment.
+  if (!Component) return null;
   const business = registry.buildBusinessDataFromWizard(state);
 
   return (

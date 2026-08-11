@@ -1,0 +1,102 @@
+/* Premium Professional — Painting canonical style.
+   Bright, contemporary, upscale — warm white paper + a confident coral-red
+   paint-chip accent, not the brass/copper/orange already used by
+   HVAC/Plumbing. Deliberately no dark "ink" backgrounds anywhere on the
+   page (see PremiumProfessionalSmartSite.tsx) — Footer is the only section
+   that stays a dark closing band, and even that uses a warm near-black,
+   not literal black or navy. This file owns color tokens and type-scale
+   wiring only; every section is a shared component from
+   src/components/smartsite/shared, namespaced with a ptpp- prefix and
+   .ptpp-smartsite class so it can never collide with another style. */
+
+.ptpp-smartsite {
+  --ptpp-ink: #2b2622;
+  --ptpp-ink-soft: #3a332d;
+  --ptpp-coral: #e2542f;
+  --ptpp-coral-dark: #c1401f;
+  --ptpp-teal: #2f6f6b;
+  --ptpp-paper: #fdfbf7;
+  --ptpp-paper-dim: #f5f0e8;
+  --ptpp-success: #3d7a52;
+  --ptpp-line: rgba(251, 247, 241, 0.14);
+  --ptpp-line-dark: rgba(36, 31, 27, 0.1);
+  --ptpp-text-on-dark: #fbf7f1;
+  --ptpp-text-on-dark-dim: rgba(251, 247, 241, 0.68);
+  --ptpp-text-on-light: #241f1b;
+  --ptpp-text-on-light-dim: rgba(36, 31, 27, 0.62);
+
+  --ss-ink: var(--ptpp-ink);
+  --ss-ink-soft: var(--ptpp-ink-soft);
+  --ss-accent: var(--ptpp-coral);
+  --ss-accent-dark: var(--ptpp-coral-dark);
+  --ss-accent2: var(--ptpp-teal);
+  --ss-accent-soft: rgba(226, 84, 47, 0.14);
+  --ss-accent-on-dark: #f2a184;
+  --ss-paper: var(--ptpp-paper);
+  --ss-paper-dim: var(--ptpp-paper-dim);
+  --ss-surface: #ffffff;
+  --ss-success: var(--ptpp-success);
+  --ss-success-soft: rgba(61, 122, 82, 0.12);
+  --ss-line: var(--ptpp-line);
+  --ss-line-dark: var(--ptpp-line-dark);
+  --ss-line-strong: rgba(251, 247, 241, 0.28);
+  --ss-text-on-dark: var(--ptpp-text-on-dark);
+  --ss-text-on-dark-dim: var(--ptpp-text-on-dark-dim);
+  --ss-text-on-light: var(--ptpp-text-on-light);
+  --ss-text-on-light-dim: var(--ptpp-text-on-light-dim);
+  --ss-font-display: var(--ptpp-font-display), serif;
+  --ss-font-body: var(--ptpp-font-body), ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: var(--ptpp-font-mono), ui-monospace, monospace;
+
+  background: var(--ss-paper);
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ptpp-smartsite .ss-display {
+  font-family: var(--ss-font-display);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.ptpp-smartsite .ss-mono {
+  font-family: var(--ss-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.ptpp-smartsite a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.ptpp-smartsite ::selection {
+  background: var(--ptpp-coral);
+  color: #fff;
+}
+
+.ptpp-smartsite details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ptpp-smartsite details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ptpp-smartsite .ss-pulse {
+    animation: ptpp-pulse 2.4s ease-in-out infinite;
+  }
+}
+
+@keyframes ptpp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

@@ -5,8 +5,8 @@ import { useActiveTrade } from "@/lib/homepage-active-trade-context";
 
 export function FinalCTA() {
   const router = useRouter();
-  const { activeSlug, claimCtaLabel } = useActiveTrade();
-  const onClaim = () => router.push(`/build?trade=${activeSlug}`);
+  const { claimCtaLabel, claimCtaHref } = useActiveTrade();
+  const onClaim = () => router.push(claimCtaHref());
   return (
     <section className="bg-[#1a2f4a] py-10">
       <div className="mx-auto max-w-md px-6 text-center">

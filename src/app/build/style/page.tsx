@@ -40,6 +40,11 @@ export default function StylePage() {
       <div className="mt-6 flex flex-col gap-4">
         {STYLE_META.map(({ id, name, vibe }) => {
           const Component = registry.components[id];
+          // Unreachable in practice: this page only ever renders for
+          // LIVE_TRADE_SLUGS trades, which always ship all three styles.
+          // Guard exists purely so `components` being Partial (to support
+          // showcase-only trades) still type-checks under strict mode.
+          if (!Component) return null;
           return (
             // A live SmartSite preview (including its own header button) renders
             // inside each card, so this can't be a <button> — nested buttons are

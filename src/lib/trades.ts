@@ -43,6 +43,13 @@ export const trades: Trade[] = [
     services: ["Storm damage repair", "Full replacement", "Inspections", "Gutter work"],
   },
   {
+    slug: "remodeling",
+    name: "Remodeling",
+    icon: "🏛️",
+    description: "Kitchens, bathrooms, and whole-home renovations",
+    services: ["Kitchen remodels", "Bathroom remodels", "Whole-home renovations", "Design consultations"],
+  },
+  {
     slug: "painting",
     name: "Painting",
     icon: "🎨",
