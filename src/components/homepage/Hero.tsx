@@ -85,6 +85,19 @@ export function Hero() {
   return (
     <section className="mx-auto grid max-w-6xl gap-6 px-6 py-7 md:grid-cols-2 md:items-center md:py-9">
       <div className="min-w-0">
+        {/* Compact orientation for a visitor who doesn't know FreeSites yet —
+            deliberately short so the rotating preview still lands above the
+            fold on a normal desktop viewport. */}
+        <div className="mb-3">
+          <div className="text-[12px] font-black uppercase tracking-wide text-[#1a2f4a]">
+            Built for Home Service Businesses
+          </div>
+          <p className="mt-0.5 text-[13px] font-medium leading-snug text-slate-600">
+            FreeSites gives contractors a FREE FOREVER website we call a SmartSite™ — built to help turn visitors
+            into customers.
+          </p>
+        </div>
+
         <TradeSelector />
 
         {/* Keyed by activeSlug so React remounts this block on every trade

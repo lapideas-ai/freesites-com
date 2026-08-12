@@ -40,3 +40,16 @@ export const SMARTSITE_REGISTRY: Record<string, TradeRegistryEntry> = {
 export function getTradeRegistry(tradeSlug: string): TradeRegistryEntry | undefined {
   return SMARTSITE_REGISTRY[tradeSlug];
 }
+
+const STYLE_PREFERENCE_ORDER: StyleVariant[] = ["fast-response", "trusted-local", "premium-professional"];
+
+// For trades with only one style built (Painting, Landscaping, Remodeling
+// today), this is "the" style to link to from anywhere that just needs "a
+// working example page" for the trade — e.g. the Trades page's card link
+// for a completed-but-not-live trade. Returns undefined if the trade has
+// no registry entry at all.
+export function getDefaultStyleVariant(tradeSlug: string): StyleVariant | undefined {
+  const registry = getTradeRegistry(tradeSlug);
+  if (!registry) return undefined;
+  return STYLE_PREFERENCE_ORDER.find((style) => registry.components[style]);
+}

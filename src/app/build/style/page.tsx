@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
+import { WizardBuildingCue } from "@/components/wizard-building-cue";
 import type { StyleVariant } from "@/lib/smartsite/types";
 
 const STYLE_META: { id: StyleVariant; name: string; vibe: string }[] = [
@@ -36,6 +37,7 @@ export default function StylePage() {
       <p className="mt-1 text-foreground/60">
         These are three recent examples — not your only choices. Pick the direction you like best.
       </p>
+      <WizardBuildingCue />
 
       <div className="mt-6 flex flex-col gap-4">
         {STYLE_META.map(({ id, name, vibe }) => {

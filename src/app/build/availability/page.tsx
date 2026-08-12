@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeBySlug } from "@/lib/trades";
+import { WizardBuildingCue } from "@/components/wizard-building-cue";
 
 export default function AvailabilityPage() {
   const router = useRouter();
@@ -36,6 +37,7 @@ export default function AvailabilityPage() {
       <p className="mt-3 text-sm text-foreground/60">
         Our goal is to work with only one contractor per trade in most local markets.
       </p>
+      <WizardBuildingCue />
 
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-3">

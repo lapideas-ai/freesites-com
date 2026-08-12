@@ -63,6 +63,10 @@ export function TierCards({
               {tier.id === "starter" ? "Free Forever" : tier.id === "pro" ? "Most Popular" : "White-Label"}
             </div>
             <div className="mt-2.5 text-[15px] font-black text-[#1a2f4a]">{tier.name}</div>
+            {tier.pitchHeadline && (
+              <div className="mt-1.5 text-[12px] font-bold leading-snug text-[#1a2f4a]">{tier.pitchHeadline}</div>
+            )}
+            {tier.pitchBody && <p className="mt-1 text-[11px] leading-snug text-slate-500">{tier.pitchBody}</p>}
             <div className="mt-2 flex items-baseline gap-1.5">
               <span className="text-[28px] font-black tracking-tight text-[#1a2f4a]">{tier.price}</span>
               {tier.price !== "Free" && <span className="text-[11px] font-medium text-slate-500">{tier.cadence}</span>}
@@ -83,6 +87,9 @@ export function TierCards({
               >
                 or <span className="font-bold text-[#1a2f4a]">{tier.monthToMonthPrice}/mo</span> month-to-month
               </a>
+            )}
+            {tier.monthToMonthPostTrialNote && (
+              <div className="mt-0.5 text-[10px] text-slate-400">{tier.monthToMonthPostTrialNote}</div>
             )}
 
             <div className="mt-3 flex gap-1 border-t border-slate-100 pt-3">
@@ -111,12 +118,19 @@ export function TierCards({
               ))}
             </ul>
             {tier.checkoutHref ? (
-              <a
-                href={tier.checkoutHref}
-                className={`mt-4 block w-full rounded-md py-2.5 text-center text-[12px] font-bold transition-all hover:-translate-y-0.5 ${style.button}`}
-              >
-                {tier.id === "pro" ? "Start Free for 14 Days" : "Get SmartSite Growth"}
-              </a>
+              <>
+                {tier.postTrialNote && (
+                  <div className="mt-3 border-t border-slate-100 pt-3 text-[10px] leading-snug text-slate-400">
+                    {tier.postTrialNote}
+                  </div>
+                )}
+                <a
+                  href={tier.checkoutHref}
+                  className={`mt-4 block w-full rounded-md py-2.5 text-center text-[12px] font-bold transition-all hover:-translate-y-0.5 ${style.button}`}
+                >
+                  {tier.ctaLabel ?? `Start ${tier.name}`}
+                </a>
+              </>
             ) : (
               <button
                 onClick={() => onSelect?.(tier.id)}

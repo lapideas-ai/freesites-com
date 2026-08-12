@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { trades, LIVE_TRADE_SLUGS } from "@/lib/trades";
+import { trades, LIVE_TRADE_SLUGS, BUILT_TRADE_SLUGS } from "@/lib/trades";
+import { getDefaultStyleVariant } from "@/lib/smartsite/registry";
 
-const FEATURED_SLUGS = ["hvac", "plumbing", "electrical", "roofing", "landscaping", "cleaning"];
+const FEATURED_SLUGS = ["hvac", "plumbing", "electrical", "roofing", "landscaping", "cleaning", "painting", "remodeling"];
 
 export function TradeSection() {
   const featured = FEATURED_SLUGS.map((slug) => trades.find((t) => t.slug === slug)).filter((t): t is NonNullable<typeof t> => Boolean(t));
@@ -19,22 +20,36 @@ export function TradeSection() {
         </p>
 
         <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {featured.map((trade) => (
-            <Link
-              key={trade.slug}
-              href={LIVE_TRADE_SLUGS.has(trade.slug) ? "/build" : `/trades/${trade.slug}`}
-              className="group rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-orange-200"
-            >
-              <div className="text-xl">{trade.icon}</div>
-              <div className="mt-1.5 text-[13px] font-bold text-[#1a2f4a]">{trade.name}</div>
-              <p className="mt-0.5 text-[11px] leading-relaxed text-slate-500">{trade.description}</p>
-              {LIVE_TRADE_SLUGS.has(trade.slug) ? (
-                <div className="mt-2 text-[11px] font-bold text-[#f97316]">Start now →</div>
-              ) : (
-                <div className="mt-2 text-[11px] font-bold text-[#1a6bbf]">Help us build this →</div>
-              )}
-            </Link>
-          ))}
+          {featured.map((trade) => {
+            const isLive = LIVE_TRADE_SLUGS.has(trade.slug);
+            const isBuilt = BUILT_TRADE_SLUGS.has(trade.slug);
+            const defaultStyle = !isLive && isBuilt ? getDefaultStyleVariant(trade.slug) : undefined;
+            const href = isLive
+              ? "/build"
+              : defaultStyle
+                ? `/examples/${trade.slug}/${defaultStyle}`
+                : `/trades/${trade.slug}`;
+
+            return (
+              <Link
+                key={trade.slug}
+                href={href}
+                target={defaultStyle ? "_blank" : undefined}
+                className="group rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-orange-200"
+              >
+                <div className="text-xl">{trade.icon}</div>
+                <div className="mt-1.5 text-[13px] font-bold text-[#1a2f4a]">{trade.name}</div>
+                <p className="mt-0.5 text-[11px] leading-relaxed text-slate-500">{trade.description}</p>
+                {isLive ? (
+                  <div className="mt-2 text-[11px] font-bold text-[#f97316]">Start now →</div>
+                ) : defaultStyle ? (
+                  <div className="mt-2 text-[11px] font-bold text-[#16a34a]">View Example →</div>
+                ) : (
+                  <div className="mt-2 text-[11px] font-bold text-[#1a6bbf]">Help us build this →</div>
+                )}
+              </Link>
+            );
+          })}
           <Link
             href="/trades"
             className="flex flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 bg-white p-4 text-center transition-colors hover:border-orange-300"

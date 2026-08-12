@@ -173,3 +173,11 @@ export function getTradeBySlug(slug: string): Trade | undefined {
 // everything else gets the "help us build this next" confirmation instead
 // of a 404 or a dead end.
 export const LIVE_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical"]);
+
+// Every trade with at least one real SmartSite style built — a superset of
+// LIVE_TRADE_SLUGS. Painting, Landscaping, and Remodeling have a completed,
+// viewable SmartSite (see src/lib/smartsite/registry.ts) but aren't
+// wizard-selectable yet (only one style each, not three), so they route to
+// their /examples page instead of into /build. Everything outside this set
+// gets the "help us build this next" confirmation.
+export const BUILT_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical", "painting", "landscaping", "remodeling"]);

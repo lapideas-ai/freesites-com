@@ -4,6 +4,7 @@ import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeBySlug, LIVE_TRADE_SLUGS } from "@/lib/trades";
+import { WizardBuildingCue } from "@/components/wizard-building-cue";
 
 // Seeds tradeSlug from the ?trade= param (set by /build/page.tsx's redirect,
 // or present directly on a bookmarked/shared link) — the first client
@@ -43,6 +44,7 @@ function StartPageInner() {
       <p className="mt-1 text-foreground/60">
         We&apos;ll use this to save your SmartSite and send you access to it.
       </p>
+      <WizardBuildingCue />
 
       <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
         <label className="flex flex-col gap-1.5">

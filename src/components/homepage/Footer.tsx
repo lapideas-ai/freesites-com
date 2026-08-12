@@ -19,6 +19,9 @@ export function Footer() {
           <a href="mailto:admin@freesites.com" className="hover:text-slate-600">
             Contact
           </a>
+          <a href="/funding" className="hover:text-slate-600">
+            FreeSites Funding
+          </a>
           <span>© 2026 FreeSites.com LLC</span>
         </div>
       </div>

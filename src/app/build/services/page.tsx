@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { trades, getTradeBySlug } from "@/lib/trades";
+import { WizardBuildingCue } from "@/components/wizard-building-cue";
 
 // Multi-select draws from the FULL trade list (not LIVE_TRADE_SLUGS) — a
 // secondary trade only needs to exist as a service section on the site, it
@@ -50,6 +51,7 @@ export default function ServicesPage() {
         Primary business: <span className="font-medium text-foreground">{primaryTrade.name}</span> — this stays
         the main focus of your site either way.
       </p>
+      <WizardBuildingCue />
 
       <div className="mt-6 grid grid-cols-2 gap-3">
         <button
