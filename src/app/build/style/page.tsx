@@ -33,8 +33,8 @@ export default function StylePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Pick a starting look for your SmartSite</h1>
-      <p className="mt-1 text-foreground/60">
+      <h1 className="text-2xl font-black text-[#1a2f4a]">Pick a starting look for your SmartSite</h1>
+      <p className="mt-1 text-slate-600">
         These are three recent examples — not your only choices. Pick the direction you like best.
       </p>
       <WizardBuildingCue />
@@ -63,10 +63,8 @@ export default function StylePage() {
                   selectStyle(id);
                 }
               }}
-              className={`cursor-pointer rounded-2xl p-1 text-left transition-colors active:scale-[0.99] ${
-                state.styleVariant === id
-                  ? "ring-2 ring-foreground"
-                  : "ring-1 ring-foreground/10 hover:ring-foreground/30"
+              className={`cursor-pointer overflow-hidden rounded-2xl border p-1 text-left transition-colors active:scale-[0.99] ${
+                state.styleVariant === id ? "border-[#f97316] ring-2 ring-[#f97316]" : "border-slate-200 hover:border-slate-300"
               }`}
             >
               <div className="h-[210px] overflow-hidden rounded-xl">
@@ -75,22 +73,22 @@ export default function StylePage() {
                 </div>
               </div>
               <div className="flex items-center justify-between px-3 py-2">
-                <span className="text-sm font-semibold">{name}</span>
-                <span className="text-xs text-foreground/50">{vibe}</span>
+                <span className="text-sm font-semibold text-[#1a2f4a]">{name}</span>
+                <span className="text-xs text-slate-500">{vibe}</span>
               </div>
             </div>
           );
         })}
       </div>
 
-      <div className="mt-5 rounded-xl bg-foreground/[0.03] p-4 text-center">
-        <p className="text-xs leading-relaxed text-foreground/60">
+      <div className="mt-5 rounded-xl bg-slate-50 p-4 text-center">
+        <p className="text-xs leading-relaxed text-slate-600">
           Your FREE SmartSite can be personalized with your business
           information and simple color changes. Want something substantially
           different? SmartSite Pro can be custom-designed around your
           business, brand and preferences.
         </p>
-        <p className="mt-2 text-xs font-medium text-foreground/50">
+        <p className="mt-2 text-xs font-medium text-slate-500">
           Don&apos;t see exactly what you want? No problem. These are
           starting points, not limits.
         </p>
@@ -99,7 +97,7 @@ export default function StylePage() {
       <button
         type="button"
         onClick={() => router.push("/build/start")}
-        className="mt-6 text-sm text-foreground/50 hover:text-foreground"
+        className="mt-6 text-sm text-slate-500 hover:text-[#1a2f4a]"
       >
         ← Back
       </button>

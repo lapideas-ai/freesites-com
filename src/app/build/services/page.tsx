@@ -46,9 +46,9 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Do you offer more than one service or trade?</h1>
-      <p className="mt-1 text-foreground/60">
-        Primary business: <span className="font-medium text-foreground">{primaryTrade.name}</span> — this stays
+      <h1 className="text-2xl font-black text-[#1a2f4a]">Do you offer more than one service or trade?</h1>
+      <p className="mt-1 text-slate-600">
+        Primary business: <span className="font-semibold text-[#1a2f4a]">{primaryTrade.name}</span> — this stays
         the main focus of your site either way.
       </p>
       <WizardBuildingCue />
@@ -60,10 +60,10 @@ export default function ServicesPage() {
             setOffersMultiple(false);
             if (state.secondaryTradeSlugs.length > 0) update({ secondaryTradeSlugs: [] });
           }}
-          className={`rounded-xl border px-4 py-3 text-sm font-medium transition-colors ${
+          className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
             offersMultiple === false
-              ? "border-foreground bg-foreground text-background"
-              : "border-foreground/15 hover:border-foreground/30"
+              ? "border-[#f97316] bg-[#fff7ed] text-[#1a2f4a]"
+              : "border-slate-200 text-slate-600 hover:border-slate-300"
           }`}
         >
           No
@@ -71,10 +71,10 @@ export default function ServicesPage() {
         <button
           type="button"
           onClick={() => setOffersMultiple(true)}
-          className={`rounded-xl border px-4 py-3 text-sm font-medium transition-colors ${
+          className={`rounded-xl border px-4 py-3 text-sm font-semibold transition-colors ${
             offersMultiple === true
-              ? "border-foreground bg-foreground text-background"
-              : "border-foreground/15 hover:border-foreground/30"
+              ? "border-[#f97316] bg-[#fff7ed] text-[#1a2f4a]"
+              : "border-slate-200 text-slate-600 hover:border-slate-300"
           }`}
         >
           Yes
@@ -83,7 +83,7 @@ export default function ServicesPage() {
 
       {offersMultiple && (
         <div className="mt-6">
-          <p className="text-sm font-medium">Select any others you offer:</p>
+          <p className="text-sm font-semibold text-[#1a2f4a]">Select any others you offer:</p>
           <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
             {otherTrades.map((trade) => {
               const selected = state.secondaryTradeSlugs.includes(trade.slug);
@@ -94,8 +94,8 @@ export default function ServicesPage() {
                   onClick={() => toggleSecondary(trade.slug)}
                   className={`flex items-center gap-1.5 rounded-lg border px-3 py-2 text-left text-sm transition-colors ${
                     selected
-                      ? "border-foreground bg-foreground/5 font-medium"
-                      : "border-foreground/15 text-foreground/70 hover:border-foreground/30"
+                      ? "border-[#f97316] bg-[#fff7ed] font-semibold text-[#1a2f4a]"
+                      : "border-slate-200 text-slate-600 hover:border-slate-300"
                   }`}
                 >
                   <span>{trade.icon}</span>
@@ -104,7 +104,7 @@ export default function ServicesPage() {
               );
             })}
           </div>
-          <p className="mt-3 text-xs text-foreground/40">
+          <p className="mt-3 text-xs text-slate-400">
             {primaryTrade.name} stays your site&apos;s main focus — anything selected here becomes an additional
             service section, not a competing identity.
           </p>
@@ -115,7 +115,7 @@ export default function ServicesPage() {
         <button
           type="button"
           onClick={() => router.push("/build/style")}
-          className="text-sm text-foreground/50 hover:text-foreground"
+          className="text-sm text-slate-500 hover:text-[#1a2f4a]"
         >
           ← Back
         </button>
@@ -123,7 +123,7 @@ export default function ServicesPage() {
           type="button"
           onClick={handleContinue}
           disabled={offersMultiple === null}
-          className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background disabled:opacity-40"
+          className="rounded-full bg-[#f97316] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#ea6c0a] disabled:opacity-40"
         >
           Continue →
         </button>

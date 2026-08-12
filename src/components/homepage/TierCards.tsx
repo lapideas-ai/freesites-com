@@ -80,17 +80,6 @@ export function TierCards({
             {tier.trialNote && (
               <div className="mt-0.5 text-[10px] font-semibold text-[#16a34a]">{tier.trialNote}</div>
             )}
-            {tier.monthToMonthPrice && (
-              <a
-                href={tier.monthToMonthCheckoutHref}
-                className="mt-1 block text-[11px] font-medium text-slate-500 transition-colors hover:text-[#1a2f4a] hover:underline"
-              >
-                or <span className="font-bold text-[#1a2f4a]">{tier.monthToMonthPrice}/mo</span> month-to-month
-              </a>
-            )}
-            {tier.monthToMonthPostTrialNote && (
-              <div className="mt-0.5 text-[10px] text-slate-400">{tier.monthToMonthPostTrialNote}</div>
-            )}
 
             <div className="mt-3 flex gap-1 border-t border-slate-100 pt-3">
               {CHANNEL_STEPS.map((step) => {
@@ -130,6 +119,25 @@ export function TierCards({
                 >
                   {tier.ctaLabel ?? `Start ${tier.name}`}
                 </a>
+                {tier.monthToMonthPrice && tier.monthToMonthCheckoutHref && (
+                  <div className="mt-3 border-t border-slate-100 pt-3">
+                    <div className="text-[10px] font-semibold text-slate-400">
+                      Prefer monthly? <span className="font-bold text-[#1a2f4a]">{tier.monthToMonthPrice}/mo</span>
+                    </div>
+                    {tier.trialNote && (
+                      <div className="mt-0.5 text-[10px] font-semibold text-[#16a34a]">{tier.trialNote}</div>
+                    )}
+                    {tier.monthToMonthPostTrialNote && (
+                      <div className="mt-0.5 text-[10px] text-slate-400">{tier.monthToMonthPostTrialNote}</div>
+                    )}
+                    <a
+                      href={tier.monthToMonthCheckoutHref}
+                      className="mt-2 block w-full rounded-md border border-slate-200 py-2 text-center text-[11px] font-bold text-[#1a2f4a] transition-colors hover:border-orange-300"
+                    >
+                      {tier.ctaLabel ?? `Start ${tier.name}`}
+                    </a>
+                  </div>
+                )}
               </>
             ) : (
               <button
