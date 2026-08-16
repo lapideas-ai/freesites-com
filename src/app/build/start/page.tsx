@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeBySlug, LIVE_TRADE_SLUGS } from "@/lib/trades";
 import { WizardBuildingCue } from "@/components/wizard-building-cue";
+import { reportLead } from "@/lib/report-lead";
 
 // Seeds tradeSlug from the ?trade= param (set by /build/page.tsx's redirect,
 // or present directly on a bookmarked/shared link) — the first client
@@ -35,6 +36,13 @@ function StartPageInner() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    reportLead({
+      lead_type: "SmartSite Lead",
+      page_path: "/build/start",
+      email: state.leadEmail,
+      first_name: state.leadFirstName,
+      fields: { trade: tradeSlug },
+    });
     router.push("/build/style");
   }
 

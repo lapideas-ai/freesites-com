@@ -5,19 +5,13 @@ import { inter } from "@/components/homepage/fonts";
 import { Header } from "@/components/homepage/Header";
 import { Footer } from "@/components/homepage/Footer";
 import { ActiveTradeProvider } from "@/lib/homepage-active-trade-context";
+import { reportLead } from "@/lib/report-lead";
 
 // V1 introduction + inquiry page for FreeSites Funding. Deliberately small:
 // one screen, one short form — not a funding application, not a
 // qualification engine. The FREE offer is the SmartSite, not this; this
 // page exists to start a conversation, not to promise consulting,
 // bookkeeping help, automatic matches, or guaranteed financing/approval.
-//
-// NO BACKEND IS WIRED YET. handleSubmit only sets local UI state — nothing
-// is sent over the network or stored anywhere. Field names/ids are stable
-// (snake_case) so a real destination (a Netlify function forwarding to a
-// GoHighLevel webhook, a Kit API call, etc.) can be wired in later by
-// replacing the body of handleSubmit — no redesign needed. Do not present
-// this page as capturing real leads until that's done.
 
 const FUNDING_AMOUNT_OPTIONS = ["Under $25K", "$25K–$50K", "$50K–$100K", "$100K–$250K", "$250K–$500K", "$500K+", "Not sure yet"];
 
@@ -53,8 +47,18 @@ export default function FundingPage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // No backend wired yet — see the file header comment. `form` is a
-    // ready-to-send payload once a real destination exists.
+    reportLead({
+      lead_type: "Funding Opportunity",
+      page_path: "/funding",
+      email: form.email,
+      phone: form.phone,
+      first_name: form.name,
+      business_name: form.business_name,
+      fields: {
+        funding_purpose: form.funding_purpose,
+        funding_amount: form.funding_amount,
+      },
+    });
     setSubmitted(true);
   }
 

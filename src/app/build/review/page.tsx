@@ -1,10 +1,11 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useWizard, type WizardState } from "@/lib/wizard-context";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
 import { getTradeBySlug } from "@/lib/trades";
+import { reportLead } from "@/lib/report-lead";
 
 // This is the whole "generation" step for the demo: no AI call, no backend,
 // no deploy per visitor — the canonical SmartSite renders instantly with the
@@ -127,6 +128,22 @@ function ReviewPageInner() {
   const registry = state.tradeSlug ? getTradeRegistry(state.tradeSlug) : undefined;
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
   const demoParam = searchParams.get("demo");
+  const reportedRef = useRef(false);
+
+  useEffect(() => {
+    if (reportedRef.current) return;
+    if (!state.tradeSlug || !state.styleVariant || !state.businessName) return;
+    reportedRef.current = true;
+    const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
+    reportLead({
+      lead_type: "SmartSite Lead",
+      page_path: "/build/review",
+      email: state.leadEmail || state.email,
+      phone: state.phone,
+      business_name: state.businessName,
+      fields: { funnel_stage: "revealed", subdomain_slug: subdomainSlug },
+    });
+  }, [state.tradeSlug, state.styleVariant, state.businessName, state.leadEmail, state.email, state.phone]);
 
   useEffect(() => {
     // NODE_ENV is hard-set to "production" by `next build`/`next start`

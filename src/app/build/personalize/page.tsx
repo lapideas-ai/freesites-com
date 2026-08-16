@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
+import { reportLead } from "@/lib/report-lead";
 
 const KEEP_ITEMS = ["Logo", "Colors", "Photos", "Tagline"];
 
@@ -34,6 +35,19 @@ export default function PersonalizePage() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    reportLead({
+      lead_type: "SmartSite Lead",
+      page_path: "/build/personalize",
+      email: state.leadEmail || state.email,
+      phone: state.phone,
+      business_name: state.businessName,
+      fields: {
+        tagline: state.tagline,
+        approach: state.approach,
+        keep_items: state.keepItems,
+        existing_website_url: state.existingWebsiteUrl,
+      },
+    });
     router.push("/build/review");
   }
 
