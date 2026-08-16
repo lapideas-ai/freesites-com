@@ -9,8 +9,11 @@ export const displayFont = Cormorant({
   variable: "--pp-font-display",
 });
 
+// Manrope is a variable font — no weight array needed (or wanted): a fixed
+// weight list forces Turbopack to resolve one static instance per weight
+// during the production build, which is the exact font-resolution path that
+// failed on Netlify. Loading it as a variable font is a single resolution.
 export const bodyFont = Manrope({
-  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--pp-font-body",
 });
