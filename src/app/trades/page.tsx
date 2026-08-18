@@ -5,8 +5,9 @@ import { inter } from "@/components/homepage/fonts";
 import { Header } from "@/components/homepage/Header";
 import { Footer } from "@/components/homepage/Footer";
 import { ActiveTradeProvider } from "@/lib/homepage-active-trade-context";
-import { trades, LIVE_TRADE_SLUGS, BUILT_TRADE_SLUGS } from "@/lib/trades";
+import { trades, LIVE_TRADE_SLUGS, BUILT_TRADE_SLUGS, getTradeEntryHref } from "@/lib/trades";
 import { getDefaultStyleVariant } from "@/lib/smartsite/registry";
+import { MobileContactBar } from "@/components/homepage/SmartReplyContact";
 
 // Navigation-only for now — see TradeSection on the homepage. Each trade
 // links into the live wizard (/build) if wizard-selectable, its completed
@@ -17,8 +18,9 @@ export default function TradesPage() {
   return (
     <div className={inter.className}>
       <ActiveTradeProvider>
-        <Header />
+        <Header showContact />
       </ActiveTradeProvider>
+      <MobileContactBar />
       <section className="mx-auto max-w-6xl px-6 py-10">
         <span className="text-[11px] font-bold uppercase tracking-wide text-[#ea6c0a]">All Trades</span>
         <h1 className="mt-1 text-2xl font-extrabold leading-tight tracking-tight text-[#1a2f4a] sm:text-3xl">
@@ -34,11 +36,10 @@ export default function TradesPage() {
             const isLive = LIVE_TRADE_SLUGS.has(trade.slug);
             const isBuilt = BUILT_TRADE_SLUGS.has(trade.slug);
             const defaultStyle = !isLive && isBuilt ? getDefaultStyleVariant(trade.slug) : undefined;
-            const href = isLive
-              ? "/build"
-              : defaultStyle
-                ? `/examples/${trade.slug}/${defaultStyle}`
-                : `/trades/${trade.slug}`;
+            // Sourced from the same canonical helper every trade-routing
+            // surface now shares — fixes live trades silently losing their
+            // ?trade= param and landing on the generic trade picker.
+            const href = getTradeEntryHref(trade.slug);
 
             return (
               <Link

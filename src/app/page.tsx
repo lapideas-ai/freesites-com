@@ -5,6 +5,7 @@ import { ActiveTradeProvider } from "@/lib/homepage-active-trade-context";
 import { inter } from "@/components/homepage/fonts";
 import { CustomQueryParamSync } from "@/components/homepage/CustomQueryParamSync";
 import { Header } from "@/components/homepage/Header";
+import { MobileContactBar } from "@/components/homepage/SmartReplyContact";
 import { Hero } from "@/components/homepage/Hero";
 import { CredibilityRow } from "@/components/homepage/CredibilityRow";
 import { BenefitCards } from "@/components/homepage/BenefitCards";
@@ -32,7 +33,8 @@ export default function HomePage() {
         <Suspense fallback={null}>
           <CustomQueryParamSync />
         </Suspense>
-        <Header />
+        <Header showContact />
+        <MobileContactBar />
         <main>
           <Hero />
           <CredibilityRow />

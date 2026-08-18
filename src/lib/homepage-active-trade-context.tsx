@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { getTradeBySlug, LIVE_TRADE_SLUGS, type Trade } from "@/lib/trades";
+import { getTradeBySlug, getTradeEntryHref, type Trade } from "@/lib/trades";
 import type { StyleVariant } from "@/lib/smartsite/types";
 
 export type ShowcaseExample = { tradeSlug: string; styleVariant: StyleVariant };
@@ -49,11 +49,10 @@ type ActiveTradeContextValue = {
    * homepage stays in sync and can't drift into slightly different
    * hand-rolled strings. */
   claimCtaLabel: () => string;
-  /** Routes into the wizard for live trades, or to the "help us build this"
-   * confirmation page for showcase-only trades — the same branch already
-   * used by TradeSection.tsx/trades/[slug]/page.tsx, centralized here so
-   * every CTA that reads `activeSlug` can't accidentally dead-end a visitor
-   * on the generic trade picker. */
+  /** Routes into the wizard for live trades, straight to the real example
+   * for built-but-not-live trades, or to the "help us build this"
+   * confirmation page otherwise — see getTradeEntryHref, the single
+   * canonical helper every trade-routing surface now shares. */
   claimCtaHref: () => string;
 };
 
@@ -129,10 +128,7 @@ export function ActiveTradeProvider({ children }: { children: React.ReactNode })
     isCustomSelected,
     selectCustom,
     claimCtaLabel: () => `Claim My FREE ${activeTrade.name} SmartSite`,
-    claimCtaHref: () =>
-      LIVE_TRADE_SLUGS.has(activeExample.tradeSlug)
-        ? `/build?trade=${activeExample.tradeSlug}`
-        : `/trades/${activeExample.tradeSlug}`,
+    claimCtaHref: () => getTradeEntryHref(activeExample.tradeSlug),
   };
 
   return <ActiveTradeContext.Provider value={value}>{children}</ActiveTradeContext.Provider>;

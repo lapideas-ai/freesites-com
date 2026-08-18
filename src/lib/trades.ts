@@ -1,3 +1,5 @@
+import { getDefaultStyleVariant } from "@/lib/smartsite/registry";
+
 export type Trade = {
   slug: string;
   name: string;
@@ -181,3 +183,20 @@ export const LIVE_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical"]);
 // their /examples page instead of into /build. Everything outside this set
 // gets the "help us build this next" confirmation.
 export const BUILT_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical", "painting", "landscaping", "remodeling"]);
+
+// Single canonical "where does this trade's CTA go" helper. Every trade
+// entry point — the homepage pill selector's claim CTA, the "By Industry"
+// grid, the Header Trades dropdown, and the /trades page grid — should
+// route through this instead of re-deriving the live/built branching
+// locally, which is what let those surfaces drift out of sync (some
+// dropped the ?trade= param on live trades, some sent built-but-not-live
+// trades to the generic "help us build this" page instead of their real,
+// already-built example). Adding a trade to LIVE_TRADE_SLUGS or
+// BUILT_TRADE_SLUGS above is now the only change needed for every one of
+// those surfaces to route it correctly.
+export function getTradeEntryHref(tradeSlug: string): string {
+  if (LIVE_TRADE_SLUGS.has(tradeSlug)) return `/build?trade=${tradeSlug}`;
+  const style = getDefaultStyleVariant(tradeSlug);
+  if (style) return `/examples/${tradeSlug}/${style}`;
+  return `/trades/${tradeSlug}`;
+}

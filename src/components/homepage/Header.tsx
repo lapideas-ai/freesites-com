@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { trades, LIVE_TRADE_SLUGS } from "@/lib/trades";
+import { trades, getTradeEntryHref } from "@/lib/trades";
 import { useActiveTrade } from "@/lib/homepage-active-trade-context";
 import { LogoMark } from "@/components/logo-mark";
+import { HeaderContactLink } from "./SmartReplyContact";
 
 function TradesMenu() {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ function TradesMenu() {
             {trades.map((trade) => (
               <Link
                 key={trade.slug}
-                href={LIVE_TRADE_SLUGS.has(trade.slug) ? "/build" : `/trades/${trade.slug}`}
+                href={getTradeEntryHref(trade.slug)}
                 className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[12px] font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#1a2f4a]"
               >
                 <span className="text-[13px]">{trade.icon}</span>
@@ -60,7 +61,7 @@ function TradesMenu() {
   );
 }
 
-export function Header() {
+export function Header({ showContact = false }: { showContact?: boolean } = {}) {
   const router = useRouter();
   const { claimCtaLabel, claimCtaHref } = useActiveTrade();
   return (
@@ -89,12 +90,15 @@ export function Header() {
             Why FreeSites
           </a>
         </nav>
-        <button
-          onClick={() => router.push(claimCtaHref())}
-          className="rounded-md bg-[#f97316] px-3.5 py-2 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
-        >
-          {claimCtaLabel()}
-        </button>
+        <div className="flex items-center gap-3">
+          {showContact && <HeaderContactLink />}
+          <button
+            onClick={() => router.push(claimCtaHref())}
+            className="rounded-md bg-[#f97316] px-3.5 py-2 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
+          >
+            {claimCtaLabel()}
+          </button>
+        </div>
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ScaledPreview } from "@/components/scaled-preview";
-import { getTradeBySlug, LIVE_TRADE_SLUGS } from "@/lib/trades";
+import { getTradeBySlug, getTradeEntryHref, LIVE_TRADE_SLUGS } from "@/lib/trades";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
 import { SHOWCASE_EXAMPLES } from "@/lib/homepage-active-trade-context";
 
@@ -31,7 +31,10 @@ export function TradeSection() {
             const Component = registry.components[example.styleVariant];
             if (!Component) return null;
             const isLive = LIVE_TRADE_SLUGS.has(trade.slug);
-            const href = isLive ? "/build" : `/examples/${trade.slug}/${example.styleVariant}`;
+            // Sourced from the same canonical helper every trade-routing
+            // surface now shares — fixes live trades silently losing their
+            // ?trade= param and landing on the generic trade picker.
+            const href = getTradeEntryHref(trade.slug);
 
             return (
               <Link
