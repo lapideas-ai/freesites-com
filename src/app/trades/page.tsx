@@ -60,6 +60,23 @@ export default function TradesPage() {
               </Link>
             );
           })}
+
+          {/* Not a trade — the final card in the grid, deep-linking into
+              the homepage's existing Custom state (see
+              CustomQueryParamSync) rather than a new page/funnel. Styled
+              like the trade cards above it so it reads as part of the same
+              selection grid, per the Trades dropdown in Header.tsx. */}
+          <Link
+            href="/?trade=custom"
+            className="rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-orange-200"
+          >
+            <div className="text-xl">🧩</div>
+            <div className="mt-1.5 text-[13px] font-bold text-[#1a2f4a]">Custom</div>
+            <p className="mt-0.5 text-[11px] leading-relaxed text-slate-500">
+              Not Home Services? We build those too — included in Growth.
+            </p>
+            <div className="mt-2 text-[11px] font-bold text-[#f97316]">Get a Custom Website — $97/mo →</div>
+          </Link>
         </div>
 
         {/* Custom isn't a separate product or a directory entry — it's an

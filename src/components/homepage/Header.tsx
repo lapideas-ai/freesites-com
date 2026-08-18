@@ -36,6 +36,17 @@ function TradesMenu() {
                 <span className="truncate">{trade.name}</span>
               </Link>
             ))}
+            {/* Final entry, not a trade — deep-links into the homepage's
+                existing Custom state (see CustomQueryParamSync), the same
+                bridge into the $97/mo Growth checkout used everywhere else
+                Custom appears. */}
+            <Link
+              href="/?trade=custom"
+              className="flex items-center gap-1.5 rounded px-1.5 py-1 text-[12px] font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-[#1a2f4a]"
+            >
+              <span className="text-[13px]">🧩</span>
+              <span className="truncate">Custom</span>
+            </Link>
           </div>
           <Link
             href="/trades"

@@ -1,7 +1,9 @@
 "use client";
 
+import { Suspense } from "react";
 import { ActiveTradeProvider } from "@/lib/homepage-active-trade-context";
 import { inter } from "@/components/homepage/fonts";
+import { CustomQueryParamSync } from "@/components/homepage/CustomQueryParamSync";
 import { Header } from "@/components/homepage/Header";
 import { Hero } from "@/components/homepage/Hero";
 import { CredibilityRow } from "@/components/homepage/CredibilityRow";
@@ -27,6 +29,9 @@ export default function HomePage() {
   return (
     <div className={inter.className}>
       <ActiveTradeProvider>
+        <Suspense fallback={null}>
+          <CustomQueryParamSync />
+        </Suspense>
         <Header />
         <main>
           <Hero />
