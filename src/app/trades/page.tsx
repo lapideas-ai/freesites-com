@@ -61,6 +61,27 @@ export default function TradesPage() {
             );
           })}
         </div>
+
+        {/* Custom isn't a separate product or a directory entry — it's an
+            alternate entry point into the existing $97/mo SmartSite Growth
+            checkout, so it sits at the end of the grid rather than among the
+            trades and its CTA routes straight to the Growth payment link
+            (never through /build). */}
+        <div className="mt-8 rounded-lg border border-dashed border-slate-300 bg-[#f8fafc] p-6 sm:p-8">
+          <h2 className="text-lg font-extrabold leading-tight tracking-tight text-[#1a2f4a] sm:text-xl">
+            Don&apos;t See Your Trade — or Want Something Completely Your Own?
+          </h2>
+          <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-slate-600">
+            FreeSites specializes in Home Services, but we can build for virtually any business. Our $97/month
+            SmartSite Growth plan includes a Custom Website built around your business, brand and needs.
+          </p>
+          <a
+            href="https://pay.freesites.com/payment-link/6a7b9223c8cc9a2ce72677c4"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-5 py-3 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
+          >
+            Get Your Custom Website — $97/mo →
+          </a>
+        </div>
       </section>
       <Footer />
     </div>

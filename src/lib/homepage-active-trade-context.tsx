@@ -37,6 +37,14 @@ type ActiveTradeContextValue = {
   selectExample: (slug: string) => void;
   /** All six showcase trades, in rotation order — the pill selector renders from this. */
   showcaseTradesInOrder: Trade[];
+  /** True when the seventh "Custom" pill is the active selection instead of
+   * one of the six trades — Hero swaps its content/preview panel on this
+   * rather than trying to represent "Custom" as a fake Trade/registry
+   * entry, since Custom has no SmartSite component to render. */
+  isCustomSelected: boolean;
+  /** Selects the "Custom" pill and stops automatic rotation, same as
+   * selectExample but with no trade/example to switch to. */
+  selectCustom: () => void;
   /** "Claim My FREE {Trade} SmartSite" — centralized so every CTA on the
    * homepage stays in sync and can't drift into slightly different
    * hand-rolled strings. */
@@ -60,6 +68,7 @@ export function ActiveTradeProvider({ children }: { children: React.ReactNode })
   const [index, setIndex] = useState(0);
   const [previousIndex, setPreviousIndex] = useState<number | null>(null);
   const [isLocked, setIsLocked] = useState(false);
+  const [isCustomSelected, setIsCustomSelected] = useState(false);
   const indexRef = useRef(0);
 
   useEffect(() => {
@@ -75,10 +84,23 @@ export function ActiveTradeProvider({ children }: { children: React.ReactNode })
 
   function selectExample(slug: string) {
     const nextIndex = SHOWCASE_EXAMPLES.findIndex((ex) => ex.tradeSlug === slug);
-    if (nextIndex === -1 || nextIndex === indexRef.current) return;
+    if (nextIndex === -1) return;
+    // Clear Custom before the same-index short-circuit below — otherwise
+    // re-clicking the trade pill that was active before Custom was
+    // selected would no-op and leave the Custom panel stuck on screen.
+    setIsCustomSelected(false);
+    if (nextIndex === indexRef.current) {
+      setIsLocked(true);
+      return;
+    }
     setPreviousIndex(indexRef.current);
     indexRef.current = nextIndex;
     setIndex(nextIndex);
+    setIsLocked(true);
+  }
+
+  function selectCustom() {
+    setIsCustomSelected(true);
     setIsLocked(true);
   }
 
@@ -104,6 +126,8 @@ export function ActiveTradeProvider({ children }: { children: React.ReactNode })
     isLocked,
     selectExample,
     showcaseTradesInOrder: SHOWCASE_TRADES_IN_ORDER,
+    isCustomSelected,
+    selectCustom,
     claimCtaLabel: () => `Claim My FREE ${activeTrade.name} SmartSite`,
     claimCtaHref: () =>
       LIVE_TRADE_SLUGS.has(activeExample.tradeSlug)

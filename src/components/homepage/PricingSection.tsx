@@ -13,7 +13,7 @@ const COMPARISON_ROWS = [
   { label: "SmartReply Booking", starter: false, pro: true, growth: true },
   { label: "Branding Removed", starter: false, pro: true, growth: true },
   { label: "Custom Domain", starter: false, pro: true, growth: true },
-  { label: "Custom SmartSite & Advanced Features", starter: false, pro: false, growth: true },
+  { label: "Custom Website & Advanced Features", starter: false, pro: false, growth: true },
 ];
 
 export function PricingSection() {

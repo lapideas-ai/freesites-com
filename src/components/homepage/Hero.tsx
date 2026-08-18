@@ -13,12 +13,27 @@ const STYLE_NAMES: Record<StyleVariant, string> = {
   "premium-professional": "Premium Professional",
 };
 
+// Custom isn't a separate product — it's an alternate entry point into the
+// existing $97/mo SmartSite Growth checkout, so this CTA bypasses
+// claimCtaHref()/the FREE builder entirely and links straight to the same
+// Growth payment link used by PricingSection/TierCards.
+const GROWTH_CHECKOUT_URL = "https://pay.freesites.com/payment-link/6a7b9223c8cc9a2ce72677c4";
+
+const CUSTOM_BUSINESS_TYPES = [
+  { icon: "🏋️", label: "Gyms & Fitness" },
+  { icon: "🍸", label: "Bars & Restaurants" },
+  { icon: "🏢", label: "Apartments & Property" },
+  { icon: "💼", label: "Professional Services" },
+];
+
 // Persistent control, not part of the fading content block below it — its
 // active-pill highlight updates instantly on every rotation tick, but the
 // row itself never re-mounts/re-fades, since a control flickering every 6s
-// would read as broken rather than alive.
+// would read as broken rather than alive. Custom is appended as a seventh,
+// last pill rather than inserted among the six trades — selecting it swaps
+// the panels below into the Custom state instead of picking a trade.
 function TradeSelector() {
-  const { activeSlug, showcaseTradesInOrder, selectExample } = useActiveTrade();
+  const { activeSlug, showcaseTradesInOrder, selectExample, isCustomSelected, selectCustom } = useActiveTrade();
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       <span className="text-[10px] font-semibold uppercase tracking-wide text-slate-400">Showing examples for</span>
@@ -28,7 +43,7 @@ function TradeSelector() {
             key={trade.slug}
             onClick={() => selectExample(trade.slug)}
             className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
-              activeSlug === trade.slug
+              activeSlug === trade.slug && !isCustomSelected
                 ? "bg-[#1a2f4a] text-white"
                 : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-[#1a2f4a]"
             }`}
@@ -36,6 +51,83 @@ function TradeSelector() {
             {trade.name}
           </button>
         ))}
+        <button
+          onClick={selectCustom}
+          className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
+            isCustomSelected
+              ? "bg-[#1a2f4a] text-white"
+              : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-[#1a2f4a]"
+          }`}
+        >
+          Custom
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Swaps in for the fading content block when Custom is selected — no trade
+// template to show, so this leads with the Home Services specialization,
+// then the $97/mo Growth plan as the direct answer, and routes the CTA
+// straight to the existing Growth checkout rather than claimCtaHref()/the
+// FREE builder.
+function CustomContent() {
+  return (
+    <div className="fs-fade-in">
+      <h1 className="mt-3 text-[26px] font-black leading-[1.15] tracking-tight text-[#1a2f4a] sm:text-[30px]">
+        Want Something Completely <span className="text-[#f97316]">Custom?</span>
+      </h1>
+      <p className="mt-1.5 text-[15px] font-semibold leading-snug text-[#1a2f4a]">
+        We specialize in Home Services, but FreeSites can build around your business, brand and needs — even if you
+        run a gym, bar, apartment community, professional service, or another type of business.
+      </p>
+      <p className="mt-2.5 max-w-sm text-[13px] leading-relaxed text-slate-600">
+        Our $97/month SmartSite Growth plan includes a Custom Website.
+      </p>
+
+      <div className="mt-5 flex flex-wrap items-center gap-2.5">
+        <a
+          href={GROWTH_CHECKOUT_URL}
+          className="inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-5 py-3 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
+        >
+          Get a Custom Website — $97/mo →
+        </a>
+        <a
+          href="#pricing"
+          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-5 py-3 text-[13px] font-bold text-[#1a2f4a] transition-colors hover:border-slate-300"
+        >
+          See SmartSite Growth
+        </a>
+      </div>
+      <p className="mt-2 text-[11px] text-slate-400">$97 due today. No free trial.</p>
+    </div>
+  );
+}
+
+// Right-side companion to CustomContent — a compact, lightweight hint of
+// business breadth (not a generic AI/SaaS visual) rather than a fake trade
+// template, since there's no SmartSite registry entry for "custom."
+function CustomCollagePanel() {
+  return (
+    <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg shadow-slate-900/10">
+      <div className="flex items-center gap-1 border-b border-slate-100 bg-slate-50 px-2.5 py-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+        <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+        <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+      </div>
+      <div className="grid grid-cols-2 gap-2.5 p-5">
+        {CUSTOM_BUSINESS_TYPES.map((item) => (
+          <div
+            key={item.label}
+            className="flex flex-col items-center justify-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 py-6 text-center"
+          >
+            <span className="text-2xl">{item.icon}</span>
+            <span className="text-[11px] font-bold text-[#1a2f4a]">{item.label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="border-t border-slate-100 bg-white px-4 py-2.5 text-center text-[11px] font-semibold text-slate-500">
+        Built around your business, whatever it is
       </div>
     </div>
   );
@@ -77,7 +169,15 @@ function PreviewPanel({ example, phase }: { example: ShowcaseExample; phase: "in
 
 export function Hero() {
   const router = useRouter();
-  const { activeSlug, activeTrade, activeExample, previousExample, claimCtaLabel, claimCtaHref } = useActiveTrade();
+  const {
+    activeSlug,
+    activeTrade,
+    activeExample,
+    previousExample,
+    claimCtaLabel,
+    claimCtaHref,
+    isCustomSelected,
+  } = useActiveTrade();
   const registry = getTradeRegistry(activeSlug);
   if (!registry) return null;
   const onClaim = () => router.push(claimCtaHref());
@@ -100,9 +200,12 @@ export function Hero() {
 
         <TradeSelector />
 
-        {/* Keyed by activeSlug so React remounts this block on every trade
+        {isCustomSelected ? (
+          <CustomContent />
+        ) : (
+        /* Keyed by activeSlug so React remounts this block on every trade
             change, retriggering the CSS fade-in — headline, CTAs, and
-            thumbnails all change together as one unit. */}
+            thumbnails all change together as one unit. */
         <div key={activeSlug} className="fs-fade-in">
           <h1 className="mt-3 text-[26px] font-black leading-[1.15] tracking-tight text-[#1a2f4a] sm:text-[30px]">
             Every {activeTrade.name} SmartSite Includes <span className="text-[#f97316]">SmartReply™</span>
@@ -180,15 +283,22 @@ export function Hero() {
             </div>
           </div>
         </div>
+        )}
       </div>
 
       <div className="relative min-w-0">
-        {previousExample && <PreviewPanel example={previousExample} phase="out" />}
-        <PreviewPanel example={activeExample} phase={previousExample ? "in" : "static"} />
-        <div className="absolute -bottom-2.5 -left-2.5 z-10 flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-[#1a2f4a] shadow-md">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" />
-          Live in 60 seconds
-        </div>
+        {isCustomSelected ? (
+          <CustomCollagePanel />
+        ) : (
+          <>
+            {previousExample && <PreviewPanel example={previousExample} phase="out" />}
+            <PreviewPanel example={activeExample} phase={previousExample ? "in" : "static"} />
+            <div className="absolute -bottom-2.5 -left-2.5 z-10 flex items-center gap-1 rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-[#1a2f4a] shadow-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]" />
+              Live in 60 seconds
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
