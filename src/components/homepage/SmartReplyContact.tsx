@@ -27,27 +27,85 @@ export function HeaderContactLink() {
 // viewport so it stays reachable while scrolling without duplicating the
 // phone number inline in page content. Opt-in per page (not global layout)
 // so it only appears on the funnel's key entry surfaces, not stamped on
-// every route.
+// every route. The caption row exists so the buttons read as "try our live
+// demo" rather than a bare, unexplained Call/Text utility.
 export function MobileContactBar() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 flex border-t border-slate-200 bg-white/95 backdrop-blur md:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <a
-        href={FREESITES_PHONE_TEL}
-        className="flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[13px] font-bold text-[#1a2f4a] active:bg-slate-50"
-      >
-        📞 Call
-      </a>
-      <div className="w-px bg-slate-200" />
-      <a
-        href={FREESITES_PHONE_SMS}
-        className="flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[13px] font-bold text-[#1a2f4a] active:bg-slate-50"
-      >
-        💬 Text
-      </a>
+      <div className="border-b border-slate-100 bg-slate-50 px-3 py-1 text-center text-[10px] font-semibold text-slate-500">
+        SmartReply answers 24/7 — try it now ↓
+      </div>
+      <div className="flex">
+        <a
+          href={FREESITES_PHONE_TEL}
+          className="flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[13px] font-bold text-[#1a2f4a] active:bg-slate-50"
+        >
+          📞 Call
+        </a>
+        <div className="w-px bg-slate-200" />
+        <a
+          href={FREESITES_PHONE_SMS}
+          className="flex flex-1 items-center justify-center gap-1.5 py-2.5 text-[13px] font-bold text-[#1a2f4a] active:bg-slate-50"
+        >
+          💬 Text
+        </a>
+      </div>
     </div>
+  );
+}
+
+// Prominent, dedicated live-demo section — restores the historically strong
+// "call/text our own number and see SmartReply answer" CTA as its own
+// section near the top of the journey (rendered right after Hero — see
+// HomeClient.tsx), rather than just enlarging the header's subordinate
+// link. Visually mirrors the existing Smart Operator demo block on
+// /build/review (same navy card, oversized tappable number, orange CTA) —
+// that block IS the proven "strongest CTA" this restores, not a new pattern.
+export function SmartReplyLiveDemo() {
+  return (
+    <section className="bg-[#1a2f4a] py-12">
+      <div className="mx-auto max-w-2xl px-6 text-center">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-orange-300">
+          Live Demo
+        </span>
+        <h2 className="mt-3 text-2xl font-black leading-tight text-white sm:text-3xl">
+          See SmartReply Work — Right Now
+        </h2>
+        <p className="mx-auto mt-3 max-w-lg text-[14px] leading-relaxed text-white/70">
+          Your customers shouldn&apos;t have to wait for a callback. SmartReply Voice + SMS responds 24/7 — when
+          you&apos;re on a job, after hours, on weekends, or simply can&apos;t answer. For an urgent customer,
+          waiting can mean calling the next contractor.
+        </p>
+
+        <a
+          href={FREESITES_PHONE_TEL}
+          className="mt-6 block text-4xl font-black tracking-tight text-white transition-colors hover:text-orange-300 sm:text-5xl"
+        >
+          ☎ {FREESITES_PHONE_DISPLAY}
+        </a>
+        <p className="mt-2 text-[12px] font-semibold text-white/50">
+          Try it now. See what your customers experience.
+        </p>
+
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5">
+          <a
+            href={FREESITES_PHONE_TEL}
+            className="inline-flex items-center gap-2 rounded-lg bg-[#f97316] px-5 py-2.5 text-[13px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#ea6c0a] hover:shadow-md"
+          >
+            Call Now →
+          </a>
+          <a
+            href={FREESITES_PHONE_SMS}
+            className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:border-white/40"
+          >
+            Text Now →
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
