@@ -60,7 +60,7 @@ export function TierCards({
               </div>
             )}
             <div className={`inline-block rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide ${style.badge}`}>
-              {tier.id === "starter" ? "Free Forever" : tier.id === "pro" ? "Most Popular" : "White-Label"}
+              {tier.id === "starter" ? "Free Forever" : tier.id === "pro" ? "Most Popular" : "Custom Website"}
             </div>
             <div className="mt-2.5 text-[15px] font-black text-[#1a2f4a]">{tier.name}</div>
             {tier.pitchHeadline && (
@@ -114,7 +114,11 @@ export function TierCards({
                   </div>
                 )}
                 <a
-                  href={tier.checkoutHref}
+                  // Pro routes through the reinforcement bridge (/pro) first
+                  // instead of straight to checkout — same checkout link,
+                  // reached one hop later. Growth is unaffected; its card
+                  // still links straight to tier.checkoutHref as before.
+                  href={tier.id === "pro" ? "/pro" : tier.checkoutHref}
                   className={`mt-4 block w-full rounded-md py-2.5 text-center text-[12px] font-bold transition-all hover:-translate-y-0.5 ${style.button}`}
                 >
                   {tier.ctaLabel ?? `Start ${tier.name}`}
