@@ -7,16 +7,14 @@ import { getTradeRegistry } from "@/lib/smartsite/registry";
 import { getTradeBySlug } from "@/lib/trades";
 import { reportLead } from "@/lib/report-lead";
 
-// This is the whole "generation" step for the demo: no AI call, no backend,
-// no deploy per visitor — the canonical SmartSite renders instantly with the
-// data just collected. That's a feature for a live demo (zero latency, zero
-// cost, zero flakiness), not a shortcut we're hiding.
+// The reveal renders the canonical SmartSite immediately, then publishes the
+// same configuration server-side so the returned URL works outside this browser.
 //
 // This is the last NUMBERED step in the claim funnel (see wizard-steps.tsx)
 // — always Starter tier, no pricing chrome until the very end. Nothing here
 // is actually hosted/published yet (no backend does that), so copy stays in
 // "ready"/"built" language rather than "live"/"published" — see
-// /smartsite-preview's own comment for the same constraint.
+// /smartsite-preview's own comment for the local preview behavior.
 //
 // The page is intentionally one long scroll with an escalating emotional
 // sequence, not a feature-matrix dump: see it → explore it → understand
@@ -128,22 +126,44 @@ function ReviewPageInner() {
   const registry = state.tradeSlug ? getTradeRegistry(state.tradeSlug) : undefined;
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
   const demoParam = searchParams.get("demo");
+  const publishedRef = useRef(false);
   const reportedRef = useRef(false);
+  const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
+  const [publishError, setPublishError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (reportedRef.current) return;
+    if (publishedRef.current) return;
     if (!state.tradeSlug || !state.styleVariant || !state.businessName) return;
-    reportedRef.current = true;
-    const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
-    reportLead({
-      lead_type: "SmartSite Lead",
-      page_path: "/build/review",
-      email: state.leadEmail || state.email,
-      phone: state.phone,
-      business_name: state.businessName,
-      fields: { funnel_stage: "revealed", subdomain_slug: subdomainSlug },
-    });
-  }, [state.tradeSlug, state.styleVariant, state.businessName, state.leadEmail, state.email, state.phone]);
+    publishedRef.current = true;
+
+    void (async () => {
+      try {
+        const response = await fetch("/api/sites/publish", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ config: state }),
+        });
+        const result = (await response.json()) as { site_url?: string; error?: string };
+        if (!response.ok || !result.site_url) throw new Error(result.error || "Could not publish your SmartSite");
+
+        setPublishedUrl(result.site_url);
+        if (reportedRef.current) return;
+        reportedRef.current = true;
+        const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
+        reportLead({
+          lead_type: "SmartSite Lead",
+          page_path: "/build/review",
+          email: state.leadEmail || state.email,
+          phone: state.phone,
+          business_name: state.businessName,
+          site_url: result.site_url,
+          fields: { funnel_stage: "revealed", subdomain_slug: subdomainSlug },
+        });
+      } catch (error) {
+        setPublishError(error instanceof Error ? error.message : "Could not publish your SmartSite");
+      }
+    })();
+  }, [state]);
 
   useEffect(() => {
     // NODE_ENV is hard-set to "production" by `next build`/`next start`
@@ -169,7 +189,6 @@ function ReviewPageInner() {
   // Unreachable in practice — see registry.ts's TradeRegistryEntry comment.
   if (!Component) return null;
   const business = registry.buildBusinessDataFromWizard(state);
-  const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
 
   return (
     <div>
@@ -221,18 +240,21 @@ function ReviewPageInner() {
 
       <div className="mt-4 flex flex-col items-center gap-1">
         <div className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.03] px-3.5 py-1.5 font-mono text-xs font-semibold text-foreground/70">
-          🔗 {subdomainSlug}.freesites.com
+          🔗 {publishedUrl || "Publishing your permanent URL..."}
         </div>
-        <span className="text-[10px] text-foreground/35">Reserved for your SmartSite</span>
+        <span className="text-[10px] text-foreground/35">
+          {publishError || (publishedUrl ? "Your permanent SmartSite URL" : "Your SmartSite is being published")}
+        </span>
       </div>
 
       <a
-        href="/smartsite-preview"
+        href={publishedUrl || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 block text-center text-sm font-semibold text-[#1a6bbf] hover:underline"
+        aria-disabled={!publishedUrl}
+        className={`mt-4 block text-center text-sm font-semibold text-[#1a6bbf] hover:underline ${!publishedUrl ? "pointer-events-none opacity-40" : ""}`}
       >
-        Open Full Site ↗
+        {publishedUrl ? "Open Full Site ↗" : "Publishing Full Site..."}
       </a>
 
       {/* --- Value of FREE --- */}

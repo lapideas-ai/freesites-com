@@ -9,6 +9,7 @@ export type LeadPayload = {
   phone?: string;
   first_name?: string;
   business_name?: string;
+  site_url?: string;
   fields?: Record<string, unknown>;
 };
 
