@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { PublishedSmartSite } from "@/components/published-smartsite";
 import { getPublishedSmartSite } from "@/lib/published-sites";
-import { getTradeRegistry } from "@/lib/smartsite/registry";
 
 export const dynamic = "force-dynamic";
 
@@ -20,9 +20,12 @@ export default async function PublishedSmartSitePage({ params }: { params: Promi
   const site = await getPublishedSmartSite(slug);
   if (!site) notFound();
 
-  const registry = getTradeRegistry(site.tradeSlug);
-  const Component = registry?.components[site.styleVariant];
-  if (!registry || !Component) notFound();
-
-  return <Component business={site.business} tier={site.tier} />;
+  return (
+    <PublishedSmartSite
+      tradeSlug={site.tradeSlug}
+      styleVariant={site.styleVariant}
+      business={site.business}
+      tier={site.tier}
+    />
+  );
 }
