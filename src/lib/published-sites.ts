@@ -34,7 +34,7 @@ export async function savePublishedSmartSite(site: PublishedSmartSite) {
 }
 
 export async function getPublishedSmartSite(slug: string) {
-  return store().get(siteKey(slug), { type: "json" }) as Promise<PublishedSmartSite | null>;
+  return getStore({ name: STORE_NAME }).get(siteKey(slug), { type: "json" }) as Promise<PublishedSmartSite | null>;
 }
 
 export function createSiteSlug(businessName: string, tradeSlug: string) {
