@@ -50,7 +50,6 @@ export function Contact({ business, content }: { business: BusinessData; content
         <form
           className="flex flex-col gap-3 rounded-xl p-5"
           style={{ background: "var(--ss-surface, #fff)", border: "1px solid var(--ss-line-dark)" }}
-          onSubmit={(e) => e.preventDefault()}
         >
           <label className="flex flex-col gap-1 text-sm font-semibold" style={{ color: "var(--ss-text-on-light)" }}>
             {content.formLabels.name}
