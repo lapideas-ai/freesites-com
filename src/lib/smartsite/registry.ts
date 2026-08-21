@@ -16,12 +16,8 @@ import { remodelingRegistry } from "@/components/smartsite/remodeling/registry";
 // pulls every other trade's component tree into its bundle — this matters
 // once there are 30+ trades × 3 styles instead of 3.
 //
-// `components` is Partial: showcase-only trades (Painting, Landscaping,
-// Remodeling) ship with just one style built so far, not all three. Every
-// consumer that indexes into `components[x]` must guard for `undefined` —
-// for the six-step funnel that guard is purely cosmetic (those trades are
-// never in LIVE_TRADE_SLUGS, so the funnel can never actually reach an
-// undefined entry), but strict TypeScript can't know that statically.
+// `components` is Partial because some production-ready trades have one style
+// while others have three. Consumers must guard unavailable style variants.
 export type TradeRegistryEntry = {
   components: Partial<Record<StyleVariant, ComponentType<SmartSiteRenderProps>>>;
   sample: BusinessData;
@@ -36,6 +32,8 @@ export const SMARTSITE_REGISTRY: Record<string, TradeRegistryEntry> = {
   landscaping: landscapingRegistry,
   remodeling: remodelingRegistry,
 };
+
+export const REGISTERED_TRADE_SLUGS = Object.freeze(Object.keys(SMARTSITE_REGISTRY));
 
 export function getTradeRegistry(tradeSlug: string): TradeRegistryEntry | undefined {
   return SMARTSITE_REGISTRY[tradeSlug];

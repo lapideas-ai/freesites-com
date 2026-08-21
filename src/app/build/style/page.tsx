@@ -35,7 +35,7 @@ export default function StylePage() {
     <div>
       <h1 className="text-2xl font-black text-[#1a2f4a]">Pick a starting look for your SmartSite</h1>
       <p className="mt-1 text-slate-600">
-        These are three recent examples — not your only choices. Pick the direction you like best.
+        Pick the starting look that fits your business best.
       </p>
       <WizardBuildingCue />
 

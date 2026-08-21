@@ -44,24 +44,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unsupported SmartSite design" }, { status: 400 });
   }
 
-  const now = new Date().toISOString();
-  const slug = createSiteSlug(config.businessName, config.tradeSlug);
-  const record: PublishedSmartSite = {
-    version: 1,
-    slug,
-    tradeSlug: config.tradeSlug,
-    styleVariant: config.styleVariant as StyleVariant,
-    tier: config.tier as Tier,
-    business: registry.buildBusinessDataFromWizard(config),
-    config,
-    createdAt: now,
-    updatedAt: now,
-  };
+  const business = registry.buildBusinessDataFromWizard(config);
+  for (let attempt = 1; attempt <= 100; attempt += 1) {
+    const slug = createSiteSlug(config.businessName, attempt);
+    const now = new Date().toISOString();
+    const record: PublishedSmartSite = {
+      version: 1,
+      slug,
+      tradeSlug: config.tradeSlug,
+      styleVariant: config.styleVariant as StyleVariant,
+      tier: config.tier as Tier,
+      business,
+      config,
+      createdAt: now,
+      updatedAt: now,
+    };
 
-  const result = await savePublishedSmartSite(record);
-  if (!result.modified) {
-    return NextResponse.json({ error: "Could not reserve a unique site URL" }, { status: 409 });
+    const result = await savePublishedSmartSite(record);
+    if (result.modified) {
+      return NextResponse.json({ slug, site_url: siteUrl(slug) });
+    }
   }
 
-  return NextResponse.json({ slug, site_url: siteUrl(slug) });
+  return NextResponse.json({ error: "Could not reserve a unique site URL" }, { status: 409 });
 }

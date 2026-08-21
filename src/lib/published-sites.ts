@@ -37,13 +37,12 @@ export async function getPublishedSmartSite(slug: string) {
   return getStore({ name: STORE_NAME }).get(siteKey(slug), { type: "json" }) as Promise<PublishedSmartSite | null>;
 }
 
-export function createSiteSlug(businessName: string, tradeSlug: string) {
+export function createSiteSlug(businessName: string, suffix?: number) {
   const readable = businessName
     .toLowerCase()
     .normalize("NFKD")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 48) || "smartsite";
-  const suffix = crypto.randomUUID().replace(/-/g, "").slice(0, 10);
-  return `${readable}-${tradeSlug}-${suffix}`;
+  return suffix && suffix > 1 ? `${readable}-${suffix}` : readable;
 }

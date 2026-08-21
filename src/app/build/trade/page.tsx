@@ -11,7 +11,7 @@ export default function TradePage() {
   const [votedSlug, setVotedSlug] = useState<string | null>(null);
 
   function selectTrade(slug: string) {
-    update({ tradeSlug: slug });
+    update({ tradeSlug: slug, styleVariant: null });
     router.push("/build/start");
   }
 

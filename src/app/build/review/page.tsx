@@ -156,10 +156,12 @@ function ReviewPageInner() {
           lead_type: "SmartSite Lead",
           page_path: "/build/review",
           email: state.leadEmail || state.email,
+          first_name: state.leadFirstName,
           phone: state.phone,
           business_name: state.businessName,
           site_url: result.site_url,
           fields: { funnel_stage: "revealed", subdomain_slug: subdomainSlug },
+          trade: state.tradeSlug ?? undefined,
         });
       } catch (error) {
         setPublishError(error instanceof Error ? error.message : "Could not publish your SmartSite");

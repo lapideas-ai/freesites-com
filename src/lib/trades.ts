@@ -1,4 +1,4 @@
-import { getDefaultStyleVariant } from "@/lib/smartsite/registry";
+import { getDefaultStyleVariant, REGISTERED_TRADE_SLUGS } from "@/lib/smartsite/registry";
 
 export type Trade = {
   slug: string;
@@ -171,10 +171,10 @@ export function getTradeBySlug(slug: string): Trade | undefined {
 
 // Every trade with a registered SmartSite can enter the builder. Trades with
 // one available style show that style; trades with three show the chooser.
-export const LIVE_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical", "painting", "landscaping", "remodeling"]);
+export const LIVE_TRADE_SLUGS = new Set(REGISTERED_TRADE_SLUGS);
 
 // Every trade with at least one real SmartSite style built.
-export const BUILT_TRADE_SLUGS = new Set(["hvac", "plumbing", "electrical", "painting", "landscaping", "remodeling"]);
+export const BUILT_TRADE_SLUGS = new Set(REGISTERED_TRADE_SLUGS);
 
 // Single canonical "where does this trade's CTA go" helper. Every trade
 // entry point — the homepage pill selector's claim CTA, the "By Industry"
