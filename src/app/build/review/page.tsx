@@ -128,6 +128,7 @@ function ReviewPageInner() {
   const demoParam = searchParams.get("demo");
   const publishedRef = useRef(false);
   const reportedRef = useRef(false);
+  const [copied, setCopied] = useState(false);
   const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
   const [publishError, setPublishError] = useState<string | null>(null);
 
@@ -190,6 +191,14 @@ function ReviewPageInner() {
   // Unreachable in practice — see registry.ts's TradeRegistryEntry comment.
   if (!Component) return null;
   const business = registry.buildBusinessDataFromWizard(state);
+  const permanentUrl = publishedUrl || state.publishedSiteUrl;
+
+  async function copyPermanentUrl() {
+    if (!permanentUrl) return;
+    await navigator.clipboard.writeText(permanentUrl);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  }
 
   return (
     <div>
@@ -239,24 +248,40 @@ function ReviewPageInner() {
         </div>
       </div>
 
-      <div className="mt-4 flex flex-col items-center gap-1">
-        <div className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.03] px-3.5 py-1.5 font-mono text-xs font-semibold text-foreground/70">
-          🔗 {publishedUrl || state.publishedSiteUrl || "Publishing your permanent URL..."}
+      <div className="mt-6 rounded-xl border-2 border-[#f97316]/30 bg-[#fff7ed] p-5 text-center shadow-sm">
+        <div className="text-[11px] font-black uppercase tracking-wide text-[#ea6c0a]">Your SmartSite is live</div>
+        <div className="mt-2 text-sm font-semibold text-[#1a2f4a]">Your permanent SmartSite URL</div>
+        <a
+          href={permanentUrl || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`mt-2 block break-all font-mono text-sm font-bold text-[#1a6bbf] sm:text-base ${!permanentUrl ? "pointer-events-none opacity-50" : "hover:underline"}`}
+        >
+          {permanentUrl || "Publishing your permanent URL..."}
+        </a>
+        <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+          <a
+            href={permanentUrl || "#"}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-disabled={!permanentUrl}
+            className={`rounded-lg bg-[#f97316] px-4 py-2 text-xs font-bold text-white ${!permanentUrl ? "pointer-events-none opacity-50" : "hover:bg-[#ea6c0a]"}`}
+          >
+            Open Full Site ↗
+          </a>
+          <button
+            type="button"
+            onClick={copyPermanentUrl}
+            disabled={!permanentUrl}
+            className="rounded-lg border border-[#1a2f4a]/15 bg-white px-4 py-2 text-xs font-bold text-[#1a2f4a] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {copied ? "Copied" : "Copy URL"}
+          </button>
         </div>
-        <span className="text-[10px] text-foreground/35">
-          {publishError || (publishedUrl || state.publishedSiteUrl ? "Your permanent SmartSite URL" : "Your SmartSite is being published")}
+        <span className="mt-3 block text-[10px] text-foreground/35">
+          {publishError || (permanentUrl ? "This is the same URL sent with your SmartSite signup." : "Your SmartSite is being published")}
         </span>
       </div>
-
-      <a
-        href={publishedUrl || state.publishedSiteUrl || "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-disabled={!publishedUrl && !state.publishedSiteUrl}
-        className={`mt-4 block text-center text-sm font-semibold text-[#1a6bbf] hover:underline ${!publishedUrl && !state.publishedSiteUrl ? "pointer-events-none opacity-40" : ""}`}
-      >
-        {publishedUrl || state.publishedSiteUrl ? "Open Full Site ↗" : "Publishing Full Site..."}
-      </a>
 
       {/* --- Value of FREE --- */}
       <div className="mt-12 border-t border-foreground/10 pt-8">

@@ -90,8 +90,8 @@ export default function TradesPage() {
             Don&apos;t See Your Trade — or Want Something Completely Your Own?
           </h2>
           <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-slate-600">
-            FreeSites specializes in Home Services, but we can build for virtually any business. Our $97/month
-            SmartSite Growth plan includes a Custom Website built around your business, brand and needs.
+            FreeSites specializes in Home Services, and SmartSite Growth is the $97/month premium path for a Custom
+            Website built around your business, brand, and needs — including businesses outside the standard trades.
           </p>
           <a
             href="https://pay.freesites.com/payment-link/6a7b9223c8cc9a2ce72677c4"

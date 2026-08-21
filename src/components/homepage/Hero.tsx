@@ -82,7 +82,7 @@ function CustomContent() {
         run a gym, bar, apartment community, professional service, or another type of business.
       </p>
       <p className="mt-2.5 max-w-sm text-[13px] leading-relaxed text-slate-600">
-        Our $97/month SmartSite Growth plan includes a Custom Website.
+        SmartSite Growth is our $97/month premium path for a Custom Website built around your business, brand, and needs.
       </p>
 
       <div className="mt-5 flex flex-wrap items-center gap-2.5">

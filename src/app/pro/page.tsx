@@ -63,8 +63,8 @@ export default function ProBridgePage() {
           they&apos;re not casually browsing. They need help.
         </p>
         <p className="mx-auto mt-2 max-w-xl text-[15px] leading-relaxed text-slate-600">
-          SmartSite Pro helps your business compete for high-intent local searches — and SmartReply helps make sure
-          those prospects aren&apos;t left waiting once they contact you.
+          SmartSite Pro helps your business compete when high-intent customers search locally, while SmartReply Voice
+          + SMS responds 24/7 so urgent leads do not move on because you could not answer.
         </p>
 
         {/* Simple pill-and-arrow journey strip — same visual language as
