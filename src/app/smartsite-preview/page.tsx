@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import { WizardProvider, useWizard } from "@/lib/wizard-context";
 import { getTradeRegistry } from "@/lib/smartsite/registry";
 
@@ -19,6 +20,12 @@ import { getTradeRegistry } from "@/lib/smartsite/registry";
 function FullSiteInner() {
   const { state } = useWizard();
   const registry = state.tradeSlug ? getTradeRegistry(state.tradeSlug) : undefined;
+
+  useEffect(() => {
+    if (state.publishedSiteUrl) window.location.replace(state.publishedSiteUrl);
+  }, [state.publishedSiteUrl]);
+
+  if (state.publishedSiteUrl) return null;
 
   if (!state.tradeSlug || !state.styleVariant || !state.businessName || !registry) {
     return (

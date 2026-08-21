@@ -147,6 +147,7 @@ function ReviewPageInner() {
         if (!response.ok || !result.site_url) throw new Error(result.error || "Could not publish your SmartSite");
 
         setPublishedUrl(result.site_url);
+        update({ publishedSiteUrl: result.site_url });
         if (reportedRef.current) return;
         reportedRef.current = true;
         const subdomainSlug = state.businessName.toLowerCase().replace(/[^a-z0-9]+/g, "") || "yourbusiness";
@@ -163,7 +164,7 @@ function ReviewPageInner() {
         setPublishError(error instanceof Error ? error.message : "Could not publish your SmartSite");
       }
     })();
-  }, [state]);
+  }, [state, update]);
 
   useEffect(() => {
     // NODE_ENV is hard-set to "production" by `next build`/`next start`
@@ -240,21 +241,21 @@ function ReviewPageInner() {
 
       <div className="mt-4 flex flex-col items-center gap-1">
         <div className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-foreground/[0.03] px-3.5 py-1.5 font-mono text-xs font-semibold text-foreground/70">
-          🔗 {publishedUrl || "Publishing your permanent URL..."}
+          🔗 {publishedUrl || state.publishedSiteUrl || "Publishing your permanent URL..."}
         </div>
         <span className="text-[10px] text-foreground/35">
-          {publishError || (publishedUrl ? "Your permanent SmartSite URL" : "Your SmartSite is being published")}
+          {publishError || (publishedUrl || state.publishedSiteUrl ? "Your permanent SmartSite URL" : "Your SmartSite is being published")}
         </span>
       </div>
 
       <a
-        href={publishedUrl || "#"}
+        href={publishedUrl || state.publishedSiteUrl || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        aria-disabled={!publishedUrl}
-        className={`mt-4 block text-center text-sm font-semibold text-[#1a6bbf] hover:underline ${!publishedUrl ? "pointer-events-none opacity-40" : ""}`}
+        aria-disabled={!publishedUrl && !state.publishedSiteUrl}
+        className={`mt-4 block text-center text-sm font-semibold text-[#1a6bbf] hover:underline ${!publishedUrl && !state.publishedSiteUrl ? "pointer-events-none opacity-40" : ""}`}
       >
-        {publishedUrl ? "Open Full Site ↗" : "Publishing Full Site..."}
+        {publishedUrl || state.publishedSiteUrl ? "Open Full Site ↗" : "Publishing Full Site..."}
       </a>
 
       {/* --- Value of FREE --- */}

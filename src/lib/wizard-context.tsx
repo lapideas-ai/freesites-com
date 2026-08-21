@@ -28,6 +28,7 @@ export type WizardState = {
   approach: "fresh" | "keep" | null;
   keepItems: string[];
   existingWebsiteUrl: string;
+  publishedSiteUrl: string;
 };
 
 const emptyState: WizardState = {
@@ -46,6 +47,7 @@ const emptyState: WizardState = {
   approach: null,
   keepItems: [],
   existingWebsiteUrl: "",
+  publishedSiteUrl: "",
 };
 
 const STORAGE_KEY = "freesites:wizard";
