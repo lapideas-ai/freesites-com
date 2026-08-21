@@ -1,0 +1,33 @@
+.ss-recipe {
+  --ss-ink: #1a2f4a;
+  --ss-ink-soft: #243e5d;
+  --ss-accent: #f97316;
+  --ss-accent-dark: #c2410c;
+  --ss-accent2: #1a6bbf;
+  --ss-accent-soft: rgba(249, 115, 22, 0.14);
+  --ss-accent-on-dark: #fdba74;
+  --ss-paper: #f8fafc;
+  --ss-paper-dim: #eef2f7;
+  --ss-surface: #ffffff;
+  --ss-success: #16a34a;
+  --ss-success-soft: rgba(22, 163, 74, 0.12);
+  --ss-line: rgba(248, 250, 252, 0.16);
+  --ss-line-dark: rgba(26, 47, 74, 0.12);
+  --ss-line-strong: rgba(248, 250, 252, 0.3);
+  --ss-text-on-dark: #ffffff;
+  --ss-text-on-dark-dim: rgba(255, 255, 255, 0.7);
+  --ss-text-on-light: #1a2f4a;
+  --ss-text-on-light-dim: rgba(26, 47, 74, 0.66);
+  --ss-font-display: Georgia, serif;
+  --ss-font-body: ui-sans-serif, system-ui, sans-serif;
+  --ss-font-mono: ui-monospace, monospace;
+  color: var(--ss-text-on-light);
+  font-family: var(--ss-font-body);
+}
+
+.ss-recipe .ss-display { font-family: var(--ss-font-display); }
+.ss-recipe .ss-mono { font-family: var(--ss-font-mono); }
+.ss-recipe a { text-decoration: none; }
+.ss-recipe-fast { --ss-accent: #f97316; --ss-accent-dark: #c2410c; }
+.ss-recipe-premium { --ss-accent: #b9975a; --ss-accent-dark: #80652e; --ss-paper: #f8f7f9; --ss-paper-dim: #eeecf0; --ss-text-on-light: #1a1a20; --ss-text-on-light-dim: rgba(26, 26, 32, 0.62); }
+.ss-recipe-local { --ss-accent: #3d8b68; --ss-accent-dark: #236044; --ss-paper: #f5f8f2; --ss-paper-dim: #e9f0e5; --ss-accent-soft: rgba(61, 139, 104, 0.14); }

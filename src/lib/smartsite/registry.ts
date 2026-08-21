@@ -7,6 +7,7 @@ import { electricalRegistry } from "@/components/smartsite/electrical/registry";
 import { paintingRegistry } from "@/components/smartsite/painting/registry";
 import { landscapingRegistry } from "@/components/smartsite/landscaping/registry";
 import { remodelingRegistry } from "@/components/smartsite/remodeling/registry";
+import { sharedStyleRecipes } from "@/components/smartsite/shared/style-recipes";
 
 // Thin aggregator, not a place where every trade's imports pile up. Each
 // trade self-registers from its own folder (see hvacRegistry) — adding a
@@ -16,8 +17,8 @@ import { remodelingRegistry } from "@/components/smartsite/remodeling/registry";
 // pulls every other trade's component tree into its bundle — this matters
 // once there are 30+ trades × 3 styles instead of 3.
 //
-// `components` is Partial because some production-ready trades have one style
-// while others have three. Consumers must guard unavailable style variants.
+// Trade entries provide content and optional overrides. The shared recipes
+// complete every production entry to exactly three style variants.
 export type TradeRegistryEntry = {
   components: Partial<Record<StyleVariant, ComponentType<SmartSiteRenderProps>>>;
   sample: BusinessData;
@@ -36,7 +37,9 @@ export const SMARTSITE_REGISTRY: Record<string, TradeRegistryEntry> = {
 export const REGISTERED_TRADE_SLUGS = Object.freeze(Object.keys(SMARTSITE_REGISTRY));
 
 export function getTradeRegistry(tradeSlug: string): TradeRegistryEntry | undefined {
-  return SMARTSITE_REGISTRY[tradeSlug];
+  const entry = SMARTSITE_REGISTRY[tradeSlug];
+  if (!entry) return undefined;
+  return { ...entry, components: { ...sharedStyleRecipes, ...entry.components } };
 }
 
 const STYLE_PREFERENCE_ORDER: StyleVariant[] = ["fast-response", "trusted-local", "premium-professional"];
