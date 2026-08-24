@@ -4,6 +4,8 @@ import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useWizard } from "@/lib/wizard-context";
 import { getTradeBySlug, LIVE_TRADE_SLUGS } from "@/lib/trades";
+import { getTradeRegistry } from "@/lib/smartsite/registry";
+import type { StyleVariant } from "@/lib/smartsite/types";
 import { WizardBuildingCue } from "@/components/wizard-building-cue";
 import { reportLead } from "@/lib/report-lead";
 
@@ -16,12 +18,31 @@ function StartPageInner() {
   const { state, update } = useWizard();
 
   const paramTrade = searchParams.get("trade");
+  const paramStyle = searchParams.get("style");
+  const paramBusiness = searchParams.get("business");
+  const paramCity = searchParams.get("city");
+  const paramPhone = searchParams.get("phone");
+  const paramTradeIsValid = Boolean(paramTrade && LIVE_TRADE_SLUGS.has(paramTrade));
+  const paramStyleIsValid = Boolean(
+    paramStyle &&
+      paramTradeIsValid &&
+      getTradeRegistry(paramTrade as string)?.components[paramStyle as StyleVariant],
+  );
 
   useEffect(() => {
-    if (paramTrade && LIVE_TRADE_SLUGS.has(paramTrade) && state.tradeSlug !== paramTrade) {
+    if (paramTradeIsValid && state.tradeSlug !== paramTrade) {
       update({ tradeSlug: paramTrade });
     }
-  }, [paramTrade, state.tradeSlug, update]);
+  }, [paramTrade, paramTradeIsValid, state.tradeSlug, update]);
+
+  useEffect(() => {
+    const patch: Partial<typeof state> = {};
+    if (paramStyleIsValid && state.styleVariant !== paramStyle) patch.styleVariant = paramStyle as StyleVariant;
+    if (paramBusiness && state.businessName !== paramBusiness) patch.businessName = paramBusiness;
+    if (paramCity && state.city !== paramCity) patch.city = paramCity;
+    if (paramPhone && state.phone !== paramPhone) patch.phone = paramPhone;
+    if (Object.keys(patch).length > 0) update(patch);
+  }, [paramBusiness, paramCity, paramPhone, paramStyle, paramStyleIsValid, state, update]);
 
   useEffect(() => {
     if (!paramTrade && !state.tradeSlug) {
@@ -29,7 +50,7 @@ function StartPageInner() {
     }
   }, [paramTrade, state.tradeSlug, router]);
 
-  const tradeSlug = (paramTrade && LIVE_TRADE_SLUGS.has(paramTrade)) ? paramTrade : state.tradeSlug;
+  const tradeSlug = paramTradeIsValid ? paramTrade : state.tradeSlug;
   const trade = tradeSlug ? getTradeBySlug(tradeSlug) : undefined;
 
   if (!trade) return null;
@@ -43,7 +64,8 @@ function StartPageInner() {
       first_name: state.leadFirstName,
       fields: { trade: tradeSlug },
     });
-    router.push("/build/style");
+    update({ styleVariant: paramStyleIsValid ? (paramStyle as StyleVariant) : state.styleVariant });
+    router.push(paramStyleIsValid ? "/build/services" : "/build/style");
   }
 
   return (
