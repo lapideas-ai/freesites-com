@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "capture:designs": "bash scripts/capture-design-review-screenshots.sh"
   },
   "dependencies": {
     "@netlify/blobs": "^11.0.1",

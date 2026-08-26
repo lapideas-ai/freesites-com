@@ -1,0 +1,376 @@
+/* Friendship Foundation — Client Design Review Page */
+
+:root {
+  --rev-bg: #f6f5f2;
+  --rev-panel: #ffffff;
+  --rev-border: #e4e1da;
+  --rev-ink: #1c1b19;
+  --rev-muted: #6b6660;
+  --rev-accent: #0c3d8a;
+}
+
+.rev-page {
+  background: var(--rev-bg);
+  color: var(--rev-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.rev-page * {
+  box-sizing: border-box;
+}
+
+/* Hero */
+.rev-hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 72px 32px 56px;
+  text-align: center;
+}
+
+.rev-hero-brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.rev-hero-brand img {
+  height: 60px;
+  width: auto;
+}
+
+.rev-hero-eyebrow {
+  margin: 0 0 10px;
+  color: var(--rev-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.rev-hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.rev-hero-presented {
+  margin: 0;
+  color: var(--rev-muted);
+  font-size: 1.05rem;
+}
+
+/* Selection banner */
+.rev-selection-banner {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--rev-accent);
+  color: #fff;
+  text-align: center;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+}
+
+/* Design sections */
+.rev-designs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 32px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.rev-design {
+  background: var(--rev-panel);
+  border: 1px solid var(--rev-border);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.rev-design-heading {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.rev-design-label {
+  margin: 0 0 6px;
+  color: var(--rev-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rev-design-heading h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+}
+
+.rev-design-rationale {
+  margin: 0;
+  color: var(--rev-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+/* Previews */
+.rev-previews {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.rev-frame {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.rev-frame-desktop {
+  border: 1px solid var(--rev-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.rev-frame-chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #ececea;
+  border-bottom: 1px solid var(--rev-border);
+}
+
+.rev-frame-chrome span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #cfccc5;
+}
+
+.rev-frame-desktop .rev-frame-scroll {
+  display: block;
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+.rev-frame-desktop img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.rev-frame-mobile {
+  border: 8px solid #1c1b19;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #1c1b19;
+  position: relative;
+}
+
+.rev-frame-notch {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 18px;
+  background: #1c1b19;
+  border-radius: 0 0 12px 12px;
+  z-index: 2;
+}
+
+.rev-frame-mobile .rev-frame-scroll {
+  display: block;
+  max-height: 460px;
+  overflow-y: auto;
+  border-radius: 20px;
+}
+
+.rev-frame-mobile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.rev-frame-desktop:hover {
+  border-color: var(--rev-accent);
+}
+
+/* Actions */
+.rev-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.rev-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.rev-btn-primary {
+  background: var(--rev-ink);
+  color: #fff;
+}
+
+.rev-btn-primary:hover {
+  background: #34322e;
+}
+
+.rev-btn-secondary {
+  background: var(--rev-bg);
+  color: var(--rev-ink);
+  border-color: var(--rev-border);
+}
+
+.rev-btn-secondary:hover {
+  border-color: var(--rev-ink);
+}
+
+.rev-btn-outline {
+  background: transparent;
+  color: var(--rev-accent);
+  border-color: var(--rev-accent);
+}
+
+.rev-btn-outline:hover {
+  background: var(--rev-accent);
+  color: #fff;
+}
+
+.rev-btn-selected {
+  background: #17803d;
+  color: #fff;
+}
+
+/* Lightbox */
+.rev-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(20, 18, 16, 0.9);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 24px;
+  overflow: auto;
+  cursor: zoom-out;
+}
+
+.rev-lightbox img {
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.rev-lightbox-close {
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rev-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Footer */
+.rev-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 32px 72px;
+  text-align: center;
+  border-top: 1px solid var(--rev-border);
+}
+
+.rev-footer p {
+  margin: 24px 0 12px;
+  color: var(--rev-muted);
+  font-size: 0.95rem;
+}
+
+.rev-footer-attribution {
+  display: inline-block;
+  margin: 0;
+  color: var(--rev-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.rev-footer-attribution a {
+  color: var(--rev-muted);
+  text-decoration: underline;
+}
+
+.rev-footer-attribution a:hover {
+  color: var(--rev-ink);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .rev-previews {
+    grid-template-columns: 1fr;
+  }
+
+  .rev-frame-mobile {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .rev-hero {
+    padding: 48px 20px 40px;
+  }
+
+  .rev-designs {
+    padding: 16px 16px 48px;
+    gap: 40px;
+  }
+
+  .rev-design {
+    padding: 24px 18px;
+  }
+
+  .rev-actions {
+    flex-direction: column;
+  }
+
+  .rev-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
