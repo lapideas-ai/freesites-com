@@ -175,12 +175,11 @@ export default function HopefulJourneyPage() {
 
       <footer className="hj-footer" id="footer">
         <div className="hj-footer-brand"><span className="hj-footer-logo-card"><Image src="/friendship-foundation-logo.jpg" alt="Friendship Foundation, Inc." width={230} height={140} /></span><strong>Friendship Foundation, Inc.</strong><span>Partners for Recovery</span><small>Serving Western New York</small></div>
-        <div><h3>Contact Us</h3><p>66 Englewood Avenue<br />Buffalo, NY 14214-1235<br />(716) 515-8242<br />ffibflo@gmail.com</p><strong className="hj-verify">VERIFY BEFORE LAUNCH</strong></div>
+        <div><h3>Contact Us</h3><p>66 Englewood Avenue<br />Buffalo, NY 14214-1235<br />(716) 515-8242<br />ffibflo@gmail.com</p></div>
         <div><h3>Get Involved</h3><a href="#donate">Donate</a><a href="#ways">Volunteer</a><a href="#community">Advocate</a><a href="#ways">Partner With Us</a></div>
         <div><h3>Quick Links</h3><a href="#mission">Our Mission</a><a href="#walk-with">Who We Help</a><a href="#impact">Our Impact</a><a href="#ways">Resources</a></div>
-        <div><h3>Follow Us</h3><p className="hj-social">f &nbsp; ◎</p></div>
         <p className="hj-footer-bottom">
-          Made with ❤️ by <Link href="https://freesites.com">FreeSites</Link>
+          Made with ❤️ by <Link href="https://www.freesites.com/">FreeSites</Link>
         </p>
       </footer>
     </div>

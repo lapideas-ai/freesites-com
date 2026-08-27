@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./friendshipfoundation.css";
 
 export const metadata: Metadata = {
-  title: "Friendship Foundation Design Mockups | FreeSites",
-  description:
-    "Friendship Foundation — Three design direction homepages. Choose a design direction to review.",
+  title: "Friendship Foundation | FreeSites",
+  description: "Friendship Foundation's custom website, built by FreeSites.",
 };
 
 export default function FriendshipFoundationLayout({

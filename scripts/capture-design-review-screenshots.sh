@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 # Regenerates the desktop + mobile screenshots shown on the
-# Friendship Foundation client design review page
-# (/friendshipfoundation) whenever any of the three designs change.
+# Friendship Foundation client presentation page
+# (/friendshipfoundation) whenever the approved website changes.
+#
+# Only the approved design (Hopeful Journey / Serenity) is captured.
+# Human Connection and Modern Impact were retired and archived to
+# FriendshipFoundation/archive/ — not part of the client presentation.
 #
 # Usage:
 #   npm run capture:designs
@@ -44,8 +48,6 @@ capture() {
 }
 
 capture "serenity" "hopeful-journey"
-capture "human-connection" "human-connection"
-capture "modern-impact" "modern-impact"
 
 if [ "$STARTED_SERVER" = "1" ]; then
   echo "Stopping the dev server this script started..."
