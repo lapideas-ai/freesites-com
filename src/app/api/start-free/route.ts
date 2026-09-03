@@ -50,13 +50,27 @@ export async function POST(request: Request) {
       }),
     });
 
+    const raw = await response.text();
+    let data: any = null;
+    try { data = raw ? JSON.parse(raw) : null; } catch { /* diagnostic below */ }
+
     if (!response.ok) {
-      const detail = await response.text();
-      console.error("start-free GHL Contacts API error:", response.status, detail);
+      console.error("start-free GHL Contacts API error:", response.status, raw);
       return json({ ok: false, error: "CRM_REJECTED_CONTACT", upstream_status: response.status }, 502);
     }
 
-    return json({ ok: true });
+    const contact = data?.contact;
+    const returnedEmail = typeof contact?.email === "string" ? contact.email.trim().toLowerCase() : "";
+    const returnedLocationId = typeof contact?.locationId === "string" ? contact.locationId : "";
+    const contactId = typeof contact?.id === "string" ? contact.id : "";
+
+    if (!contactId || returnedEmail !== email || returnedLocationId !== locationId) {
+      console.error("start-free GHL response could not be verified:", JSON.stringify({ status: response.status, hasContactId: Boolean(contactId), emailMatch: returnedEmail === email, locationMatch: returnedLocationId === locationId, response: data }));
+      return json({ ok: false, error: "CRM_UNVERIFIED_RESPONSE", upstream_status: response.status }, 502);
+    }
+
+    console.log("start-free GHL verified contact:", JSON.stringify({ contactId, email, locationSuffix: locationId.slice(-4) }));
+    return json({ ok: true, verified: true, contact_id: contactId, location_suffix: locationId.slice(-4) });
   } catch (error) {
     console.error("start-free GHL Contacts API unavailable:", error instanceof Error ? error.message : String(error));
     return json({ ok: false, error: "CRM_UNAVAILABLE" }, 502);
