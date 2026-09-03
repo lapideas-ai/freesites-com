@@ -16,7 +16,7 @@ export default function SitesV3Home(){
    for(const key of ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"]){const value=params.get(key);if(value)fields[key]=value}
    const response=await fetch("/api/start-free",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:cleanEmail,fields})});
    let result:Record<string,unknown>={}; try{result=await response.json()}catch{}
-   if(!response.ok){const code=typeof result.error==="string"?result.error:"REQUEST_FAILED";throw new Error(`${response.status} ${code}`)}
+   if(!response.ok){const code=typeof result.error==="string"?result.error:"REQUEST_FAILED";const upstream=typeof result.upstream_status==="number"?` | GHL ${result.upstream_status}`:"";const message=typeof result.upstream_message==="string"?` — ${result.upstream_message}`:"";throw new Error(`${response.status} ${code}${upstream}${message}`)}
    setSubmitted(true);
   }catch(error){setSubmitError(`We couldn't save your email. ${error instanceof Error?`(${error.message})`:"Please try again."}`)}
   finally{setSubmitting(false)}
