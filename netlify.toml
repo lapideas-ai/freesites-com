@@ -3,5 +3,8 @@
   publish = ".next"
   functions = "netlify/functions"
 
+[context.deploy-preview.environment]
+  SECRETS_SCAN_OMIT_KEYS = "GHL_FUNDING_WEBHOOK_URL,GHL_LOCATION_ID,GHL_PRIVATE_INTEGRATION_TOKEN"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
