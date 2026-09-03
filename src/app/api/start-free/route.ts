@@ -6,6 +6,20 @@ function json(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status });
 }
 
+function safeGhlDiagnostic(raw: string) {
+  try {
+    const data = JSON.parse(raw);
+    const candidate = data?.message ?? data?.error ?? data?.error_description ?? data?.msg;
+    if (typeof candidate !== "string") return "No GHL error message returned";
+    return candidate
+      .replace(/Bearer\s+[A-Za-z0-9._~+\/-]+/gi, "Bearer [redacted]")
+      .replace(/pit-[A-Za-z0-9_-]+/gi, "[redacted-token]")
+      .slice(0, 240);
+  } catch {
+    return "Non-JSON error response from GHL";
+  }
+}
+
 export async function POST(request: Request) {
   let payload: { email?: unknown; fields?: unknown };
   try {
@@ -55,8 +69,9 @@ export async function POST(request: Request) {
     try { data = raw ? JSON.parse(raw) : null; } catch { /* diagnostic below */ }
 
     if (!response.ok) {
+      const ghlMessage = safeGhlDiagnostic(raw);
       console.error("start-free GHL Contacts API error:", response.status, raw);
-      return json({ ok: false, error: "CRM_REJECTED_CONTACT", upstream_status: response.status }, 502);
+      return json({ ok: false, error: "CRM_REJECTED_CONTACT", upstream_status: response.status, upstream_message: ghlMessage }, 502);
     }
 
     const contact = data?.contact;
