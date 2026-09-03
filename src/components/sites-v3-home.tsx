@@ -14,10 +14,11 @@ export default function SitesV3Home(){
   try{
    const params=new URLSearchParams(window.location.search); const fields:Record<string,string>={page:window.location.pathname};
    for(const key of ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"]){const value=params.get(key);if(value)fields[key]=value}
-   const response=await fetch("/.netlify/functions/ghl-lead-capture",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({lead_type:"FREESITES_STARTER",email:cleanEmail,fields})});
-   if(!response.ok)throw new Error("capture failed");
+   const response=await fetch("/api/start-free",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:cleanEmail,fields})});
+   let result:Record<string,unknown>={}; try{result=await response.json()}catch{}
+   if(!response.ok){const code=typeof result.error==="string"?result.error:"REQUEST_FAILED";throw new Error(`${response.status} ${code}`)}
    setSubmitted(true);
-  }catch{setSubmitError("We couldn't save your email. Please try again.")}
+  }catch(error){setSubmitError(`We couldn't save your email. ${error instanceof Error?`(${error.message})`:"Please try again."}`)}
   finally{setSubmitting(false)}
  }
  async function copyPrompt(){await navigator.clipboard.writeText(starterPrompt);setCopied(true);setTimeout(()=>setCopied(false),1800)}
