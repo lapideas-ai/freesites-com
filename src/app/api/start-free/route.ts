@@ -37,7 +37,7 @@ export async function POST(request: Request) {
   const locationId = process.env.GHL_LOCATION_ID;
   if (!token || !locationId) {
     console.error("start-free: GHL Contacts API is not configured");
-    return json({ ok: false, error: "CRM_NOT_CONFIGURED" }, 503);
+    return json({ ok: false, error: "CRM_NOT_CONFIGURED", runtime_location_id: locationId || "MISSING" }, 503);
   }
 
   const fields = payload.fields && typeof payload.fields === "object" && !Array.isArray(payload.fields)
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     if (!response.ok) {
       const ghlMessage = safeGhlDiagnostic(raw);
       console.error("start-free GHL Contacts API error:", response.status, raw);
-      return json({ ok: false, error: "CRM_REJECTED_CONTACT", upstream_status: response.status, upstream_message: ghlMessage }, 502);
+      return json({ ok: false, error: "CRM_REJECTED_CONTACT", upstream_status: response.status, upstream_message: ghlMessage, runtime_location_id: locationId }, 502);
     }
 
     const contact = data?.contact;
@@ -81,13 +81,13 @@ export async function POST(request: Request) {
 
     if (!contactId || returnedEmail !== email || returnedLocationId !== locationId) {
       console.error("start-free GHL response could not be verified:", JSON.stringify({ status: response.status, hasContactId: Boolean(contactId), emailMatch: returnedEmail === email, locationMatch: returnedLocationId === locationId, response: data }));
-      return json({ ok: false, error: "CRM_UNVERIFIED_RESPONSE", upstream_status: response.status }, 502);
+      return json({ ok: false, error: "CRM_UNVERIFIED_RESPONSE", upstream_status: response.status, runtime_location_id: locationId }, 502);
     }
 
     console.log("start-free GHL verified contact:", JSON.stringify({ contactId, email, locationSuffix: locationId.slice(-4) }));
     return json({ ok: true, verified: true, contact_id: contactId, location_suffix: locationId.slice(-4) });
   } catch (error) {
     console.error("start-free GHL Contacts API unavailable:", error instanceof Error ? error.message : String(error));
-    return json({ ok: false, error: "CRM_UNAVAILABLE" }, 502);
+    return json({ ok: false, error: "CRM_UNAVAILABLE", runtime_location_id: locationId }, 502);
   }
 }
