@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     return json({ ok: false, error: "VALID_EMAIL_REQUIRED" }, 400);
   }
 
-  const token = process.env.GHL_PRIVATE_INTEGRATION_TOKEN;
+  const token = process.env.GHL_FREESITES_STARTER_TOKEN;
   const locationId = process.env.GHL_LOCATION_ID;
   if (!token || !locationId) {
     console.error("start-free: GHL Contacts API is not configured");
