@@ -9,5 +9,14 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <SitesV3Home />;
+  return (
+    <>
+      <div style={{background:"#071a34",color:"white",textAlign:"center",padding:"10px 18px",fontSize:"14px",lineHeight:1.4}}>
+        <strong>HOME SERVICE BUSINESS?</strong>{" "}
+        See the FreeSites website + 24/7 SmartReply offer for contractors.{" "}
+        <a href="/contractors" style={{color:"#c8ff24",fontWeight:800,textDecoration:"underline",whiteSpace:"nowrap"}}>FOR HOME SERVICES →</a>
+      </div>
+      <SitesV3Home />
+    </>
+  );
 }
