@@ -8,3 +8,8 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+  [[redirects]]
+  from = "/donedeal"
+  to = "https://api.leadconnectorhq.com/widget/booking/KGg5oY0e1xET5qvRuZdE"
+  status = 302
