@@ -64,6 +64,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <SmartOperatorMount />
         <Script
+          id="ghl-a2p-chat-widget"
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6abe96d970d7ac2dd03ef342"
+          strategy="afterInteractive"
+        />
+        <Script
           id="hl-external-tracking"
           src="https://pay.freesites.com/js/external-tracking.js"
           data-tracking-id="tk_d6afa53a20de4fc499b2942ebbcf272a"
