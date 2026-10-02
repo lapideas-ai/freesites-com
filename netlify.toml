@@ -13,3 +13,9 @@
   from = "/donedeal"
   to = "https://api.leadconnectorhq.com/widget/booking/KGg5oY0e1xET5qvRuZdE"
   status = 302
+
+[[redirects]]
+  from = "/funding"
+  to = "/"
+  status = 302
+  force = true
